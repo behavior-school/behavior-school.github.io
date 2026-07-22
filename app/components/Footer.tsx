@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Brain, ExternalLink, ArrowUp } from "lucide-react";
+import { ExternalLink, ArrowUp } from "lucide-react";
 import { YoutubeIcon, GithubIcon } from "./Icons";
 
 export default function Footer() {
@@ -13,16 +13,14 @@ export default function Footer() {
     <footer className="bg-slate-950 border-t border-slate-800 text-slate-400 py-16 relative z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
-          {/* Brand Col */}
+          {/* Brand Col with Official Logo */}
           <div className="md:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 to-emerald-400 p-[1px]">
-                <div className="w-full h-full bg-[#090d16] rounded-[11px] flex items-center justify-center">
-                  <Brain className="w-5 h-5 text-indigo-400" />
-                </div>
+              <div className="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 p-1 flex items-center justify-center">
+                <img src="/logo.svg" alt="Behavior School" className="w-full h-full object-contain" />
               </div>
-              <span className="font-bold text-xl text-white tracking-tight">
-                Behavior<span className="text-indigo-400 font-light">School</span>
+              <span className="font-extrabold text-xl text-white tracking-tight">
+                Behavior<span className="text-blue-500">School</span>
               </span>
             </div>
             <p className="text-xs sm:text-sm text-slate-400 max-w-md leading-relaxed">
@@ -54,7 +52,7 @@ export default function Footer() {
                 className="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-emerald-400 hover:text-white hover:bg-emerald-600 hover:border-emerald-600 transition-all"
                 title="GitHub Pages"
               >
-                <GithubIcon className="w-4 h-4" />
+                <GithubIcon className="w-4 h-4 fill-current" />
               </a>
             </div>
           </div>

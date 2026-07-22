@@ -1,9 +1,14 @@
 "use client";
 
 import React, { useState } from "react";
-import { Compass, Sparkles, CheckCircle, ArrowRight, RotateCcw, Brain, ShieldAlert } from "lucide-react";
+import { Compass, Sparkles, CheckCircle, ArrowRight, RotateCcw, Brain, ShieldAlert, FileCode } from "lucide-react";
+import { ArtifactData } from "./ArtifactViewer";
 
-export default function BehaviorDiagnostic() {
+interface BehaviorDiagnosticProps {
+  onOpenArtifact: (artifact: ArtifactData) => void;
+}
+
+export default function BehaviorDiagnostic({ onOpenArtifact }: BehaviorDiagnosticProps) {
   const [selectedStruggle, setSelectedStruggle] = useState<string | null>(null);
   const [analyzed, setAnalyzed] = useState(false);
 
@@ -16,10 +21,30 @@ export default function BehaviorDiagnostic() {
       diagnosis: "Limbic system emotional hijacking triggered by perceived threat/anxiety.",
       steps: [
         "Lower task activation energy: shrink initial commitment to just 2 minutes.",
-        "Remove perfectionism pressure: separate the drafting stage from editing.",
+        "Remove perfectionism pressure: separate drafting from editing.",
         "Perform identity voting: frame completing the task as casting a vote for your future self."
       ],
-      recommendedVideo: "Why Smart People Still Procrastinate"
+      recommendedVideo: "Why Smart People Still Procrastinate",
+      artifact: {
+        title: "Procrastination Diagnostic & Remediation Protocol",
+        type: "PROTOCOL" as const,
+        filename: "procrastination-diagnostic-protocol.md",
+        category: "Diagnostic Protocol",
+        content: `# Procrastination Diagnostic Report
+
+## Diagnosis
+The user exhibits chronic procrastination driven by limbic system emotional avoidance.
+
+## Immediate Remedies
+1. **2-Minute Activation**: Start task for 120s without outcome evaluation.
+2. **Environment Clearing**: Remove immediate escape triggers.`,
+        actionProtocol: [
+          "Lower task activation energy: shrink initial commitment to just 2 minutes.",
+          "Remove perfectionism pressure: separate drafting from editing.",
+          "Perform identity voting: frame completing the task as casting a vote for your future self."
+        ],
+        youtubeVideo: "Why Smart People Still Procrastinate"
+      }
     },
     {
       id: "focus",
@@ -32,7 +57,26 @@ export default function BehaviorDiagnostic() {
         "Use 25-minute Pomodoro intervals to rebuild cognitive endurance.",
         "Embrace 5 minutes of deliberate boredom before starting deep work."
       ],
-      recommendedVideo: "How Your Brain Creates Habits"
+      recommendedVideo: "How Your Brain Creates Habits",
+      artifact: {
+        title: "Focus Restoration & Dopamine Recalibration Protocol",
+        type: "NEUROSCIENCE" as const,
+        filename: "focus-dopamine-recalibration.md",
+        category: "Neuroscience Protocol",
+        content: `# Dopamine Baseline Recalibration
+
+Excessive notification frequency causes down-regulation of D2 dopamine receptors in the striatum.
+
+## Protocol:
+- **Phone Quarantine**: 60-minute physical separation.
+- **Micro-Boredom Practice**: 5 minutes of quiet stillness prior to task initiation.`,
+        actionProtocol: [
+          "Implement friction design: place phone in another room during focus blocks.",
+          "Use 25-minute Pomodoro intervals to rebuild cognitive endurance.",
+          "Embrace 5 minutes of deliberate boredom before starting deep work."
+        ],
+        youtubeVideo: "How Your Brain Creates Habits"
+      }
     },
     {
       id: "overthinking",
@@ -45,46 +89,25 @@ export default function BehaviorDiagnostic() {
         "Apply Second-Order Thinking: ask 'And then what happens after that?'",
         "Set a 10-minute daily worry window to prevent chronic rumination."
       ],
-      recommendedVideo: "Stop Overthinking Everything"
-    },
-    {
-      id: "consistency",
-      label: "Lack of Consistency",
-      icon: "📈",
-      description: "Starting strong with high motivation, then quitting after 4-5 days.",
-      diagnosis: "Relying on transient emotional motivation instead of environmental automation.",
-      steps: [
-        "Focus on Habit Stacking: attach new habits to existing morning anchors.",
-        "Track consistency streaks visually on a physical wall calendar.",
-        "Never miss twice: if you miss one day, prioritize doing even a 30-second version next day."
-      ],
-      recommendedVideo: "Why Motivation Always Fails"
-    },
-    {
-      id: "confidence",
-      label: "Social Fear & Rejection",
-      icon: "🛡️",
-      description: "Fearing judgment, avoiding public speaking, or feeling self-conscious.",
-      diagnosis: "Ancestral group-exclusion alarm misinterpreting modern social feedback.",
-      steps: [
-        "Recognize the Spotlight Effect: people think about you 90% less than you assume.",
-        "Practice micro-exposure: initiate 1 small conversation with a barista daily.",
-        "Focus outward: redirect attention from internal self-critique to actively listening to others."
-      ],
-      recommendedVideo: "The Science of Charisma"
-    },
-    {
-      id: "learning",
-      label: "Slow Learning & Forgetfulness",
-      icon: "🧠",
-      description: "Reading books or watching courses but forgetting 90% within a week.",
-      diagnosis: "Passive consumption without active retrieval or neuroplastic consolidation.",
-      steps: [
-        "Replace passive re-reading with Active Recall quizzes after every session.",
-        "Space study sessions across 1-3-7-14 day intervals for memory consolidation.",
-        "Teach the concept out loud in simple terms to a non-expert (Feynman Technique)."
-      ],
-      recommendedVideo: "Remember Anything Like a Pro"
+      recommendedVideo: "Stop Overthinking Everything",
+      artifact: {
+        title: "Default Mode Network De-rumination Protocol",
+        type: "MENTAL_MODEL" as const,
+        filename: "derumination-brain-dump.md",
+        category: "Mental Model",
+        content: `# Rumination Relief Mechanics
+
+Rumination activates the Default Mode Network, maintaining elevated cortisol without producing problem-solving actions.
+
+## Action Plan:
+- **Written Paper Dump**: Dump thoughts onto paper to free prefrontal cortex working memory.`,
+        actionProtocol: [
+          "Externalize working memory: perform a daily 5-minute written brain dump.",
+          "Apply Second-Order Thinking: ask 'And then what happens after that?'",
+          "Set a 10-minute daily worry window to prevent chronic rumination."
+        ],
+        youtubeVideo: "Stop Overthinking Everything"
+      }
     }
   ];
 
@@ -110,21 +133,21 @@ export default function BehaviorDiagnostic() {
             <span>Interactive Diagnostic Tool</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
-            "Why Do I Do This?" <span className="gradient-text-emerald">Mind Diagnostic</span>
+            "Why Do I Do This?" <span className="gradient-text">Mind Diagnostic</span>
           </h2>
           <p className="text-base sm:text-lg text-slate-400">
-            Select what you are struggling with right now to get a science-backed diagnosis and 3-step action plan.
+            Select what you are struggling with right now to generate a science breakdown and Claude Artifact protocol.
           </p>
         </div>
 
         {!analyzed ? (
-          <div className="glass-card p-6 sm:p-10 rounded-3xl border border-slate-800 shadow-2xl">
+          <div className="bg-slate-900/60 p-6 sm:p-10 rounded-3xl border border-slate-800 shadow-2xl">
             <h3 className="text-base font-bold text-white mb-6 flex items-center gap-2">
               <Brain className="w-5 h-5 text-indigo-400" />
               <span>Step 1: Select your primary behavioral bottleneck:</span>
             </h3>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
               {struggles.map((item) => {
                 const isSelected = selectedStruggle === item.id;
                 return (
@@ -173,7 +196,7 @@ export default function BehaviorDiagnostic() {
           </div>
         ) : (
           /* Diagnosis Output Screen */
-          <div className="glass-card p-6 sm:p-10 rounded-3xl border border-indigo-500/30 shadow-2xl animate-in zoom-in-95 duration-300">
+          <div className="bg-slate-900/80 p-6 sm:p-10 rounded-3xl border border-indigo-500/30 shadow-2xl animate-in zoom-in-95 duration-300">
             <div className="flex items-center justify-between border-b border-slate-800 pb-4 mb-6">
               <div className="flex items-center gap-3">
                 <span className="text-3xl">{currentDiagnosis?.icon}</span>
@@ -195,7 +218,6 @@ export default function BehaviorDiagnostic() {
               </button>
             </div>
 
-            {/* Scientific Diagnosis */}
             <div className="p-5 rounded-2xl bg-indigo-950/40 border border-indigo-500/30 mb-6">
               <h4 className="text-xs font-bold uppercase tracking-wider text-indigo-300 mb-1 flex items-center gap-2">
                 <ShieldAlert className="w-4 h-4 text-indigo-400" />
@@ -206,7 +228,6 @@ export default function BehaviorDiagnostic() {
               </p>
             </div>
 
-            {/* 3-Step Action Plan */}
             <div className="mb-8">
               <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4">
                 Recommended 3-Step Behavioral Protocol:
@@ -228,16 +249,18 @@ export default function BehaviorDiagnostic() {
               </div>
             </div>
 
-            {/* Recommended Video Link */}
-            <div className="p-5 rounded-2xl bg-slate-900 border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div>
-                <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
-                  Recommended Behavior School Video Lesson
-                </span>
-                <h5 className="text-base font-bold text-white mt-0.5">
-                  "{currentDiagnosis?.recommendedVideo}"
-                </h5>
-              </div>
+            {/* Artifact Trigger Action */}
+            <div className="pt-4 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+              {currentDiagnosis?.artifact && (
+                <button
+                  onClick={() => onOpenArtifact(currentDiagnosis.artifact)}
+                  className="w-full sm:w-auto px-5 py-2.5 rounded-xl text-xs font-bold text-indigo-300 bg-indigo-500/10 border border-indigo-500/30 hover:bg-indigo-500/20 flex items-center justify-center gap-2"
+                >
+                  <FileCode className="w-4 h-4 text-indigo-400" />
+                  <span>Open Claude Artifact Protocol</span>
+                </button>
+              )}
+
               <a
                 href="https://www.youtube.com/@behavior-school"
                 target="_blank"

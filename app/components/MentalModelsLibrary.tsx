@@ -1,9 +1,14 @@
 "use client";
 
 import React, { useState } from "react";
-import { Layers, Search, Filter, Bookmark, ExternalLink, ArrowUpRight } from "lucide-react";
+import { Layers, Search, FileCode, ArrowUpRight } from "lucide-react";
+import { ArtifactData } from "./ArtifactViewer";
 
-export default function MentalModelsLibrary() {
+interface MentalModelsLibraryProps {
+  onOpenArtifact: (artifact: ArtifactData) => void;
+}
+
+export default function MentalModelsLibrary({ onOpenArtifact }: MentalModelsLibraryProps) {
   const [filter, setFilter] = useState<string>("all");
   const [search, setSearch] = useState<string>("");
 
@@ -14,7 +19,26 @@ export default function MentalModelsLibrary() {
       category: "Decision Making",
       summary: "Boiling down a problem to its most fundamental truths and building upwards from there.",
       application: "Instead of copying existing habits or advice, ask 'What is physically/biologically required for me to achieve this?'",
-      tags: ["Problem Solving", "Logic"]
+      tags: ["Problem Solving", "Logic"],
+      artifact: {
+        title: "First Principles Thinking Framework",
+        type: "MENTAL_MODEL" as const,
+        filename: "first-principles-thinking.md",
+        category: "Mental Model",
+        content: `# First Principles Thinking
+
+First Principles Thinking is the practice of actively questioning every assumption you think you know about a given problem, then creating new solutions from scratch.
+
+## 3-Step Process:
+1. **Identify Assumptions**: Write down current beliefs about the problem.
+2. **Deconstruct to Core Truths**: Strip away analogies and isolate non-negotiable physical facts.
+3. **Rebuild from Scratch**: Construct a custom solution based purely on fundamental truths.`,
+        actionProtocol: [
+          "Write down current assumptions about your bottleneck.",
+          "Ask: 'Is this assumption physically true or just convention?'",
+          "Rebuild your habit or system targeting only fundamental truths."
+        ]
+      }
     },
     {
       title: "Second Order Thinking",
@@ -22,7 +46,26 @@ export default function MentalModelsLibrary() {
       category: "Decision Making",
       summary: "Evaluating not just immediate effects, but the ripple consequences of those effects over time.",
       application: "When tempted by instant gratification, ask: 'And then what happens 2 hours from now?'",
-      tags: ["Long-term", "Consequences"]
+      tags: ["Long-term", "Consequences"],
+      artifact: {
+        title: "Second-Order Ripple Analysis Protocol",
+        type: "MENTAL_MODEL" as const,
+        filename: "second-order-thinking.md",
+        category: "Mental Model",
+        content: `# Second-Order Thinking
+
+First-order thinking is fast and easy. It occurs when we look for something that satisfies an immediate goal without considering future consequences. Second-order thinking asks: 'And then what?'
+
+## Execution:
+- Evaluate 1st order effect (e.g. eating junk food = instant taste pleasure).
+- Evaluate 2nd order effect (e.g. 1 hour later = blood sugar crash & guilt).
+- Evaluate 3rd order effect (e.g. 1 month later = weight gain & lost energy).`,
+        actionProtocol: [
+          "Before acting on impulse, ask 'And then what happens 1 hour from now?'",
+          "Ask 'And then what happens 1 week from now?'",
+          "Optimize for 2nd and 3rd order consequences over 1st order impulses."
+        ]
+      }
     },
     {
       title: "Zeigarnik Effect",
@@ -30,55 +73,24 @@ export default function MentalModelsLibrary() {
       category: "Psychology",
       summary: "Uncompleted or interrupted tasks create mental tension that occupies working memory.",
       application: "Start a daunting task for just 2 minutes. Once opened, your brain naturally craves finishing it.",
-      tags: ["Procrastination", "Memory"]
-    },
-    {
-      title: "Pareto Principle (80/20)",
-      type: "Mental Model",
-      category: "Productivity",
-      summary: "80% of outcomes stem from 20% of inputs and causes.",
-      application: "Identify the top 20% of actions that drive 80% of your progress in learning, health, and work.",
-      tags: ["Efficiency", "Focus"]
-    },
-    {
-      title: "Cognitive Dissonance",
-      type: "Cognitive Bias",
-      category: "Psychology",
-      summary: "Mental discomfort experienced when holding two contradictory beliefs or values.",
-      application: "Notice when you justify bad habits to align your beliefs with comfort instead of truth.",
-      tags: ["Beliefs", "Self-Deception"]
-    },
-    {
-      title: "Confirmation Bias",
-      type: "Cognitive Bias",
-      category: "Psychology",
-      summary: "The tendency to search for, interpret, and recall information that confirms pre-existing beliefs.",
-      application: "Actively seek out counter-evidence to test whether your assumptions are actually true.",
-      tags: ["Critical Thinking", "Biases"]
-    },
-    {
-      title: "Inversion Method",
-      type: "Mental Model",
-      category: "Problem Solving",
-      summary: "Instead of asking how to succeed, ask how to guarantee absolute failure and avoid those traps.",
-      application: "To improve focus, ask: 'How could I make it impossible for me to focus today?' then eliminate those factors.",
-      tags: ["Risk Avoidance", "Strategy"]
-    },
-    {
-      title: "Dunning–Kruger Effect",
-      type: "Cognitive Bias",
-      category: "Psychology",
-      summary: "Beginners tend to overestimate their competence, while experts tend to underestimate theirs.",
-      application: "Stay humble when starting a new skill; recognize that early confidence is often an illusion.",
-      tags: ["Self-Awareness", "Skill Acquisition"]
-    },
-    {
-      title: "Occam's Razor",
-      type: "Mental Model",
-      category: "Decision Making",
-      summary: "When presented with competing hypotheses, the simplest explanation is usually correct.",
-      application: "Avoid overcomplicating productivity systems. The simplest routine you can actually execute wins.",
-      tags: ["Simplicity", "Logic"]
+      tags: ["Procrastination", "Memory"],
+      artifact: {
+        title: "Zeigarnik Effect Task Initiation Protocol",
+        type: "PROTOCOL" as const,
+        filename: "zeigarnik-effect-protocol.md",
+        category: "Psychology",
+        content: `# The Zeigarnik Effect
+
+Soviet psychologist Bluma Zeigarnik observed that waiters remembered unfulfilled orders better than paid ones. The brain maintains cognitive tension for incomplete tasks.
+
+## Practical Application:
+To overcome task initiation inertia, perform a micro-start. Once open, the Zeigarnik Effect creates subtle psychological pressure to complete the task.`,
+        actionProtocol: [
+          "Open the target file or document.",
+          "Write 1 sentence or 1 line of code.",
+          "Allow the Zeigarnik cognitive tension to pull you into flow."
+        ]
+      }
     }
   ];
 
@@ -100,14 +112,14 @@ export default function MentalModelsLibrary() {
             <span>Frameworks & Biases Library</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
-            Mental Models & <span className="gradient-text-amber">Cognitive Biases</span>
+            Mental Models & <span className="gradient-text">Cognitive Biases</span>
           </h2>
           <p className="text-base sm:text-lg text-slate-400">
-            Timeless thinking models that upgrade your decision making and reveal hidden psychological biases.
+            Timeless thinking models. Click any model to view its interactive Claude Artifact breakdown.
           </p>
         </div>
 
-        {/* Controls: Search and Filter */}
+        {/* Controls */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-10">
           <div className="relative w-full md:w-80">
             <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
@@ -129,7 +141,7 @@ export default function MentalModelsLibrary() {
                   : "bg-slate-900 text-slate-400 hover:text-white border border-slate-800"
               }`}
             >
-              All Library Items ({items.length})
+              All Library Items
             </button>
             <button
               onClick={() => setFilter("Mental Model")}
@@ -139,7 +151,7 @@ export default function MentalModelsLibrary() {
                   : "bg-slate-900 text-slate-400 hover:text-white border border-slate-800"
               }`}
             >
-              Mental Models Only
+              Mental Models
             </button>
             <button
               onClick={() => setFilter("Cognitive Bias")}
@@ -149,27 +161,21 @@ export default function MentalModelsLibrary() {
                   : "bg-slate-900 text-slate-400 hover:text-white border border-slate-800"
               }`}
             >
-              Cognitive Biases Only
+              Cognitive Biases
             </button>
           </div>
         </div>
 
         {/* Library Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {filteredItems.map((item, idx) => (
             <div
               key={idx}
-              className="glass-card p-6 rounded-2xl border border-slate-800/80 glass-card-hover flex flex-col justify-between"
+              className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800/80 flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <span
-                    className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full border ${
-                      item.type === "Mental Model"
-                        ? "bg-amber-950/60 border-amber-800/40 text-amber-400"
-                        : "bg-purple-950/60 border-purple-800/40 text-purple-400"
-                    }`}
-                  >
+                  <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-950/60 border border-amber-800/40 text-amber-400">
                     {item.type}
                   </span>
                   <span className="text-[11px] font-medium text-slate-500">{item.category}</span>
@@ -178,27 +184,30 @@ export default function MentalModelsLibrary() {
                 <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
                 <p className="text-xs text-slate-300 mb-4 leading-relaxed">{item.summary}</p>
 
-                <div className="p-3 rounded-xl bg-slate-900/90 border border-slate-800/90 mb-4">
+                <div className="p-3 rounded-xl bg-slate-950 border border-slate-800/90 mb-4">
                   <span className="text-[11px] font-bold uppercase tracking-wider text-amber-400 block mb-1">
-                    Real Life Application:
+                    Application:
                   </span>
                   <p className="text-xs text-slate-300 italic">{item.application}</p>
                 </div>
               </div>
 
               <div className="pt-3 border-t border-slate-800/60 flex items-center justify-between">
-                <div className="flex gap-1.5">
-                  {item.tags.map((t, i) => (
-                    <span key={i} className="text-[10px] text-slate-400 font-medium bg-slate-900 px-2 py-0.5 rounded">
-                      #{t}
-                    </span>
-                  ))}
-                </div>
+                {item.artifact && (
+                  <button
+                    onClick={() => onOpenArtifact(item.artifact)}
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-400 hover:text-amber-300 transition-colors"
+                  >
+                    <FileCode className="w-3.5 h-3.5" />
+                    <span>View Artifact</span>
+                  </button>
+                )}
+
                 <a
                   href="https://www.youtube.com/@behavior-school"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-slate-500 hover:text-amber-400 transition-colors"
+                  className="text-slate-500 hover:text-white transition-colors"
                 >
                   <ArrowUpRight className="w-4 h-4" />
                 </a>

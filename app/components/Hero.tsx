@@ -9,7 +9,7 @@ export default function Hero() {
     <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
       {/* Background Radial Glow Effects */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-600/15 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute top-1/3 right-10 w-[400px] h-[400px] bg-purple-600/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/3 right-10 w-[400px] h-[400px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-10 left-10 w-[350px] h-[350px] bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none" />
 
       {/* Grid line background overlay */}
@@ -17,13 +17,13 @@ export default function Hero() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-4xl mx-auto">
-          {/* Top Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/90 border border-slate-800 text-xs font-semibold text-indigo-300 mb-8 backdrop-blur-md shadow-inner">
-            <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="text-slate-400">Behavior School Media</span>
+          {/* Top Badge featuring Logo Icon */}
+          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-slate-900/90 border border-slate-800 text-xs font-semibold text-indigo-300 mb-8 backdrop-blur-md shadow-inner">
+            <img src="/logo.svg" alt="Behavior School" className="w-5 h-5 object-contain" />
+            <span className="text-slate-300 font-bold">Behavior School</span>
             <span className="text-slate-600">•</span>
-            <span className="flex items-center gap-1 text-indigo-400">
-              <Sparkles className="w-3.5 h-3.5" /> Research-Backed Psychology
+            <span className="flex items-center gap-1 text-blue-400">
+              <Sparkles className="w-3.5 h-3.5" /> Research-Backed Practical Psychology
             </span>
           </div>
 
