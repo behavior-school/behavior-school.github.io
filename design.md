@@ -1,68 +1,30 @@
-# 🎨 Behavior School Design System & Architecture (`design.md`)
+# 🎨 Behavior School Design System (`design.md`)
 
-## 📐 Design Philosophy: Clean, Minimal, Premium & Interactive
+## 📐 Minimal Black & White Aesthetics (Pure shadcn/ui)
 
-The **Behavior School** web application is built on a clean, minimal design system utilizing pure **shadcn/ui** CSS variables, crisp typography, and an interactive **Claude-like Artifacts** panel system.
+The **Behavior School** platform is designed with an ultra-clean, minimal black-and-white aesthetic built strictly on **shadcn/ui** CSS variables. No arbitrary colors, no decorative glows, and no cluttered navigation.
 
 ---
 
-## 🎨 Color Palette (Pure shadcn/ui Variables)
+## 🎨 Color Palette (Monochrome HSL)
 
 | Token | HSL Value | Hex Equivalent | Usage |
 | :--- | :--- | :--- | :--- |
-| `--background` | `224 71% 4%` | `#090D16` | Deep obsidian canvas background |
-| `--foreground` | `213 31% 91%` | `#F1F5F9` | High-contrast body text |
-| `--card` | `224 71% 6%` | `#0E1424` | Minimal container cards |
-| `--card-foreground` | `213 31% 91%` | `#F1F5F9` | Card title and body content |
-| `--primary` | `239 84% 67%` | `#6366F1` | Electric Indigo brand accent |
-| `--primary-foreground` | `0 0% 100%` | `#FFFFFF` | Text on primary buttons |
-| `--secondary` | `215 27.9% 16.9%` | `#1E293B` | Subtle badges and container highlights |
-| `--muted` | `215 27.9% 16.9%` | `#1E293B` | Inactive tabs and muted controls |
-| `--muted-foreground` | `217.9 10.6% 64.9%` | `#94A3B8` | Subtitles and meta labels |
-| `--border` | `215 27.9% 16.9%` | `#1E293B` | Subtle 1px dividers and borders |
-| `--ring` | `239 84% 67%` | `#6366F1` | Focus rings |
-| `--radius` | `0.75rem` | `12px` | Modern border radius |
+| `--background` | `0 0% 0%` | `#000000` | Pure deep black canvas |
+| `--foreground` | `0 0% 98%` | `#FAFAFA` | High-contrast white typography |
+| `--card` | `0 0% 4%` | `#0A0A0A` | Minimal dark card container |
+| `--card-foreground` | `0 0% 98%` | `#FAFAFA` | Card typography |
+| `--primary` | `0 0% 98%` | `#FAFAFA` | High-visibility primary action buttons |
+| `--primary-foreground` | `0 0% 4%` | `#0A0A0A` | Text inside primary buttons |
+| `--muted` | `0 0% 12%` | `#1F1F1F` | Subtle borders and secondary badges |
+| `--muted-foreground` | `0 0% 63%` | `#A1A1AA` | Muted subtitles and metadata |
+| `--border` | `0 0% 14%` | `#262626` | Clean 1px monochrome structural dividers |
 
 ---
 
-## 📄 Claude-Like Artifacts System
+## 🏛️ Landing Page Structure (4 Minimal Sections)
 
-Whenever a user interacts with a **Question**, **Mental Model**, **Behavior Diagnostic**, or **Curriculum Pillar**, an interactive **Artifact Drawer/Panel** opens side-by-side or as a clean slide-over (resembling Anthropic Claude's Artifacts interface).
-
-### Key Features of the Artifact System:
-1. **Interactive Code & Summary Preview**: Displays research papers, step-by-step habit loops, and neuroscience protocols formatted as actionable markdown cards.
-2. **Copy Artifact Action**: Allows visitors to copy protocol steps or mental models directly to their clipboard.
-3. **Download PDF/Markdown**: Export behavioral protocols into local notes.
-4. **Side-by-Side Dual Pane**: Allows browsing questions while viewing detailed artifact breakdowns concurrently.
-
----
-
-## ⚡ Microinteractions & Dynamics
-
-1. **Active Filter Chips**: Instant category filtering with smooth active states.
-2. **Interactive Diagnostic Analyzer**: Step-by-step diagnostic quiz providing instant feedback.
-3. **Live Search**: Instant keyword filtering across questions, biases, and video series.
-4. **Copy-to-Clipboard Notifications**: Toast confirmation when copying protocols.
-5. **Smooth Anchor Scrolling**: Seamless navigation across sections.
-
----
-
-## 🏛️ Component Hierarchy
-
-```
-app/
- ├── components/
- │    ├── ArtifactViewer.tsx     <-- Claude-style Artifact Drawer
- │    ├── Navbar.tsx             <-- Minimal Clean Header
- │    ├── Hero.tsx               <-- High-Impact Hero & Interactive Teasers
- │    ├── CategoriesSection.tsx  <-- 6 Core Pillars Grid
- │    ├── QuestionsExplorer.tsx  <-- Interactive Question Artifacts
- │    ├── BehaviorDiagnostic.tsx <-- Mind Diagnostic Protocol Generator
- │    ├── MentalModelsLibrary.tsx<-- Searchable Mental Models & Biases
- │    ├── SeriesShowcase.tsx     <-- Video Series Catalog
- │    ├── PhilosophyMission.tsx  <-- Brand Philosophy & Vision
- │    └── Footer.tsx             <-- Minimal Footer
- ├── layout.tsx
- ├── page.tsx
- └── globals.css
-```
+1. **Header & Hero Section**: Minimal brand identity, high-impact headline (*"Practical Psychology for Real Life"*), and clean action buttons.
+2. **Core Pillars Section**: 6 minimal black-and-white cards highlighting knowledge pillars.
+3. **Core Questions Section**: Expandable inquiry list breaking down procrastination, focus, and habits.
+4. **Behavior Diagnostic & Artifacts Drawer**: Interactive Mind Diagnostic tool triggering Claude-style markdown artifacts.
