@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Sparkles, RotateCcw, FileCode } from "lucide-react";
+import { Sparkles, RotateCcw, FileCode, CheckCircle2 } from "lucide-react";
 import { ArtifactData } from "./ArtifactViewer";
 
 interface BehaviorDiagnosticProps {
@@ -89,7 +89,7 @@ export default function BehaviorDiagnostic({ onOpenArtifact }: BehaviorDiagnosti
   return (
     <section id="diagnostic" className="py-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-        <h2 className="text-2xl sm:text-3xl font-bold text-[var(--foreground)] tracking-tight mb-2">
+        <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--foreground)] tracking-tight mb-2">
           Mind Diagnostic
         </h2>
         <p className="text-xs sm:text-sm text-[var(--muted-foreground)] mb-8">
@@ -97,7 +97,7 @@ export default function BehaviorDiagnostic({ onOpenArtifact }: BehaviorDiagnosti
         </p>
 
         {!analyzed ? (
-          <div className="bg-[var(--card)] p-6 rounded-2xl border border-[var(--border)]">
+          <div className="bg-[var(--card)] p-6 sm:p-8 rounded-3xl border border-[var(--border)]">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
               {struggles.map((item) => {
                 const isSelected = selectedStruggle === item.id;
@@ -105,9 +105,9 @@ export default function BehaviorDiagnostic({ onOpenArtifact }: BehaviorDiagnosti
                   <button
                     key={item.id}
                     onClick={() => setSelectedStruggle(item.id)}
-                    className={`p-4 rounded-xl border text-left transition-colors ${
+                    className={`p-4 rounded-2xl border text-left transition-all ${
                       isSelected
-                        ? "bg-[var(--muted)] border-[var(--primary)] text-[var(--foreground)]"
+                        ? "bg-[var(--muted)] border-[var(--primary)] text-[var(--foreground)] shadow-sm"
                         : "bg-[var(--card)] border-[var(--border)] text-[var(--muted-foreground)] hover:border-[var(--border)]/80"
                     }`}
                   >
@@ -121,28 +121,33 @@ export default function BehaviorDiagnostic({ onOpenArtifact }: BehaviorDiagnosti
             <button
               disabled={!selectedStruggle}
               onClick={() => setAnalyzed(true)}
-              className={`px-6 py-2.5 rounded-lg text-xs font-semibold transition-opacity flex items-center justify-center gap-2 mx-auto ${
+              className={`px-6 py-3 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 mx-auto ${
                 selectedStruggle
                   ? "bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-90 shadow-sm"
                   : "bg-[var(--muted)] text-[var(--muted-foreground)] border border-[var(--border)] cursor-not-allowed"
               }`}
             >
-              <Sparkles className="w-3.5 h-3.5" />
+              <Sparkles className="w-4 h-4" />
               <span>Generate Protocol</span>
             </button>
           </div>
         ) : (
-          <div className="bg-[var(--card)] p-6 rounded-2xl border border-[var(--border)] text-left space-y-4">
-            <div className="flex items-center justify-between border-b border-[var(--border)] pb-3">
-              <h3 className="text-base font-bold text-[var(--foreground)]">{current?.label} Protocol</h3>
+          <div className="bg-[var(--card)] p-6 sm:p-8 rounded-3xl border border-[var(--border)] text-left space-y-5">
+            <div className="flex items-center justify-between border-b border-[var(--border)] pb-4">
+              <div>
+                <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--primary)]">
+                  Diagnostic Result
+                </span>
+                <h3 className="text-lg font-bold text-[var(--foreground)]">{current?.label} Protocol</h3>
+              </div>
               <button
                 onClick={() => {
                   setSelectedStruggle(null);
                   setAnalyzed(false);
                 }}
-                className="text-xs text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center gap-1"
+                className="text-xs text-[var(--muted-foreground)] hover:text-[var(--foreground)] flex items-center gap-1 font-semibold"
               >
-                <RotateCcw className="w-3 h-3" />
+                <RotateCcw className="w-3.5 h-3.5" />
                 <span>Reset</span>
               </button>
             </div>
@@ -153,20 +158,25 @@ export default function BehaviorDiagnostic({ onOpenArtifact }: BehaviorDiagnosti
 
             <div className="space-y-2">
               {current?.steps.map((step, idx) => (
-                <div key={idx} className="p-3 rounded-lg bg-[var(--muted)] border border-[var(--border)] text-xs text-[var(--foreground)]">
-                  <span className="font-bold text-[var(--primary)] mr-2">{idx + 1}.</span> {step}
+                <div key={idx} className="p-3.5 rounded-xl bg-[var(--muted)] border border-[var(--border)] text-xs text-[var(--foreground)] flex items-start gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-[var(--primary)] shrink-0 mt-0.5" />
+                  <span>{step}</span>
                 </div>
               ))}
             </div>
 
             {current?.artifact && (
-              <button
-                onClick={() => onOpenArtifact(current.artifact)}
-                className="px-4 py-2 rounded-lg bg-[var(--muted)] border border-[var(--border)] text-xs font-medium text-[var(--foreground)] hover:bg-[var(--accent)] transition-colors inline-flex items-center gap-1.5"
-              >
-                <FileCode className="w-3.5 h-3.5 text-[var(--primary)]" />
-                <span>Open Claude Artifact</span>
-              </button>
+              <div className="pt-2 flex items-center justify-between">
+                {/* Clickable Artifact Code Chip (No ugly button text) */}
+                <button
+                  onClick={() => onOpenArtifact(current.artifact)}
+                  className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[var(--muted)] border border-[var(--border)] text-xs font-mono text-[var(--foreground)] hover:border-[var(--primary)] hover:text-[var(--primary)] transition-all cursor-pointer"
+                >
+                  <FileCode className="w-4 h-4 text-[var(--primary)]" />
+                  <span>{current.artifact.filename}</span>
+                  <Sparkles className="w-3.5 h-3.5 text-[var(--primary)]" />
+                </button>
+              </div>
             )}
           </div>
         )}

@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Hero from "./Hero";
 import CategoriesSection from "./CategoriesSection";
+import VisualGraphs from "./VisualGraphs";
 import QuestionsExplorer from "./QuestionsExplorer";
 import BehaviorDiagnostic from "./BehaviorDiagnostic";
 import ArtifactViewer, { ArtifactData } from "./ArtifactViewer";
@@ -15,13 +16,16 @@ export default function HomeClient() {
       {/* Section 1: Hero */}
       <Hero />
 
-      {/* Section 2: Knowledge Pillars */}
-      <CategoriesSection />
+      {/* Section 2: Knowledge Pillars with Category Tabs */}
+      <CategoriesSection onOpenArtifact={(art) => setActiveArtifact(art)} />
 
-      {/* Section 3: Questions & Insights */}
+      {/* Section 3: Interactive Visual Neuroscience Graphs */}
+      <VisualGraphs />
+
+      {/* Section 4: Questions & Insights Accordion */}
       <QuestionsExplorer onOpenArtifact={(art) => setActiveArtifact(art)} />
 
-      {/* Section 4: Mind Diagnostic */}
+      {/* Section 5: Mind Diagnostic Interactive Widget */}
       <BehaviorDiagnostic onOpenArtifact={(art) => setActiveArtifact(art)} />
 
       {/* Claude-style Artifact Drawer */}
