@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Hero from "./Hero";
 import CategoriesSection from "./CategoriesSection";
 import VisualGraphs from "./VisualGraphs";
+import BookSummaries from "./BookSummaries";
 import QuestionsExplorer from "./QuestionsExplorer";
 import BehaviorDiagnostic from "./BehaviorDiagnostic";
 import ArtifactViewer, { ArtifactData } from "./ArtifactViewer";
@@ -22,10 +23,13 @@ export default function HomeClient() {
       {/* Section 3: Interactive Visual Neuroscience Graphs */}
       <VisualGraphs />
 
-      {/* Section 4: Questions & Insights Accordion */}
+      {/* Section 4: Book Summaries & Frameworks */}
+      <BookSummaries onOpenArtifact={(art) => setActiveArtifact(art)} />
+
+      {/* Section 5: Questions & Insights Accordion */}
       <QuestionsExplorer onOpenArtifact={(art) => setActiveArtifact(art)} />
 
-      {/* Section 5: Mind Diagnostic Interactive Widget */}
+      {/* Section 6: Mind Diagnostic Interactive Widget */}
       <BehaviorDiagnostic onOpenArtifact={(art) => setActiveArtifact(art)} />
 
       {/* Claude-style Artifact Drawer */}
