@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { ExternalLink, ArrowUp } from "lucide-react";
+import { ExternalLink, ArrowUp, ShieldCheck } from "lucide-react";
 import { YoutubeIcon, GithubIcon } from "./Icons";
 
 export default function Footer() {
@@ -26,6 +26,24 @@ export default function Footer() {
             <p className="text-xs sm:text-sm text-slate-400 max-w-md leading-relaxed">
               An educational media brand dedicated to helping people understand how their minds work so they can make better decisions, build better habits, and live more intentionally.
             </p>
+
+            {/* Backlink & Partner Project */}
+            <div className="pt-2">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block mb-1">
+                Recommended Resources & Tools:
+              </span>
+              <a
+                href="https://sopkit.github.io/"
+                target="_blank"
+                rel="noopener follow"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-400 hover:text-indigo-300 transition-colors bg-indigo-950/40 border border-indigo-800/40 px-3 py-1.5 rounded-lg"
+              >
+                <ShieldCheck className="w-3.5 h-3.5 text-indigo-400" />
+                <span>SOPKit — Free Standard Operating Procedure Templates</span>
+                <ExternalLink className="w-3 h-3" />
+              </a>
+            </div>
+
             <div className="flex items-center gap-3 pt-2">
               <a
                 href="https://www.youtube.com/@behavior-school"
@@ -64,70 +82,68 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2.5 text-xs">
               <li>
-                <a href="#categories" className="hover:text-indigo-400 transition-colors">
+                <a href="/#categories" className="hover:text-indigo-400 transition-colors">
                   Psychology & Neuroscience
                 </a>
               </li>
               <li>
-                <a href="#questions" className="hover:text-indigo-400 transition-colors">
+                <a href="/#questions" className="hover:text-indigo-400 transition-colors">
                   Questions We Answer
                 </a>
               </li>
               <li>
-                <a href="#diagnostic" className="hover:text-indigo-400 transition-colors">
+                <a href="/#diagnostic" className="hover:text-indigo-400 transition-colors">
                   Mind Diagnostic Tool
                 </a>
               </li>
               <li>
-                <a href="#mental-models" className="hover:text-indigo-400 transition-colors">
+                <a href="/#mental-models" className="hover:text-indigo-400 transition-colors">
                   Mental Models & Biases
                 </a>
               </li>
               <li>
-                <a href="#series" className="hover:text-indigo-400 transition-colors">
+                <a href="/#series" className="hover:text-indigo-400 transition-colors">
                   Real Self Series
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Official Resources */}
+          {/* Legal & Compliance Links */}
           <div>
             <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-4">
-              Official Hubs
+              Legal & Compliance
             </h4>
             <ul className="space-y-2.5 text-xs">
               <li>
-                <a
-                  href="https://www.youtube.com/@behavior-school"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 hover:text-red-400 transition-colors"
-                >
-                  <YoutubeIcon className="w-3.5 h-3.5 fill-current" />
-                  <span>YouTube Channel</span>
+                <a href="/about" className="hover:text-indigo-400 transition-colors">
+                  About Us
+                </a>
+              </li>
+              <li>
+                <a href="/contact" className="hover:text-indigo-400 transition-colors">
+                  Contact Us
+                </a>
+              </li>
+              <li>
+                <a href="/privacy" className="hover:text-indigo-400 transition-colors">
+                  Privacy Policy
+                </a>
+              </li>
+              <li>
+                <a href="/terms" className="hover:text-indigo-400 transition-colors">
+                  Terms of Service
                 </a>
               </li>
               <li>
                 <a
-                  href="https://app.notion.com/p/Behavior-School-373cd0ed0c25801e9a23c4ba60f032fb"
+                  href="https://sopkit.github.io/"
                   target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 hover:text-indigo-400 transition-colors"
+                  rel="noopener follow"
+                  className="flex items-center gap-1 hover:text-indigo-400 transition-colors text-slate-300 font-medium"
                 >
-                  <ExternalLink className="w-3.5 h-3.5" />
-                  <span>Notion Content Hub</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://behavior-school.github.io/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 hover:text-emerald-400 transition-colors"
-                >
-                  <GithubIcon className="w-3.5 h-3.5 fill-current" />
-                  <span>GitHub Pages Site</span>
+                  <span>SOPKit Templates</span>
+                  <ExternalLink className="w-3 h-3 text-slate-500" />
                 </a>
               </li>
             </ul>
@@ -135,7 +151,7 @@ export default function Footer() {
         </div>
 
         <div className="pt-8 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
-          <p>© {new Date().getFullYear()} Behavior School. All rights reserved. Practical Psychology for Real Life.</p>
+          <p>© {new Date().getFullYear()} Behavior School. All rights reserved. AdSense Publisher ca-pub-1828915420581549.</p>
 
           <button
             onClick={scrollToTop}

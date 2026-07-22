@@ -44,10 +44,8 @@ export const metadata: Metadata = {
   authors: [{ name: "Behavior School", url: "https://www.youtube.com/@behavior-school" }],
   creator: "Behavior School",
   publisher: "Behavior School",
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
+  other: {
+    "google-adsense-account": "ca-pub-1828915420581549",
   },
   alternates: {
     canonical: "https://behavior-school.github.io",
@@ -108,7 +106,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // JSON-LD Structured Data
   const jsonLdOrganization = {
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
@@ -146,7 +143,7 @@ export default function RootLayout({
       {
         "@type": "Question",
         "name": "Why do we lose focus so easily?",
-        "@acceptedAnswer": {
+        "acceptedAnswer": {
           "@type": "Answer",
           "text": "Modern digital environments flood the prefrontal cortex with rapid dopamine hits, creating artificial boredom during low-stimulus, high-effort work."
         }
@@ -154,7 +151,7 @@ export default function RootLayout({
       {
         "@type": "Question",
         "name": "Why are bad habits so difficult to break?",
-        "@acceptedAnswer": {
+        "acceptedAnswer": {
           "@type": "Answer",
           "text": "Habits are automated neural pathways carved into the basal ganglia. To change a habit, keep the Cue and Reward, but substitute the Response."
         }
@@ -162,7 +159,7 @@ export default function RootLayout({
       {
         "@type": "Question",
         "name": "How can anyone learn faster?",
-        "@acceptedAnswer": {
+        "acceptedAnswer": {
           "@type": "Answer",
           "text": "Active recall and spaced repetition trigger synaptic plasticity much more effectively than passive reading or highlighting."
         }
@@ -180,6 +177,14 @@ export default function RootLayout({
         <link rel="icon" href="/logo.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-icon.png" />
         <link rel="manifest" href="/manifest.json" />
+        <meta name="google-adsense-account" content="ca-pub-1828915420581549" />
+
+        {/* Google AdSense Script */}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1828915420581549"
+          crossOrigin="anonymous"
+        />
 
         {/* JSON-LD Rich Snippets */}
         <script
