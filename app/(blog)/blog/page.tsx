@@ -84,14 +84,14 @@ export default function BlogIndexPage() {
       <main className="pt-32 pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs font-semibold text-indigo-400 mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--muted)] border border-[var(--border)] text-xs font-semibold text-[var(--primary)] mb-4">
             <BookOpen className="w-3.5 h-3.5" />
             <span>Educational Blog & Articles</span>
           </div>
-          <h1 className="text-4xl sm:text-6xl font-extrabold text-white tracking-tight mb-4">
-            Practical Psychology <span className="gradient-text">Field Guides</span>
+          <h1 className="text-4xl sm:text-6xl font-extrabold text-[var(--foreground)] tracking-tight mb-4">
+            Practical Psychology <span className="text-[var(--primary)]">Field Guides</span>
           </h1>
-          <p className="text-base sm:text-lg text-slate-400">
+          <p className="text-base sm:text-lg text-[var(--muted-foreground)]">
             In-depth scientific breakdowns on habits, focus, neuroscience, and mental models.
           </p>
         </div>
@@ -99,38 +99,37 @@ export default function BlogIndexPage() {
         {/* Blog Posts Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {blogPosts.map((post) => {
-            const Icon = post.icon;
             return (
               <article
                 key={post.slug}
-                className="bg-slate-900/60 p-8 rounded-3xl border border-slate-800 flex flex-col justify-between hover:border-indigo-500/40 transition-all group"
+                className="bg-[var(--card)] p-8 rounded-3xl border border-[var(--border)] flex flex-col justify-between hover:border-[var(--primary)]/40 transition-all group"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-950/60 text-indigo-400 border border-indigo-800/40">
+                    <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-[var(--muted)] text-[var(--primary)] border border-[var(--border)]">
                       {post.category}
                     </span>
-                    <span className="text-xs text-slate-500 flex items-center gap-1">
+                    <span className="text-xs text-[var(--muted-foreground)] flex items-center gap-1">
                       <Clock className="w-3.5 h-3.5" />
                       {post.readTime}
                     </span>
                   </div>
 
-                  <h2 className="text-xl font-bold text-white mb-3 group-hover:text-indigo-300 transition-colors leading-snug">
+                  <h2 className="text-xl font-bold text-[var(--foreground)] mb-3 group-hover:text-[var(--primary)] transition-colors leading-snug">
                     <Link href={`/blog/${post.slug}`}>
                       {post.title}
                     </Link>
                   </h2>
-                  <p className="text-sm text-slate-300 mb-6 leading-relaxed">
+                  <p className="text-sm text-[var(--muted-foreground)] mb-6 leading-relaxed">
                     {post.excerpt}
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs">
-                  <span className="text-slate-500 font-medium">{post.date}</span>
+                <div className="pt-4 border-t border-[var(--border)] flex items-center justify-between text-xs">
+                  <span className="text-[var(--muted-foreground)] font-medium">{post.date}</span>
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="inline-flex items-center gap-1.5 font-bold text-indigo-400 hover:text-indigo-300 transition-colors"
+                    className="inline-flex items-center gap-1.5 font-bold text-[var(--primary)] hover:opacity-80 transition-opacity"
                   >
                     <span>Read Article</span>
                     <ArrowRight className="w-4 h-4" />

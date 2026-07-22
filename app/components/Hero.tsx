@@ -27,7 +27,7 @@ export default function Hero() {
           Understand your mind. Overcome procrastination. Build lasting habits.
         </p>
 
-        {/* Primary Action Button using tweakcn Claude theme */}
+        {/* Action Button */}
         <div className="flex items-center justify-center gap-4">
           <a
             href="https://www.youtube.com/@behavior-school"

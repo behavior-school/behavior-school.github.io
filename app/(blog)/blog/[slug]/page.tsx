@@ -203,42 +203,42 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
       <main className="pt-32 pb-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <Link
           href="/blog"
-          className="inline-flex items-center gap-2 text-xs font-semibold text-slate-400 hover:text-white transition-colors mb-8"
+          className="inline-flex items-center gap-2 text-xs font-semibold text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors mb-8"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Back to All Field Guides</span>
         </Link>
 
-        <article className="bg-slate-900/60 p-8 sm:p-12 rounded-3xl border border-slate-800 shadow-2xl space-y-8">
+        <article className="bg-[var(--card)] p-8 sm:p-12 rounded-3xl border border-[var(--border)] shadow-2xl space-y-8">
           <div>
             <div className="flex items-center gap-3 mb-4 text-xs">
-              <span className="font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-950 text-indigo-400 border border-indigo-800/40">
+              <span className="font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-[var(--muted)] text-[var(--primary)] border border-[var(--border)]">
                 {article.category}
               </span>
-              <span className="text-slate-500">•</span>
-              <span className="text-slate-400">{article.date}</span>
-              <span className="text-slate-500">•</span>
-              <span className="text-slate-400 flex items-center gap-1">
+              <span className="text-[var(--muted-foreground)]">•</span>
+              <span className="text-[var(--muted-foreground)]">{article.date}</span>
+              <span className="text-[var(--muted-foreground)]">•</span>
+              <span className="text-[var(--muted-foreground)] flex items-center gap-1">
                 <Clock className="w-3.5 h-3.5" />
                 {article.readTime}
               </span>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+            <h1 className="text-3xl sm:text-5xl font-extrabold text-[var(--foreground)] tracking-tight leading-tight">
               {article.title}
             </h1>
           </div>
 
           {/* Key Takeaways Box */}
-          <div className="p-6 rounded-2xl bg-indigo-950/40 border border-indigo-500/30">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-indigo-300 mb-3 flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-indigo-400" />
+          <div className="p-6 rounded-2xl bg-[var(--muted)] border border-[var(--border)]">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-[var(--primary)] mb-3 flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-[var(--primary)]" />
               <span>Key Article Takeaways</span>
             </h3>
-            <ul className="space-y-2 text-xs sm:text-sm text-slate-200">
+            <ul className="space-y-2 text-xs sm:text-sm text-[var(--foreground)]">
               {article.keyTakeaways.map((takeaway, i) => (
                 <li key={i} className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-4 h-4 text-[var(--primary)] shrink-0 mt-0.5" />
                   <span>{takeaway}</span>
                 </li>
               ))}
@@ -246,19 +246,19 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
           </div>
 
           {/* Article Body */}
-          <div className="prose prose-invert max-w-none text-slate-300 text-sm sm:text-base leading-relaxed space-y-4 font-normal">
+          <div className="prose prose-invert max-w-none text-[var(--muted-foreground)] text-sm sm:text-base leading-relaxed space-y-4 font-normal">
             {article.content.split('\n\n').map((paragraph, idx) => (
               <p key={idx}>{paragraph}</p>
             ))}
           </div>
 
           {/* Recommended Video Box */}
-          <div className="p-6 rounded-2xl bg-slate-900 border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 pt-6">
+          <div className="p-6 rounded-2xl bg-[var(--muted)] border border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4 pt-6">
             <div>
-              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-[var(--muted-foreground)]">
                 Recommended Video Lesson
               </span>
-              <h4 className="text-base font-bold text-white mt-0.5">
+              <h4 className="text-base font-bold text-[var(--foreground)] mt-0.5">
                 "{article.recommendedVideo}"
               </h4>
             </div>
@@ -266,9 +266,9 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
               href="https://www.youtube.com/@behavior-school"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto px-5 py-2.5 rounded-xl font-bold text-xs text-white bg-red-600 hover:bg-red-500 transition-colors flex items-center justify-center gap-2 shrink-0"
+              className="w-full sm:w-auto px-5 py-2.5 rounded-xl font-bold text-xs bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-90 transition-opacity flex items-center justify-center gap-2 shrink-0"
             >
-              <YoutubeIcon className="w-4 h-4 fill-white" />
+              <YoutubeIcon className="w-4 h-4 fill-current" />
               <span>Watch on YouTube</span>
             </a>
           </div>

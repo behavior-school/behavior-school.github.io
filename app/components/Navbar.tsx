@@ -38,7 +38,7 @@ export default function Navbar() {
           </span>
         </Link>
 
-        {/* Minimal Right Actions with tweakcn Claude Primary Button */}
+        {/* Minimal Right Actions */}
         <div className="flex items-center gap-4 text-xs font-medium">
           <Link
             href="/blog"
