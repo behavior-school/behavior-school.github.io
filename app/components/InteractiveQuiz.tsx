@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { HelpCircle, CheckCircle2, XCircle, RotateCcw, Award } from "lucide-react";
+import { saveResult } from "../lib/storage";
 
 export interface Question {
   id: number;
@@ -12,11 +13,12 @@ export interface Question {
 }
 
 interface InteractiveQuizProps {
+  quizId?: string;
   title: string;
   questions: Question[];
 }
 
-export default function InteractiveQuiz({ title, questions }: InteractiveQuizProps) {
+export default function InteractiveQuiz({ quizId = "quiz-default", title, questions }: InteractiveQuizProps) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [score, setScore] = useState(0);
@@ -32,7 +34,29 @@ export default function InteractiveQuiz({ title, questions }: InteractiveQuizPro
     setAnswered(newAnswered);
 
     if (index === questions[currentQuestion].correctAnswer) {
-      setScore((prev) => prev + 1);
+      setScore((prev) => {
+        const newScore = prev + 1;
+        if (currentQuestion === questions.length - 1) {
+          saveResult({
+            type: "quiz",
+            id: quizId,
+            title,
+            score: newScore,
+            maxScore: questions.length,
+            timestamp: new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })
+          });
+        }
+        return newScore;
+      });
+    } else if (currentQuestion === questions.length - 1) {
+      saveResult({
+        type: "quiz",
+        id: quizId,
+        title,
+        score,
+        maxScore: questions.length,
+        timestamp: new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })
+      });
     }
   };
 
@@ -64,7 +88,7 @@ export default function InteractiveQuiz({ title, questions }: InteractiveQuizPro
           <h3 className="text-base font-bold text-[var(--foreground)]">{title}</h3>
         </div>
         <span className="text-[10px] font-mono uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-[var(--muted)] text-[var(--primary)] border border-[var(--border)]">
-          Knowledge Check ({currentQuestion + 1}/{questions.length})
+          Question ({currentQuestion + 1}/{questions.length})
         </span>
       </div>
 
@@ -124,7 +148,10 @@ export default function InteractiveQuiz({ title, questions }: InteractiveQuizPro
           <Award className="w-12 h-12 text-[var(--primary)] mx-auto" />
           <h4 className="text-xl font-extrabold text-[var(--foreground)]">Quiz Completed!</h4>
           <p className="text-xs text-[var(--muted-foreground)]">
-            You scored <strong className="text-[var(--primary)] font-mono text-base">{score} / {questions.length}</strong> on this behavioral science check.
+            You scored <strong className="text-[var(--primary)] font-mono text-base">{score} / {questions.length}</strong> on this behavioral check.
+          </p>
+          <p className="text-[11px] text-[var(--primary)] font-mono">
+            ✓ Result saved to LocalStorage
           </p>
           <button
             onClick={handleReset}

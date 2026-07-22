@@ -5,6 +5,7 @@ import Hero from "./Hero";
 import CategoriesSection from "./CategoriesSection";
 import VisualGraphs from "./VisualGraphs";
 import ToolsSection from "./ToolsSection";
+import QuizSection from "./QuizSection";
 import BookSummaries from "./BookSummaries";
 import QuestionsExplorer from "./QuestionsExplorer";
 import BehaviorDiagnostic from "./BehaviorDiagnostic";
@@ -21,16 +22,19 @@ export default function HomeClient() {
       {/* Section 3: Interactive Visual Neuroscience Graphs */}
       <VisualGraphs />
 
-      {/* Section 4: Interactive Web Tools & Audits */}
+      {/* Section 4: Interactive Quizzes & Packages */}
+      <QuizSection />
+
+      {/* Section 5: Interactive Web Tools & Audits */}
       <ToolsSection />
 
-      {/* Section 5: Book Summaries & Frameworks */}
+      {/* Section 6: Book Summaries & Frameworks */}
       <BookSummaries />
 
-      {/* Section 6: Questions & Insights Accordion */}
+      {/* Section 7: Questions & Insights Accordion */}
       <QuestionsExplorer />
 
-      {/* Section 7: Mind Diagnostic Interactive Widget */}
+      {/* Section 8: Mind Diagnostic Interactive Widget */}
       <BehaviorDiagnostic />
     </>
   );
