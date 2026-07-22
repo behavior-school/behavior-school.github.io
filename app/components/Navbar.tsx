@@ -41,6 +41,12 @@ export default function Navbar() {
         {/* Minimal Right Actions */}
         <div className="flex items-center gap-4 text-xs font-medium">
           <Link
+            href="/videos"
+            className="text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors"
+          >
+            Videos
+          </Link>
+          <Link
             href="/quiz"
             className="text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors"
           >

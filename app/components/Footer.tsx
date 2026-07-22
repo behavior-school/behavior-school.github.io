@@ -47,18 +47,33 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
+                <Link href="/videos" className="hover:text-[var(--primary)] transition-colors">
+                  YouTube Videos
+                </Link>
+              </li>
+              <li>
+                <Link href="/quiz" className="hover:text-[var(--primary)] transition-colors">
+                  Quiz Assessments
+                </Link>
+              </li>
+              <li>
+                <Link href="/tools" className="hover:text-[var(--primary)] transition-colors">
+                  Behavioral Tools
+                </Link>
+              </li>
+              <li>
+                <Link href="/books" className="hover:text-[var(--primary)] transition-colors">
+                  Book Summaries
+                </Link>
+              </li>
+              <li>
                 <Link href="/blog" className="hover:text-[var(--primary)] transition-colors">
-                  Blog
+                  Blog Field Guides
                 </Link>
               </li>
               <li>
                 <a href="https://www.youtube.com/@behavior-school" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--primary)] transition-colors">
                   YouTube Channel
-                </a>
-              </li>
-              <li>
-                <a href="https://app.notion.com/p/Behavior-School-373cd0ed0c25801e9a23c4ba60f032fb" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--primary)] transition-colors">
-                  Notion Hub
                 </a>
               </li>
             </ul>
