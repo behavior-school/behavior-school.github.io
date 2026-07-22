@@ -5,6 +5,8 @@ import { ArrowLeft, Clock, Sparkles, CheckCircle2 } from "lucide-react";
 import { YoutubeIcon } from "../../../components/Icons";
 import MarkdownRenderer from "../../../components/MarkdownRenderer";
 import ProcrastinationSimulator from "../../../components/ProcrastinationSimulator";
+import InteractiveQuiz, { Question } from "../../../components/InteractiveQuiz";
+import InteractivePoll, { PollOption } from "../../../components/InteractivePoll";
 
 interface Article {
   slug: string;
@@ -17,6 +19,8 @@ interface Article {
   keyTakeaways: string[];
   recommendedVideo: string;
   hasProcrastinationSimulator?: boolean;
+  quiz?: { title: string; questions: Question[] };
+  poll?: { question: string; options: PollOption[] };
 }
 
 const articlesData: Record<string, Article> = {
@@ -25,15 +29,49 @@ const articlesData: Record<string, Article> = {
     title: "The Neuroscience of Procrastination: Why Willpower Fails",
     excerpt: "Discover why procrastination is an emotional regulation problem caused by amygdala threat perception rather than a time management flaw.",
     category: "Neuroscience",
-    readTime: "6 min read",
+    readTime: "12 min read",
     date: "July 20, 2026",
     hasProcrastinationSimulator: true,
     recommendedVideo: "Why Smart People Still Procrastinate",
     keyTakeaways: [
       "Procrastination is an emotional regulation failure, not a time-management issue.",
       "The amygdala perceives difficult or ambiguous tasks as physical threats.",
-      "Lowering task activation energy to 120 seconds bypasses limbic avoidance."
+      "Lowering task activation energy to 120 seconds bypasses limbic avoidance.",
+      "Negative reinforcement loops reward avoidance with short-term dopamine spikes."
     ],
+    poll: {
+      question: "What is your primary trigger for procrastinating on major projects?",
+      options: [
+        { id: 1, text: "Fear of imperfect output (Perfectionism)", votes: 42 },
+        { id: 2, text: "Task ambiguity / Not knowing step 1", votes: 35 },
+        { id: 3, text: "Sheer boredom & low stimulation", votes: 18 },
+        { id: 4, text: "Physical mental exhaustion", votes: 12 }
+      ]
+    },
+    quiz: {
+      title: "Procrastination Neurobiology Quiz",
+      questions: [
+        {
+          id: 1,
+          question: "Which brain region is primarily responsible for triggering task avoidance when faced with ambiguity?",
+          options: ["Prefrontal Cortex", "Amygdala (Limbic System)", "Hippocampus", "Cerebellum"],
+          correctAnswer: 1,
+          explanation: "The Amygdala evaluates emotional threat. When a task triggers anxiety or self-doubt, it initiates an immediate avoidance response to protect short-term emotional state."
+        },
+        {
+          id: 2,
+          question: "Why does lowering task commitment to 120 seconds work biologically?",
+          options: [
+            "It increases adrenaline production.",
+            "It is so small that the Amygdala threat alarm is not triggered.",
+            "It forces System 2 to shut down.",
+            "It permanently eliminates all fatigue."
+          ],
+          correctAnswer: 1,
+          explanation: "The Amygdala evaluates short-term threat. A 120-second commitment feels so harmless that threat alarms remain un-triggered, allowing executive initiation."
+        }
+      ]
+    },
     content: `Procrastination is one of the most widespread challenges in modern human behavior. Most productivity advice frames procrastination as a flaw in time management or self-discipline.
 
 However, modern neuroimaging studies reveal a fundamentally different truth: **procrastination is an emotional regulation failure.**
@@ -42,37 +80,58 @@ However, modern neuroimaging studies reveal a fundamentally different truth: **p
 
 When you sit down to tackle a complex project, your brain initiates a struggle between two key regions:
 
-- **The Prefrontal Cortex (PFC)**: Responsible for long-term planning, decision-making, and executive control.
-- **The Limbic System (Amygdala)**: The fast, automatic, emotional brain that seeks immediate pleasure and avoids present pain.
+- **The Prefrontal Cortex (PFC)**: Responsible for long-term planning, decision-making, abstract reasoning, and executive control. It understands that finishing your report will lead to career advancement.
+- **The Limbic System (Amygdala)**: The fast, automatic, emotional brain that seeks immediate pleasure and avoids present pain. It evaluates present emotional threat.
 
 When a task triggers feelings of self-doubt, anxiety, boredom, or perfectionism, the amygdala perceives the task as an emotional threat. To protect you from negative emotion, it triggers an immediate avoidance response.
 
-## The Dopamine Relief Trap
+## The Dopamine Relief Trap & Negative Reinforcement
 
 When you switch away from the difficult task to check your phone or clean your desk, your brain experiences an immediate drop in anxiety paired with a small dopamine spike.
 
-This creates a powerful **negative reinforcement loop**: your brain learns that avoiding the task produces short-term emotional relief.
+This creates a powerful **negative reinforcement loop**: your brain learns that avoiding the task produces short-term emotional relief. Over time, this loop becomes automated into the basal ganglia.
 
 ## The 2-Minute Activation Protocol
 
 To bypass limbic system hijacking, shrink the activation energy required to initiate action:
 
 - **Rule**: Commit to working on the task for exactly 120 seconds.
-- **Why it works**: The limbic system evaluates short-term threat. A 2-minute commitment feels so small that the amygdala does not trigger threat alarms. Once engaged, the Zeigarnik Effect creates cognitive momentum to keep going.`
+- **Why it works**: The limbic system evaluates short-term threat. A 2-minute commitment feels so small that the amygdala does not trigger threat alarms.
+- **Zeigarnik Effect**: Once engaged for 120 seconds, the brain naturally seeks closure, creating momentum to continue.`
   },
   "dopamine-fasting-myth-vs-science": {
     slug: "dopamine-fasting-myth-vs-science",
     title: "Dopamine Recalibration: Myth vs Biological Science",
     excerpt: "How baseline dopamine vs peak spikes govern daily drive, and how to structure notification friction to prevent chronic distraction.",
     category: "Brain Science",
-    readTime: "8 min read",
+    readTime: "14 min read",
     date: "July 18, 2026",
     recommendedVideo: "Dopamine Explained",
     keyTakeaways: [
       "Dopamine is the neurotransmitter of desire and anticipation, not pleasure.",
       "Frequent high spikes cause baseline dopamine levels to drop, lowering baseline drive.",
-      "Friction design restores tonic dopamine sensitivity."
+      "Friction design restores tonic dopamine sensitivity within 48-72 hours."
     ],
+    poll: {
+      question: "How many hours after waking do you usually check your phone?",
+      options: [
+        { id: 1, text: "Within 5 minutes of waking", votes: 54 },
+        { id: 2, text: "After morning routine (30-60 mins)", votes: 28 },
+        { id: 3, text: "Only after starting deep work", votes: 14 }
+      ]
+    },
+    quiz: {
+      title: "Dopamine Neurochemistry Quiz",
+      questions: [
+        {
+          id: 1,
+          question: "What type of dopamine activity governs your ongoing baseline motivation and energy?",
+          options: ["Phasic Spikes", "Tonic Dopamine", "Serotonin Transporters", "Cortisol Glucocorticoids"],
+          correctAnswer: 1,
+          explanation: "Tonic dopamine represents the circulating baseline level of dopamine that dictates ongoing drive and effort willingness."
+        }
+      ]
+    },
     content: `Dopamine is frequently misunderstood in popular culture as the "pleasure chemical". In reality, neuroscience demonstrates that dopamine is the **molecule of anticipation and desire.**
 
 ## Baseline vs Peak Dopamine Mechanics
@@ -90,15 +149,15 @@ As receptor sensitivity drops, your baseline dopamine plummets. Standard low-sti
 
 ## Rebuilding Baseline Motivation
 
-1. **Environment Friction**: Place phones in another room during working hours.
-2. **Deliberate Low-Stimulus Buffer**: Spend 5 minutes staring at a wall before starting deep work to allow baseline dopamine to normalize.`
+- **Environment Friction**: Place phones in another room during working hours.
+- **Deliberate Low-Stimulus Buffer**: Spend 5 minutes staring at a wall before starting deep work to allow baseline dopamine to normalize.`
   },
   "active-recall-spaced-repetition-guide": {
     slug: "active-recall-spaced-repetition-guide",
     title: "Mastering Active Recall & Spaced Repetition for Rapid Skill Acquisition",
     excerpt: "Why passive reading creates an illusion of competence and how hippocampal retrieval forces synaptic plasticity.",
     category: "Learning & Productivity",
-    readTime: "7 min read",
+    readTime: "11 min read",
     date: "July 15, 2026",
     recommendedVideo: "How to Learn Faster",
     keyTakeaways: [
@@ -106,6 +165,14 @@ As receptor sensitivity drops, your baseline dopamine plummets. Standard low-sti
       "Active retrieval forces the hippocampus to strengthen synaptic connections.",
       "Spacing review sessions across 1-3-7-14 day intervals maximizes long-term memory."
     ],
+    poll: {
+      question: "What is your current main study/learning method?",
+      options: [
+        { id: 1, text: "Re-reading notes & highlighting text", votes: 48 },
+        { id: 2, text: "Active Recall / Self-Testing / Flashcards", votes: 38 },
+        { id: 3, text: "Re-watching video lectures", votes: 14 }
+      ]
+    },
     content: `Most students and professionals learn inefficiently by relying on passive methods: re-reading notes, highlighting text, or watching lectures repeatedly.
 
 Neuroscience research shows that passive reading creates a psychological illusion called **Fluency Bias**—confusing the ease of reading with actual mastery.
@@ -130,7 +197,7 @@ To prevent forgotten memory decay (Ebbinghaus Forgetting Curve), review informat
     title: "First Principles Thinking: Deconstructing Bad Habit Loops",
     excerpt: "How to strip behavior change down to foundational physical truths and design friction-free daily routines.",
     category: "Mental Models",
-    readTime: "5 min read",
+    readTime: "10 min read",
     date: "July 10, 2026",
     recommendedVideo: "How Your Brain Creates Habits",
     keyTakeaways: [
@@ -256,11 +323,21 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             </ul>
           </div>
 
-          {/* Embedded Interactive Procrastination Limbic Simulator */}
+          {/* Embedded Procrastination Limbic Simulator */}
           {article.hasProcrastinationSimulator && <ProcrastinationSimulator />}
+
+          {/* Embedded Community Poll */}
+          {article.poll && (
+            <InteractivePoll question={article.poll.question} options={article.poll.options} />
+          )}
 
           {/* Markdown Rendered Body */}
           <MarkdownRenderer content={article.content} />
+
+          {/* Embedded Knowledge Quiz */}
+          {article.quiz && (
+            <InteractiveQuiz title={article.quiz.title} questions={article.quiz.questions} />
+          )}
 
           {/* Recommended Video Box */}
           <div className="p-6 rounded-2xl bg-[var(--muted)] border border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4 pt-6">

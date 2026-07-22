@@ -5,6 +5,8 @@ import { ArrowLeft, BookOpen, Sparkles, CheckCircle2, FileCode } from "lucide-re
 import MarkdownRenderer from "../../../components/MarkdownRenderer";
 import HabitSimulator from "../../../components/HabitSimulator";
 import CognitiveTester from "../../../components/CognitiveTester";
+import InteractiveQuiz, { Question } from "../../../components/InteractiveQuiz";
+import InteractivePoll, { PollOption } from "../../../components/InteractivePoll";
 
 interface BookDetail {
   slug: string;
@@ -18,6 +20,8 @@ interface BookDetail {
   markdownContent: string;
   hasHabitSimulator?: boolean;
   hasCognitiveTester?: boolean;
+  quiz?: { title: string; questions: Question[] };
+  poll?: { question: string; options: PollOption[] };
 }
 
 const detailedBooksData: Record<string, BookDetail> = {
@@ -28,7 +32,7 @@ const detailedBooksData: Record<string, BookDetail> = {
     year: "2018",
     tagline: "An Easy & Proven Way to Build Good Habits & Break Bad Ones",
     hasHabitSimulator: true,
-    summary: "Atomic Habits presents a practical framework for improving every day by 1%. James Clear demonstrates that long-term outcome success is not created by high willpower or ambitious goals, but by designing friction-free environmental systems.",
+    summary: "Atomic Habits presents a comprehensive practical framework for improving every day by 1%. James Clear demonstrates that long-term outcome success is not created by high willpower or ambitious goals, but by designing friction-free environmental systems.",
     keyTakeaways: [
       "Habits do not change your life overnight; small 1% improvements compound over time.",
       "Focus on identity-based habits ('I am a runner') rather than outcome-based habits ('I want to run a marathon').",
@@ -40,6 +44,27 @@ const detailedBooksData: Record<string, BookDetail> = {
       "Apply the 2-Minute Rule: Shrink the initial habit action until it takes under 120 seconds.",
       "Temptation Bundling: Pair an action you need to do with an action you want to do."
     ],
+    poll: {
+      question: "Which of the 4 Laws of Behavior Change do you find hardest to maintain?",
+      options: [
+        { id: 1, text: "Make it Obvious (Cue)", votes: 24 },
+        { id: 2, text: "Make it Attractive (Craving)", votes: 31 },
+        { id: 3, text: "Make it Easy (Response - 2 Min Rule)", votes: 52 },
+        { id: 4, text: "Make it Satisfying (Reward)", votes: 19 }
+      ]
+    },
+    quiz: {
+      title: "Atomic Habits Framework Quiz",
+      questions: [
+        {
+          id: 1,
+          question: "What type of habits produce the most lasting permanent behavioral change according to James Clear?",
+          options: ["Outcome-based habits", "Identity-based habits", "Reward-based habits", "Goal-based habits"],
+          correctAnswer: 1,
+          explanation: "Identity-based habits focus on who you wish to become. Every action you take is a vote for your desired identity."
+        }
+      ]
+    },
     markdownContent: `## The Four Laws of Behavior Change
 
 Every habit loop consists of four distinct cognitive stages: **Cue, Craving, Response, and Reward.**
@@ -86,7 +111,7 @@ What is immediately rewarded is repeated. What is immediately punished is avoide
     ],
     protocolSteps: [
       "Conduct a Premortem before finalizing major decisions.",
-      "Pause for 5 minutes before making high-stakes financial or career choices to activate System 2.",
+      "Pause for 5 minutes before making high-stakes financial choices to activate System 2.",
       "Beware of Anchoring Bias in negotiations."
     ],
     markdownContent: `## Dual-Process Theory: System 1 vs System 2
@@ -336,9 +361,14 @@ export default async function IndividualBookPage({ params }: { params: Promise<{
             </p>
           </div>
 
-          {/* Embedded Interactive Components */}
+          {/* Embedded Interactive Simulators */}
           {book.hasHabitSimulator && <HabitSimulator />}
           {book.hasCognitiveTester && <CognitiveTester />}
+
+          {/* Embedded Community Poll */}
+          {book.poll && (
+            <InteractivePoll question={book.poll.question} options={book.poll.options} />
+          )}
 
           {/* Key Takeaways */}
           <div className="space-y-4">
@@ -376,6 +406,11 @@ export default async function IndividualBookPage({ params }: { params: Promise<{
           <div className="pt-6 border-t border-[var(--border)]">
             <MarkdownRenderer content={book.markdownContent} />
           </div>
+
+          {/* Embedded Interactive Quiz */}
+          {book.quiz && (
+            <InteractiveQuiz title={book.quiz.title} questions={book.quiz.questions} />
+          )}
         </article>
       </main>
     </>
