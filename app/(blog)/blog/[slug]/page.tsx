@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, Clock, Sparkles, CheckCircle2 } from "lucide-react";
 import { YoutubeIcon } from "../../../components/Icons";
 import MarkdownRenderer from "../../../components/MarkdownRenderer";
+import ProcrastinationSimulator from "../../../components/ProcrastinationSimulator";
 
 interface Article {
   slug: string;
@@ -15,6 +16,7 @@ interface Article {
   content: string;
   keyTakeaways: string[];
   recommendedVideo: string;
+  hasProcrastinationSimulator?: boolean;
 }
 
 const articlesData: Record<string, Article> = {
@@ -25,6 +27,7 @@ const articlesData: Record<string, Article> = {
     category: "Neuroscience",
     readTime: "6 min read",
     date: "July 20, 2026",
+    hasProcrastinationSimulator: true,
     recommendedVideo: "Why Smart People Still Procrastinate",
     keyTakeaways: [
       "Procrastination is an emotional regulation failure, not a time-management issue.",
@@ -39,8 +42,8 @@ However, modern neuroimaging studies reveal a fundamentally different truth: **p
 
 When you sit down to tackle a complex project, your brain initiates a struggle between two key regions:
 
-1. **The Prefrontal Cortex (PFC)**: Responsible for long-term planning, decision-making, and executive control.
-2. **The Limbic System (Amygdala)**: The fast, automatic, emotional brain that seeks immediate pleasure and avoids present pain.
+- **The Prefrontal Cortex (PFC)**: Responsible for long-term planning, decision-making, and executive control.
+- **The Limbic System (Amygdala)**: The fast, automatic, emotional brain that seeks immediate pleasure and avoids present pain.
 
 When a task triggers feelings of self-doubt, anxiety, boredom, or perfectionism, the amygdala perceives the task as an emotional threat. To protect you from negative emotion, it triggers an immediate avoidance response.
 
@@ -252,6 +255,9 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
               ))}
             </ul>
           </div>
+
+          {/* Embedded Interactive Procrastination Limbic Simulator */}
+          {article.hasProcrastinationSimulator && <ProcrastinationSimulator />}
 
           {/* Markdown Rendered Body */}
           <MarkdownRenderer content={article.content} />

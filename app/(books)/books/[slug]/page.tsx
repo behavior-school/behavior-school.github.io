@@ -3,6 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, BookOpen, Sparkles, CheckCircle2, FileCode } from "lucide-react";
 import MarkdownRenderer from "../../../components/MarkdownRenderer";
+import HabitSimulator from "../../../components/HabitSimulator";
+import CognitiveTester from "../../../components/CognitiveTester";
 
 interface BookDetail {
   slug: string;
@@ -14,6 +16,8 @@ interface BookDetail {
   keyTakeaways: string[];
   protocolSteps: string[];
   markdownContent: string;
+  hasHabitSimulator?: boolean;
+  hasCognitiveTester?: boolean;
 }
 
 const detailedBooksData: Record<string, BookDetail> = {
@@ -23,6 +27,7 @@ const detailedBooksData: Record<string, BookDetail> = {
     author: "James Clear",
     year: "2018",
     tagline: "An Easy & Proven Way to Build Good Habits & Break Bad Ones",
+    hasHabitSimulator: true,
     summary: "Atomic Habits presents a practical framework for improving every day by 1%. James Clear demonstrates that long-term outcome success is not created by high willpower or ambitious goals, but by designing friction-free environmental systems.",
     keyTakeaways: [
       "Habits do not change your life overnight; small 1% improvements compound over time.",
@@ -40,21 +45,29 @@ const detailedBooksData: Record<string, BookDetail> = {
 Every habit loop consists of four distinct cognitive stages: **Cue, Craving, Response, and Reward.**
 
 ### 1st Law: Make it Obvious (Cue)
+
 Your brain is a prediction machine. It continuously scans your physical environment for cues that signal rewards.
+
 - **Design your environment**: Place your guitar in the middle of the living room; place healthy food at eye level in the fridge.
 - **Habit Stacking**: Connect a new habit to an existing automated routine: *"After I [CURRENT HABIT], I will [NEW HABIT]."*
 
 ### 2nd Law: Make it Attractive (Craving)
+
 It is the anticipation of a reward—not the fulfillment of it—that gets us to take action. Dopamine spikes occur during anticipation.
+
 - **Reframe your mindset**: Shift from *"I have to do this"* to *"I get to build this skill."*
 
 ### 3rd Law: Make it Easy (Response)
+
 Human behavior follows the Law of Least Effort. We naturally gravitate toward the option that requires the least physical friction.
+
 - **Reduce friction**: Log out of social accounts after each session. Lay out workout gear the night before.
 - **The 2-Minute Rule**: When you start a new habit, it should take less than two minutes to execute.
 
 ### 4th Law: Make it Satisfying (Reward)
+
 What is immediately rewarded is repeated. What is immediately punished is avoided.
+
 - **Use instant reinforcement**: Keep a visual habit tracker and cross off completed days to trigger immediate satisfaction.`
   },
   "thinking-fast-and-slow": {
@@ -63,6 +76,7 @@ What is immediately rewarded is repeated. What is immediately punished is avoide
     author: "Daniel Kahneman",
     year: "2011",
     tagline: "The Two Systems That Drive the Way We Think",
+    hasCognitiveTester: true,
     summary: "Nobel laureate Daniel Kahneman explains the two systems that drive human thought: System 1 is fast, intuitive, and emotional; System 2 is slow, analytical, and logical.",
     keyTakeaways: [
       "System 1 operates automatically with high speed and zero conscious effort, relying on mental shortcuts.",
@@ -80,16 +94,19 @@ What is immediately rewarded is repeated. What is immediately punished is avoide
 Human judgment is constantly negotiating between two fundamental modes of thought:
 
 ### System 1 (Fast Thinking)
+
 - Operates automatically, quickly, with little or no effort and no sense of voluntary control.
 - Generates complex patterns of ideas, but cannot perform complex logical operations.
 - Prone to systemic cognitive biases and logical fallacies.
 
 ### System 2 (Slow Thinking)
+
 - Allocates attention to effortful mental operations, including complex computations.
 - Associated with the subjective experience of agency, choice, and concentration.
 - Requires high glucose consumption and mental energy; lazy by default.
 
 ## Key Cognitive Biases Revealed
+
 - **WYSIATI (What You See Is All There Is)**: System 1 builds the best possible story out of available information, ignoring unknown data.
 - **Regression to the Mean**: Extreme performances are naturally followed by average outcomes, which humans mistake for causal feedback.`
   },
@@ -113,16 +130,19 @@ Human judgment is constantly negotiating between two fundamental modes of though
     markdownContent: `## The Deep Work Philosophy
 
 To thrive in the modern economy, you must master two core abilities:
+
 1. The ability to master hard things quickly.
 2. The ability to produce at an elite level, in terms of both quality and speed.
 
 ### The Four Deep Work Scheduling Strategies
+
 - **Monastic Strategy**: Eliminate all shallow obligations completely for long stretches.
 - **Bimodal Strategy**: Divide your time into distinct deep periods and shallow periods.
 - **Rhythmic Strategy**: Transform deep work into a daily 90-minute morning habit.
 - **Journalistic Strategy**: Fit deep work into your schedule whenever free blocks open up.
 
 ### The Attention Residue Effect
+
 When you switch from Task A to Task B, your attention does not immediately follow. A residue of your attention remains stuck thinking about Task A, compromising your cognitive bandwidth.`
   },
   "power-of-habit": {
@@ -147,11 +167,13 @@ When you switch from Task A to Task B, your attention does not immediately follo
 The key to transforming bad habits is understanding that you cannot simply erase a habit loop. You must preserve the **Cue** and the **Reward**, but swap out the **Routine**.
 
 ### The Anatomy of the Habit Loop
+
 1. **The Cue**: A trigger that tells your brain to go into automatic mode.
 2. **The Routine**: The behavior itself (physical, mental, or emotional).
 3. **The Reward**: The positive reinforcement that helps your brain decide if this loop is worth remembering.
 
 ### Keystone Habits
+
 Keystone habits trigger widespread positive cascades across multiple areas of life. For example, establishing a regular exercise routine naturally leads to better nutrition, improved focus, and disciplined expenditure.`
   },
   "drive": {
@@ -175,6 +197,7 @@ Keystone habits trigger widespread positive cascades across multiple areas of li
 
 ### 1. Autonomy
 The desire to direct our own lives. High performers require control over:
+
 - **Task**: What they do.
 - **Time**: When they do it.
 - **Technique**: How they do it.
@@ -182,6 +205,7 @@ The desire to direct our own lives. High performers require control over:
 
 ### 2. Mastery
 The desire to get better and better at something that matters. Mastery is a mindset:
+
 - It requires effort, deliberate practice, and embracing difficulty.
 - It is an asymptote—you can approach it, but never fully touch perfection.
 
@@ -205,18 +229,20 @@ The yearning to do what we do in the service of something larger than ourselves.
       "Add the word 'YET' to any limiting self-talk statement.",
       "Praise effort, strategy, and progress rather than inherent talent."
     ],
-    markdownContent: `## Fixed vs Growth Mindset Matrix
+    markdownContent: `## Fixed vs Growth Mindset Principles
 
-| Dimension | Fixed Mindset | Growth Mindset |
-| :--- | :--- | :--- |
-| **Core Belief** | Intelligence is static | Intelligence can be developed |
-| **Desire** | Look smart at all costs | Learn continuously |
-| **Challenges** | Avoid to prevent failure | Embrace enthusiastically |
-| **Obstacles** | Give up quickly | Persist in the face of setbacks |
-| **Effort** | Seen as proof of lack of talent | Seen as the path to mastery |
-| **Criticism** | Defend against or ignore | Learn from constructive feedback |
+### Fixed Mindset
+- Believes intelligence is static.
+- Avoids challenges to prevent failure.
+- Sees effort as proof of lack of talent.
+
+### Growth Mindset
+- Believes intelligence can be developed.
+- Embraces challenges enthusiastically.
+- Sees effort as the path to mastery.
 
 ### The Power of 'YET'
+
 Whenever you find yourself thinking *"I don't know how to code"* or *"I'm not good at public speaking"*, append the word **YET**. This simple linguistic shift re-engages neuroplasticity and growth orientation.`
   }
 };
@@ -309,6 +335,10 @@ export default async function IndividualBookPage({ params }: { params: Promise<{
               {book.summary}
             </p>
           </div>
+
+          {/* Embedded Interactive Components */}
+          {book.hasHabitSimulator && <HabitSimulator />}
+          {book.hasCognitiveTester && <CognitiveTester />}
 
           {/* Key Takeaways */}
           <div className="space-y-4">
