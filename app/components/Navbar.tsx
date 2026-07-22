@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import { ExternalLink, Menu, X, Sparkles } from "lucide-react";
 import { YoutubeIcon } from "./Icons";
 
@@ -17,12 +18,12 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Pillars", href: "#categories" },
-    { name: "Questions We Answer", href: "#questions" },
-    { name: "Mind Diagnostic", href: "#diagnostic" },
-    { name: "Mental Models", href: "#mental-models" },
-    { name: "Series", href: "#series" },
-    { name: "Philosophy", href: "#philosophy" },
+    { name: "Pillars", href: "/#categories" },
+    { name: "Questions We Answer", href: "/#questions" },
+    { name: "Mind Diagnostic", href: "/#diagnostic" },
+    { name: "Mental Models", href: "/#mental-models" },
+    { name: "Series", href: "/#series" },
+    { name: "Blog", href: "/blog" },
   ];
 
   return (
@@ -35,7 +36,7 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Brand Logo with Official Image */}
-        <a href="#" className="flex items-center gap-3 group">
+        <Link href="/" className="flex items-center gap-3 group">
           <div className="relative w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 p-1 flex items-center justify-center shadow-lg shadow-indigo-500/10 group-hover:border-indigo-500/50 transition-all">
             <img
               src="/logo.svg"
@@ -51,18 +52,18 @@ export default function Navbar() {
               Practical Psychology
             </span>
           </div>
-        </a>
+        </Link>
 
         {/* Desktop Navigation Links */}
         <nav className="hidden lg:flex items-center gap-1 bg-slate-900/60 p-1.5 rounded-full border border-slate-800/80 backdrop-blur-sm">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.name}
               href={link.href}
               className="px-4 py-1.5 text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800/80 rounded-full transition-all"
             >
               {link.name}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -102,14 +103,14 @@ export default function Navbar() {
       {mobileMenuOpen && (
         <div className="lg:hidden bg-[#0c1222]/95 border-b border-slate-800 px-4 py-6 space-y-3 backdrop-blur-xl animate-in slide-in-from-top-2">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.name}
               href={link.href}
               onClick={() => setMobileMenuOpen(false)}
               className="block px-3 py-2 text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 rounded-lg transition-colors"
             >
               {link.name}
-            </a>
+            </Link>
           ))}
           <div className="pt-4 border-t border-slate-800/80 flex flex-col gap-2">
             <a

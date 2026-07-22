@@ -1,18 +1,31 @@
-import React from "react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import type { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Terms of Service | Behavior School",
   description: "Terms of Service and conditions for using Behavior School web platform and educational content.",
+  openGraph: {
+    title: "Terms of Service | Behavior School",
+    description: "Terms of Service and conditions for using Behavior School.",
+    url: "https://behavior-school.github.io/terms",
+    siteName: "Behavior School",
+  },
 };
 
 export default function TermsPage() {
-  return (
-    <div className="min-h-screen bg-[#090d16] text-slate-100 flex flex-col font-sans">
-      <Navbar />
+  const jsonLdTerms = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Terms of Service",
+    "url": "https://behavior-school.github.io/terms"
+  };
 
-      <main className="flex-grow pt-32 pb-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdTerms) }}
+      />
+      <main className="pt-32 pb-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-slate-900/60 p-8 sm:p-12 rounded-3xl border border-slate-800 shadow-2xl space-y-6 text-slate-300 text-sm leading-relaxed">
           <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
             Terms of Service
@@ -48,8 +61,6 @@ export default function TermsPage() {
           </section>
         </div>
       </main>
-
-      <Footer />
-    </div>
+    </>
   );
 }

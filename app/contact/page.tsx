@@ -1,18 +1,31 @@
-import React from "react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import type { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Contact Us | Behavior School",
   description: "Get in touch with the Behavior School team for research submissions, video ideas, or business inquiries.",
+  openGraph: {
+    title: "Contact Us | Behavior School",
+    description: "Get in touch with the Behavior School team.",
+    url: "https://behavior-school.github.io/contact",
+    siteName: "Behavior School",
+  },
 };
 
 export default function ContactPage() {
-  return (
-    <div className="min-h-screen bg-[#090d16] text-slate-100 flex flex-col font-sans">
-      <Navbar />
+  const jsonLdContact = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact Behavior School",
+    "url": "https://behavior-school.github.io/contact"
+  };
 
-      <main className="flex-grow pt-32 pb-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdContact) }}
+      />
+      <main className="pt-32 pb-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-slate-900/60 p-8 sm:p-12 rounded-3xl border border-slate-800 shadow-2xl space-y-6 text-slate-300 text-sm leading-relaxed">
           <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
             Contact Us
@@ -62,8 +75,6 @@ export default function ContactPage() {
           </div>
         </div>
       </main>
-
-      <Footer />
-    </div>
+    </>
   );
 }

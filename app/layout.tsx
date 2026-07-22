@@ -1,6 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import ServiceWorkerRegister from "./components/ServiceWorkerRegister";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -106,6 +109,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // JSON-LD Structured Data for Root Layout
   const jsonLdOrganization = {
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
@@ -126,45 +130,6 @@ export default function RootLayout({
     "name": "Behavior School",
     "url": "https://behavior-school.github.io",
     "description": "Practical Psychology & Neuroscience for Real Life"
-  };
-
-  const jsonLdFaq = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Why do we procrastinate?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Procrastination is an emotional regulation problem, not a time-management flaw. When faced with anxiety or self-doubt, the brain's limbic system triggers avoidance."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Why do we lose focus so easily?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Modern digital environments flood the prefrontal cortex with rapid dopamine hits, creating artificial boredom during low-stimulus, high-effort work."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Why are bad habits so difficult to break?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Habits are automated neural pathways carved into the basal ganglia. To change a habit, keep the Cue and Reward, but substitute the Response."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How can anyone learn faster?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Active recall and spaced repetition trigger synaptic plasticity much more effectively than passive reading or highlighting."
-        }
-      }
-    ]
   };
 
   return (
@@ -195,33 +160,21 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdWebSite) }}
         />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }}
-        />
       </head>
       <body className="min-h-full flex flex-col bg-[#090d16] text-slate-100 selection:bg-indigo-500 selection:text-white">
-        {children}
+        {/* Offline Service Worker Registration */}
+        <ServiceWorkerRegister />
 
-        {/* Service Worker Registration Script */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              if ('serviceWorker' in navigator) {
-                window.addEventListener('load', function() {
-                  navigator.serviceWorker.register('/sw.js').then(
-                    function(registration) {
-                      console.log('ServiceWorker registration successful:', registration.scope);
-                    },
-                    function(err) {
-                      console.log('ServiceWorker registration failed:', err);
-                    }
-                  );
-                });
-              }
-            `,
-          }}
-        />
+        {/* Shared Top Navigation Bar */}
+        <Navbar />
+
+        {/* Page Content */}
+        <div className="flex-grow">
+          {children}
+        </div>
+
+        {/* Shared Footer */}
+        <Footer />
       </body>
     </html>
   );

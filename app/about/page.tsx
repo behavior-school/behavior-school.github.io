@@ -1,18 +1,32 @@
-import React from "react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import type { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "About Us | Behavior School",
   description: "Learn about Behavior School's mission, content philosophy, and practical psychology curriculum.",
+  openGraph: {
+    title: "About Us | Behavior School",
+    description: "Learn about Behavior School's mission, content philosophy, and practical psychology curriculum.",
+    url: "https://behavior-school.github.io/about",
+    siteName: "Behavior School",
+  },
 };
 
 export default function AboutPage() {
-  return (
-    <div className="min-h-screen bg-[#090d16] text-slate-100 flex flex-col font-sans">
-      <Navbar />
+  const jsonLdAbout = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About Behavior School",
+    "url": "https://behavior-school.github.io/about",
+    "description": "Learn about Behavior School's mission and practical psychology curriculum."
+  };
 
-      <main className="flex-grow pt-32 pb-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdAbout) }}
+      />
+      <main className="pt-32 pb-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-slate-900/60 p-8 sm:p-12 rounded-3xl border border-slate-800 shadow-2xl space-y-6 text-slate-300 text-sm leading-relaxed">
           <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
             About Behavior School
@@ -43,8 +57,6 @@ export default function AboutPage() {
           </section>
         </div>
       </main>
-
-      <Footer />
-    </div>
+    </>
   );
 }

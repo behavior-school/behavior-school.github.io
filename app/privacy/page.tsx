@@ -1,18 +1,31 @@
-import React from "react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import type { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Privacy Policy | Behavior School",
   description: "Privacy Policy for Behavior School outlining data collection, cookies, Google AdSense compliance, and user rights.",
+  openGraph: {
+    title: "Privacy Policy | Behavior School",
+    description: "Privacy Policy for Behavior School.",
+    url: "https://behavior-school.github.io/privacy",
+    siteName: "Behavior School",
+  },
 };
 
 export default function PrivacyPage() {
-  return (
-    <div className="min-h-screen bg-[#090d16] text-slate-100 flex flex-col font-sans">
-      <Navbar />
+  const jsonLdPrivacy = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Privacy Policy",
+    "url": "https://behavior-school.github.io/privacy"
+  };
 
-      <main className="flex-grow pt-32 pb-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdPrivacy) }}
+      />
+      <main className="pt-32 pb-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-slate-900/60 p-8 sm:p-12 rounded-3xl border border-slate-800 shadow-2xl space-y-6 text-slate-300 text-sm leading-relaxed">
           <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
             Privacy Policy
@@ -43,7 +56,7 @@ export default function PrivacyPage() {
           <section className="space-y-3">
             <h2 className="text-lg font-bold text-white">4. Google DoubleClick DART Cookie & AdSense</h2>
             <p>
-              Google is a third-party vendor on our site. It also uses cookies, known as DART cookies, to serve ads to our site visitors based upon their visit to www.website.com and other sites on the internet.
+              Google is a third-party vendor on our site. It also uses cookies, known as DART cookies, to serve ads to our site visitors based upon their visit to our site and other sites on the internet.
             </p>
             <ul className="list-disc pl-5 space-y-1 text-slate-300">
               <li>Third party vendors, including Google, use cookies to serve ads based on a user's prior visits to your website or other websites.</li>
@@ -74,8 +87,6 @@ export default function PrivacyPage() {
           </section>
         </div>
       </main>
-
-      <Footer />
-    </div>
+    </>
   );
 }
