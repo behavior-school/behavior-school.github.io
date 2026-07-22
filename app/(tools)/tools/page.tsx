@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Cpu, Activity, Zap, ArrowRight } from "lucide-react";
+import { Cpu, Activity, Zap, ShieldAlert, Clock, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Behavioral Science & Neuroscience Web Tools | Behavior School",
-  description: "Interactive neurochemistry calculators, habit shrinkers, dopamine audits, and spaced repetition generators.",
+  description: "Interactive Pomodoro timers, neurochemistry calculators, habit shrinkers, dopamine audits, and friction barrier tools.",
   openGraph: {
     title: "Behavioral Science Interactive Tools | Behavior School",
-    description: "Interactive tools for habit formation, dopamine recalibration, and cognitive performance.",
+    description: "Interactive tools for habit formation, dopamine recalibration, focus timers, and cognitive performance.",
     url: "https://behavior-school.github.io/tools",
     siteName: "Behavior School",
     type: "website",
@@ -15,6 +15,13 @@ export const metadata: Metadata = {
 };
 
 export const toolsList = [
+  {
+    slug: "pomodoro-timer",
+    name: "Neuroscience Pomodoro & Ultradian Timer",
+    icon: Clock,
+    desc: "Interactive 25-minute Pomodoro & 90-minute Ultradian focus session timer with distraction protocols.",
+    category: "Focus & Productivity"
+  },
   {
     slug: "dopamine-calculator",
     name: "Dopamine Baseline & Boredom Calculator",
@@ -28,6 +35,13 @@ export const toolsList = [
     icon: Zap,
     desc: "Deconstruct any complex long-term goal down to a 120-second physical initiation action + implementation intention.",
     category: "Habits & Discipline"
+  },
+  {
+    slug: "friction-audit",
+    name: "Habit Loop Friction Audit Tool",
+    icon: ShieldAlert,
+    desc: "Audit bad habits and generate physical & digital friction barriers to make bad habits difficult to execute.",
+    category: "Behavior Science"
   }
 ];
 
@@ -37,7 +51,7 @@ export default function ToolsIndexPage() {
     "@type": "CollectionPage",
     "name": "Behavioral Science Interactive Tools",
     "url": "https://behavior-school.github.io/tools",
-    "description": "Interactive web applications for neurochemistry, habit formation, and cognitive performance.",
+    "description": "Interactive web applications for neurochemistry, focus timers, habit formation, and cognitive performance.",
     "hasPart": toolsList.map((tool) => ({
       "@type": "WebApplication",
       "name": tool.name,
@@ -63,12 +77,12 @@ export default function ToolsIndexPage() {
             Behavioral Science <span className="text-[var(--primary)]">Tools</span>
           </h1>
           <p className="text-base sm:text-lg text-[var(--muted-foreground)]">
-            Audit your brain chemistry, shrink habit friction, and calculate focus parameters using interactive web applications.
+            Audit your brain chemistry, time focus sessions, shrink habit friction, and calculate focus parameters using interactive web applications.
           </p>
         </div>
 
         {/* Tools Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {toolsList.map((tool) => {
             const Icon = tool.icon;
             return (

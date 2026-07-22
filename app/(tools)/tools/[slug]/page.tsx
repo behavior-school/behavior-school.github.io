@@ -4,16 +4,25 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, Cpu } from "lucide-react";
 import DopamineCalculatorTool from "../../../components/tools/DopamineCalculatorTool";
 import HabitShrinkerTool from "../../../components/tools/HabitShrinkerTool";
+import PomodoroTool from "../../../components/tools/PomodoroTool";
+import FrictionAuditTool from "../../../components/tools/FrictionAuditTool";
 
 interface ToolDetail {
   slug: string;
   name: string;
   category: string;
   desc: string;
-  component: "dopamine" | "habit";
+  component: "dopamine" | "habit" | "pomodoro" | "friction";
 }
 
 const toolsData: Record<string, ToolDetail> = {
+  "pomodoro-timer": {
+    slug: "pomodoro-timer",
+    name: "Neuroscience Pomodoro & Ultradian Timer",
+    category: "Focus & Productivity",
+    desc: "Interactive 25-minute Pomodoro & 90-minute Ultradian focus session timer with distraction protocols.",
+    component: "pomodoro"
+  },
   "dopamine-calculator": {
     slug: "dopamine-calculator",
     name: "Dopamine Baseline & Boredom Calculator",
@@ -27,6 +36,13 @@ const toolsData: Record<string, ToolDetail> = {
     category: "Habits & Discipline",
     desc: "Deconstruct any complex long-term goal down to a 120-second physical initiation action + implementation intention.",
     component: "habit"
+  },
+  "friction-audit": {
+    slug: "friction-audit",
+    name: "Habit Loop Friction Audit Tool",
+    category: "Behavior Science",
+    desc: "Audit bad habits and generate physical & digital friction barriers to make bad habits difficult to execute.",
+    component: "friction"
   }
 };
 
@@ -98,8 +114,10 @@ export default async function IndividualToolPage({ params }: { params: Promise<{
           </div>
 
           {/* Render Active Component */}
+          {tool.component === "pomodoro" && <PomodoroTool />}
           {tool.component === "dopamine" && <DopamineCalculatorTool />}
           {tool.component === "habit" && <HabitShrinkerTool />}
+          {tool.component === "friction" && <FrictionAuditTool />}
         </div>
       </main>
     </>
