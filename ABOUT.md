@@ -307,3 +307,5 @@ Maintain organized databases for:
 Create the internet's largest free library of practical psychology and behavior science.
 
 Behavior School aims to help millions of people understand themselves better, make smarter decisions, develop lasting habits, and unlock their full potential through science-backed education.
+
+psychology, neuroscience, human-behavior, behavioral-science, mental-models, cognitive-biases, habits, productivity, focus, self-improvement, learning-frameworks, decision-making, nextjs, tailwindcss, typescript, bun, github-pages
