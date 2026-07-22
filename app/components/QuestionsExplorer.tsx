@@ -86,13 +86,13 @@ Habits are encoded into the basal ganglia. Swap out the Response while maintaini
   ];
 
   return (
-    <section id="questions" className="py-20 border-b border-neutral-900">
+    <section id="questions" className="py-20 border-b border-[var(--border)]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-12">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-2">
+          <h2 className="text-2xl sm:text-3xl font-bold text-[var(--foreground)] tracking-tight mb-2">
             Questions Answered
           </h2>
-          <p className="text-xs sm:text-sm text-neutral-400">
+          <p className="text-xs sm:text-sm text-[var(--muted-foreground)]">
             Click any question to open its Claude Artifact breakdown.
           </p>
         </div>
@@ -103,31 +103,31 @@ Habits are encoded into the basal ganglia. Swap out the Response while maintaini
             return (
               <div
                 key={idx}
-                className="bg-neutral-950 rounded-xl border border-neutral-900"
+                className="bg-[var(--card)] rounded-xl border border-[var(--border)]"
               >
                 <div
                   onClick={() => setExpandedIndex(isExpanded ? null : idx)}
                   className="p-5 flex items-center justify-between cursor-pointer"
                 >
-                  <h3 className="text-sm font-bold text-white">{q.question}</h3>
+                  <h3 className="text-sm font-bold text-[var(--foreground)]">{q.question}</h3>
                   <ChevronDown
-                    className={`w-4 h-4 text-neutral-500 transition-transform duration-200 ${
-                      isExpanded ? "rotate-180 text-white" : ""
+                    className={`w-4 h-4 text-[var(--muted-foreground)] transition-transform duration-200 ${
+                      isExpanded ? "rotate-180 text-[var(--primary)]" : ""
                     }`}
                   />
                 </div>
 
                 {isExpanded && (
-                  <div className="px-5 pb-5 pt-2 border-t border-neutral-900 text-xs text-neutral-300 space-y-3">
-                    <p className="font-medium text-white">{q.shortAnswer}</p>
-                    <p className="text-neutral-400">{q.breakdown}</p>
+                  <div className="px-5 pb-5 pt-2 border-t border-[var(--border)] text-xs text-[var(--muted-foreground)] space-y-3">
+                    <p className="font-medium text-[var(--foreground)]">{q.shortAnswer}</p>
+                    <p className="text-[var(--muted-foreground)]">{q.breakdown}</p>
 
                     <div className="pt-2 flex items-center justify-between">
                       <button
                         onClick={() => onOpenArtifact(q.artifact)}
-                        className="px-3 py-1.5 rounded-lg bg-neutral-900 border border-neutral-800 text-xs font-medium text-white hover:bg-neutral-800 transition-colors inline-flex items-center gap-1.5"
+                        className="px-3 py-1.5 rounded-lg bg-[var(--muted)] border border-[var(--border)] text-xs font-medium text-[var(--foreground)] hover:bg-[var(--accent)] transition-colors inline-flex items-center gap-1.5"
                       >
-                        <FileCode className="w-3.5 h-3.5 text-neutral-400" />
+                        <FileCode className="w-3.5 h-3.5 text-[var(--primary)]" />
                         <span>Open Artifact</span>
                       </button>
 
@@ -135,7 +135,7 @@ Habits are encoded into the basal ganglia. Swap out the Response while maintaini
                         href="https://www.youtube.com/@behavior-school"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-neutral-400 hover:text-white transition-colors inline-flex items-center gap-1"
+                        className="text-[var(--muted-foreground)] hover:text-[var(--primary)] transition-colors inline-flex items-center gap-1"
                       >
                         <span>Watch Video</span>
                         <ArrowRight className="w-3 h-3" />

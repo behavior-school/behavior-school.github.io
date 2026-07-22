@@ -38,13 +38,13 @@ export default function CategoriesSection() {
   ];
 
   return (
-    <section id="categories" className="py-20 border-b border-neutral-900">
+    <section id="categories" className="py-20 border-b border-[var(--border)]">
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-12">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-2">
+          <h2 className="text-2xl sm:text-3xl font-bold text-[var(--foreground)] tracking-tight mb-2">
             Knowledge Pillars
           </h2>
-          <p className="text-xs sm:text-sm text-neutral-400">
+          <p className="text-xs sm:text-sm text-[var(--muted-foreground)]">
             6 core categories of actionable behavioral science.
           </p>
         </div>
@@ -55,13 +55,13 @@ export default function CategoriesSection() {
             return (
               <div
                 key={i}
-                className="bg-neutral-950 p-6 rounded-xl border border-neutral-900 hover:border-neutral-800 transition-colors"
+                className="bg-[var(--card)] p-6 rounded-xl border border-[var(--border)] hover:border-[var(--primary)]/40 transition-colors"
               >
-                <div className="w-8 h-8 rounded-lg bg-neutral-900 border border-neutral-800 flex items-center justify-center text-white mb-4">
+                <div className="w-8 h-8 rounded-lg bg-[var(--muted)] border border-[var(--border)] flex items-center justify-center text-[var(--primary)] mb-4">
                   <Icon className="w-4 h-4" />
                 </div>
-                <h3 className="text-sm font-bold text-white mb-1">{pillar.name}</h3>
-                <p className="text-xs text-neutral-400 leading-relaxed">{pillar.desc}</p>
+                <h3 className="text-sm font-bold text-[var(--foreground)] mb-1">{pillar.name}</h3>
+                <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">{pillar.desc}</p>
               </div>
             );
           })}
