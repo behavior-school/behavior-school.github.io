@@ -1,14 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import { Sparkles, RotateCcw, FileCode, CheckCircle2 } from "lucide-react";
-import { ArtifactData } from "./ArtifactViewer";
+import Link from "next/link";
+import { Sparkles, RotateCcw, CheckCircle2, ArrowRight } from "lucide-react";
 
-interface BehaviorDiagnosticProps {
-  onOpenArtifact: (artifact: ArtifactData) => void;
-}
-
-export default function BehaviorDiagnostic({ onOpenArtifact }: BehaviorDiagnosticProps) {
+export default function BehaviorDiagnostic() {
   const [selectedStruggle, setSelectedStruggle] = useState<string | null>(null);
   const [analyzed, setAnalyzed] = useState(false);
 
@@ -23,18 +19,7 @@ export default function BehaviorDiagnostic({ onOpenArtifact }: BehaviorDiagnosti
         "Separate drafting stage from editing stage.",
         "Remove phone from workspace."
       ],
-      artifact: {
-        title: "Procrastination Protocol",
-        type: "PROTOCOL" as const,
-        filename: "procrastination-protocol.md",
-        category: "Diagnostic",
-        content: `# Procrastination Protocol\n\n1. 120s Micro-start.\n2. Environment friction clearing.`,
-        actionProtocol: [
-          "Lower activation energy to 120 seconds.",
-          "Separate drafting stage from editing stage.",
-          "Remove phone from workspace."
-        ]
-      }
+      link: "/blog/neuroscience-of-procrastination"
     },
     {
       id: "focus",
@@ -46,18 +31,7 @@ export default function BehaviorDiagnostic({ onOpenArtifact }: BehaviorDiagnosti
         "Execute 25-minute Pomodoro blocks.",
         "Practice 3 minutes of quiet stillness first."
       ],
-      artifact: {
-        title: "Focus Restoration Protocol",
-        type: "NEUROSCIENCE" as const,
-        filename: "focus-protocol.md",
-        category: "Diagnostic",
-        content: `# Focus Protocol\n\n1. Physical phone quarantine.\n2. 25-min Pomodoro.`,
-        actionProtocol: [
-          "Store phone in another room.",
-          "Execute 25-minute Pomodoro blocks.",
-          "Practice 3 minutes of quiet stillness first."
-        ]
-      }
+      link: "/blog/dopamine-fasting-myth-vs-science"
     },
     {
       id: "overthinking",
@@ -69,18 +43,7 @@ export default function BehaviorDiagnostic({ onOpenArtifact }: BehaviorDiagnosti
         "Ask: 'And then what happens?'",
         "Set a 10-minute daily worry window."
       ],
-      artifact: {
-        title: "De-Rumination Protocol",
-        type: "MENTAL_MODEL" as const,
-        filename: "derumination-protocol.md",
-        category: "Diagnostic",
-        content: `# De-Rumination Protocol\n\n1. Written dump.\n2. 2nd order questioning.`,
-        actionProtocol: [
-          "Perform a 5-minute written brain dump.",
-          "Ask: 'And then what happens?'",
-          "Set a 10-minute daily worry window."
-        ]
-      }
+      link: "/blog/first-principles-thinking-habits"
     }
   ];
 
@@ -158,24 +121,22 @@ export default function BehaviorDiagnostic({ onOpenArtifact }: BehaviorDiagnosti
 
             <div className="space-y-2">
               {current?.steps.map((step, idx) => (
-                <div key={idx} className="p-3.5 rounded-xl bg-[var(--muted)] border border-[var(--border)] text-xs text-[var(--foreground)] flex items-start gap-2.5">
+                <div key={idx} className="p-3.5 rounded-xl bg-[var(--muted)] border border-[var(--border)] text-xs sm:text-sm text-[var(--foreground)] flex items-start gap-3">
                   <CheckCircle2 className="w-4 h-4 text-[var(--primary)] shrink-0 mt-0.5" />
                   <span>{step}</span>
                 </div>
               ))}
             </div>
 
-            {current?.artifact && (
+            {current?.link && (
               <div className="pt-2 flex items-center justify-between">
-                {/* Clickable Artifact Code Chip (No ugly button text) */}
-                <button
-                  onClick={() => onOpenArtifact(current.artifact)}
-                  className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[var(--muted)] border border-[var(--border)] text-xs font-mono text-[var(--foreground)] hover:border-[var(--primary)] hover:text-[var(--primary)] transition-all cursor-pointer"
+                <Link
+                  href={current.link}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[var(--primary)] text-[var(--primary-foreground)] text-xs font-bold hover:opacity-90 transition-opacity"
                 >
-                  <FileCode className="w-4 h-4 text-[var(--primary)]" />
-                  <span>{current.artifact.filename}</span>
-                  <Sparkles className="w-3.5 h-3.5 text-[var(--primary)]" />
-                </button>
+                  <span>Read In-Depth Field Guide</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
               </div>
             )}
           </div>
