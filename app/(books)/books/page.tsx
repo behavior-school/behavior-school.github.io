@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import BookLibrary from "../../../components/BookLibrary";
+import BookLibrary from "../../components/BookLibrary";
 import { getBookCatalog } from "../../../lib/book-repository";
 
 export const metadata: Metadata = {
