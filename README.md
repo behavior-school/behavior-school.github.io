@@ -97,7 +97,12 @@ The web application built at **[behavior-school.github.io](https://behavior-scho
 ## 📚 Documentation Index
 
 * 📖 [**Curriculum Guide**](docs/CURRICULUM.md) — Comprehensive overview of learning tracks & recommended video paths.
-* ⚙️ [**Content Production Pipeline**](docs/CONTENT_PIPELINE.md) — Scientific research standards, scriptwriting framework, and video pipeline.
+* ⚙️ [**Content Production Pipeline**](docs/CONTENT_PIPELINE.md) — Scientific research standards, scriptwriting framework, and content pipeline.
+* 🏗️ [**Architecture Guide**](docs/ARCHITECTURE.md) — App structure, data flow, static export, and maintenance boundaries.
+* 📚 [**Book Engine Guide**](docs/BOOK_ENGINE.md) — How book pages combine deep explanations, neuroscience, visuals, Mermaid, posters, and learning exercises.
+* 🔎 [**SEO Playbook**](docs/SEO_PLAYBOOK.md) — Canonicals, sitemap, robots, structured data, internal linking, and people-first search practices.
+* ⏱️ [**Hourly Publishing System**](docs/HOURLY_PUBLISHING.md) — Five-book batch workflow, quality gates, visual assets, and deployment verification.
+* 🧠 [**Agent Skills**](.agents/skills/) — Reusable maintenance, content, visual, SEO, and publishing instructions for coding agents.
 * 🤝 [**Contributing Guidelines**](docs/CONTRIBUTING.md) — How to suggest topics, research papers, or contribute to the platform.
 
 ---
