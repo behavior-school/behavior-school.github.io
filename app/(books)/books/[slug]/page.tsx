@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, BookOpen, Sparkles, CheckCircle2, FileCode } from "lucide-react";
-import { detailedBooksData } from "../../../../../content/books";
+import { allBooksData } from "../../../../content/book-catalog";
 import MarkdownRenderer from "../../../components/MarkdownRenderer";
 import HabitSimulator from "../../../components/HabitSimulator";
 import CognitiveTester from "../../../components/CognitiveTester";
@@ -11,12 +11,12 @@ import InteractivePoll, { PollOption } from "../../../components/InteractivePoll
 import BookArtifacts from "../../../components/BookArtifacts";
 
 export function generateStaticParams() {
-  return Object.keys(detailedBooksData).map((slug) => ({ slug }));
+  return Object.keys(allBooksData).map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const book = detailedBooksData[slug];
+  const book = allBooksData[slug];
   if (!book) return { title: "Book Not Found | Behavior School" };
 
   return {
@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function IndividualBookPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const book = detailedBooksData[slug];
+  const book = allBooksData[slug];
   if (!book) notFound();
 
   const jsonLdBook = {
