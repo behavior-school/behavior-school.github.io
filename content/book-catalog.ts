@@ -44,7 +44,7 @@ export const allBooksData: Record<string, import("../lib/book-types").BookDetail
   ...Object.fromEntries(
     Object.entries({ ...detailedBooksData, ...manipulationBooksData }).map(([slug, book]) => [
       slug,
-      { ...book, learningLab: bookLearningLab[slug] }
+      { ...book, ...meta, ...amazonBook(meta?.asin ?? book.slug), learningLab: bookLearningLab[slug] }
     ])
   ),
 };
