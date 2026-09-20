@@ -39,10 +39,10 @@ const bookMeta: Record<string, {
   "without-conscience": { category: "Psychopathy", tags: ["psychopathy", "deception", "forensic psychology"], asin: "1572304510" }
 };
 
-export const allBooksData = {
+export const allBooksData: Record<string, import("../lib/book-types").BookDetail> = {
   ...detailedBooksData,
   ...manipulationBooksData,
-} as const;
+};
 
 export const booksCatalog = Object.values(allBooksData).map((book) => {
   const meta = bookMeta[book.slug];
