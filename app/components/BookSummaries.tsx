@@ -1,94 +1,11 @@
-"use client";
-
 import React from "react";
+import { booksCatalog } from "../../content/book-catalog";
 import Link from "next/link";
 import { BookOpen, CheckCircle2, ArrowRight } from "lucide-react";
 
 export default function BookSummaries() {
-  const books = [
-    {
-      slug: "atomic-habits",
-      title: "Atomic Habits",
-      author: "James Clear",
-      year: "2018",
-      tagline: "An Easy & Proven Way to Build Good Habits & Break Bad Ones",
-      coreIdea: "Small 1% changes compounding over time create radical transformation. System design matters more than goal setting.",
-      keyRules: [
-        "Make it Obvious (Cue)",
-        "Make it Attractive (Craving)",
-        "Make it Easy (Response - 2 Minute Rule)",
-        "Make it Satisfying (Reward)"
-      ]
-    },
-    {
-      slug: "thinking-fast-and-slow",
-      title: "Thinking, Fast and Slow",
-      author: "Daniel Kahneman",
-      year: "2011",
-      tagline: "The Two Systems That Drive the Way We Think",
-      coreIdea: "Human judgment is governed by two cognitive engines: System 1 (fast, intuitive, emotional) and System 2 (slow, analytical, effortful).",
-      keyRules: [
-        "System 1 operates automatically with little or no effort.",
-        "System 2 allocates attention to effortful mental operations.",
-        "Beware of Substitution Bias and Availability Heuristics."
-      ]
-    },
-    {
-      slug: "deep-work",
-      title: "Deep Work",
-      author: "Cal Newport",
-      year: "2016",
-      tagline: "Rules for Focused Success in a Distracted World",
-      coreIdea: "The ability to perform deep work is becoming increasingly rare at the exact same time it is becoming increasingly valuable in our economy.",
-      keyRules: [
-        "Work Deeply: Ritualize your environment and scheduling.",
-        "Embrace Boredom: Train your brain to resist digital novelty.",
-        "Quit Social Media: Audit network tools for genuine value.",
-        "Drain the Shallows: Eliminate low-value administrative tasks."
-      ]
-    },
-    {
-      slug: "power-of-habit",
-      title: "The Power of Habit",
-      author: "Charles Duhigg",
-      year: "2012",
-      tagline: "Why We Do What We Do in Life and Business",
-      coreIdea: "Habits emerge because the brain is constantly looking for ways to save effort and automate routine behaviors into the basal ganglia.",
-      keyRules: [
-        "The Golden Rule of Habit Change: Keep Cue & Reward, change Routine.",
-        "Focus on Keystone Habits (e.g. daily exercise, sleep).",
-        "Belief is the essential ingredient that converts habit loops into permanent identity."
-      ]
-    },
-    {
-      slug: "drive",
-      title: "Drive: The Surprising Truth About Motivation",
-      author: "Daniel H. Pink",
-      year: "2009",
-      tagline: "Autonomy, Mastery, and Purpose",
-      coreIdea: "Carrots and sticks (Extrinsic Motivation 2.0) fail for complex cognitive work. True drive relies on Intrinsic Motivation 3.0.",
-      keyRules: [
-        "Autonomy: The desire to direct our own lives and work.",
-        "Mastery: The urge to get better and better at something that matters.",
-        "Purpose: The yearning to do what we do in the service of something larger."
-      ]
-    },
-    {
-      slug: "mindset",
-      title: "Mindset: The New Psychology of Success",
-      author: "Carol S. Dweck",
-      year: "2006",
-      tagline: "How We Can Learn to Fulfill Our Potential",
-      coreIdea: "Your belief about your abilities determines whether you embrace challenges or shrink from failure.",
-      keyRules: [
-        "Fixed Mindset: Belief that intelligence and talent are static traits.",
-        "Growth Mindset: Belief that abilities can be developed through dedication.",
-        "The Power of 'Yet': Transform 'I can't do this' into 'I can't do this YET'."
-      ]
-    }
-  ];
-
-  return (
+  const books = booksCatalog.slice(0, 6);
+ return (
     <section id="books" className="py-20 border-b border-[var(--border)]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-12">
@@ -135,7 +52,7 @@ export default function BookSummaries() {
                 </p>
 
                 <p className="text-xs text-[var(--muted-foreground)] leading-relaxed mb-4">
-                  {book.coreIdea}
+                  {book.excerpt}
                 </p>
               </div>
 
@@ -145,7 +62,7 @@ export default function BookSummaries() {
                   Core Framework Takeaways:
                 </span>
                 <ul className="space-y-1.5 text-[11px] text-[var(--muted-foreground)]">
-                  {book.keyRules.map((rule, rIdx) => (
+                  {book.keyTakeaways.map((rule, rIdx) => (
                     <li key={rIdx} className="flex items-start gap-2">
                       <CheckCircle2 className="w-3.5 h-3.5 text-[var(--primary)] shrink-0 mt-0.5" />
                       <span>{rule}</span>
