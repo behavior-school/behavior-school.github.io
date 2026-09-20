@@ -95,6 +95,85 @@ export const booksDataList = [
       "The Power of 'Yet': Transform 'I can't do this' into 'I can't do this YET'."
     ]
   }
+
+  {
+    slug: "nudge",
+    title: "Nudge",
+    author: "Richard H. Thaler & Cass R. Sunstein",
+    year: "2008",
+    tagline: "Improving Decisions About Health, Wealth, and Happiness",
+    excerpt: "Choice architecture can shape behavior by changing defaults, friction, feedback, and how consequences are presented—without removing freedom of choice.",
+    keyTakeaways: [
+      "Choice architecture changes the environment around decisions.",
+      "Defaults matter because inaction is also a behavioral path.",
+      "Good nudges make useful actions clearer while preserving alternatives."
+    ]
+  },
+  {
+    slug: "predictably-irrational",
+    title: "Predictably Irrational",
+    author: "Dan Ariely",
+    year: "2008",
+    tagline: "The Hidden Forces That Shape Our Decisions",
+    excerpt: "Human judgment often bends in repeatable ways because comparison, emotion, expectations, ownership, and the meaning of 'free' change how choices feel.",
+    keyTakeaways: [
+      "Reference points shape perceived value.",
+      "Social and market norms can trigger different motivations.",
+      "Knowing a bias exists is not the same as being immune to it."
+    ]
+  },
+  {
+    slug: "influence",
+    title: "Influence",
+    author: "Robert B. Cialdini",
+    year: "1984",
+    tagline: "The Psychology of Persuasion",
+    excerpt: "A practical map of recurring persuasion principles—and a defensive toolkit for recognizing when fast mental shortcuts are being activated.",
+    keyTakeaways: [
+      "Reciprocity can create a feeling of obligation.",
+      "Social proof becomes powerful under uncertainty.",
+      "Authority, liking, scarcity, and consistency can steer quick judgments."
+    ]
+  },
+  {
+    slug: "thinking-in-bets",
+    title: "Thinking in Bets",
+    author: "Annie Duke",
+    year: "2018",
+    tagline: "Making Smarter Decisions When You Don't Have All the Facts",
+    excerpt: "Separate decision quality from outcome quality, think in probabilities, and create feedback loops that help you learn from uncertain results.",
+    keyTakeaways: [
+      "A good decision can lose because of luck.",
+      "Probabilities make uncertain beliefs easier to update.",
+      "Writing decisions before results reduces hindsight distortion."
+    ]
+  },
+  {
+    slug: "scout-mindset",
+    title: "The Scout Mindset",
+    author: "Julia Galef",
+    year: "2021",
+    tagline: "Why Some People See Things Clearly and Others Don't",
+    excerpt: "Replace the instinct to defend a position with the habit of building a more accurate map of reality, especially when evidence is uncomfortable.",
+    keyTakeaways: [
+      "Accuracy is a better goal than intellectual victory.",
+      "Disconfirming evidence is worth searching for deliberately.",
+      "A belief can change without your identity collapsing."
+    ]
+  },
+  {
+    slug: "paradox-of-choice",
+    title: "The Paradox of Choice",
+    author: "Barry Schwartz",
+    year: "2004",
+    tagline: "Why More Is Less",
+    excerpt: "More options can create more comparison, opportunity cost, expectations, and decision fatigue—making useful constraints surprisingly valuable.",
+    keyTakeaways: [
+      "Maximizing is different from satisficing.",
+      "Choice has a cognitive cost as well as a benefit.",
+      "Good-enough thresholds protect attention from endless optimization."
+    ]
+  },
 ];
 
 export default function BooksIndexPage() {
