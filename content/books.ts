@@ -1053,4 +1053,4 @@ A smaller decision surface can create more mental space for the decisions that a
 The paradox of choice is therefore also a lesson about attention: every option has a cognitive price, even when it costs no money.`
   },
 
-};;
+};
