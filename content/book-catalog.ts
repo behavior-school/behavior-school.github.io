@@ -1,5 +1,6 @@
 import { detailedBooksData } from "./books";
 import { manipulationBooksData } from "./manipulation-books";
+import { bookLearningLab } from "./book-learning-lab";
 
 const amazonBook = (asin: string) => ({
   amazonUrl: `https://www.amazon.in/dp/${asin}`,
@@ -40,8 +41,12 @@ const bookMeta: Record<string, {
 };
 
 export const allBooksData: Record<string, import("../lib/book-types").BookDetail> = {
-  ...detailedBooksData,
-  ...manipulationBooksData,
+  ...Object.fromEntries(
+    Object.entries({ ...detailedBooksData, ...manipulationBooksData }).map(([slug, book]) => [
+      slug,
+      { ...book, learningLab: bookLearningLab[slug] }
+    ])
+  ),
 };
 
 export const booksCatalog = Object.values(allBooksData).map((book) => {
