@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { BookOpen, Clock, ArrowRight, Brain, HeartHandshake, Eye, Cpu, Sparkles, Scale } from "lucide-react";
-import { getAllArticles } from "../../../lib/content";
+import { getAllArticles } from "../../lib/content";
 
 export const metadata: Metadata = {
   title: "Behavior School Blog — Practical Psychology & Neuroscience Guides",
