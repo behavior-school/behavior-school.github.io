@@ -270,9 +270,7 @@ The yearning to do what we do in the service of something larger than ourselves.
 ### The Power of 'YET'
 
 Whenever you find yourself thinking *"I don't know how to code"* or *"I'm not good at public speaking"*, append the word **YET**. This simple linguistic shift re-engages neuroplasticity and growth orientation.`
-  }
-};
-
+  },
 
   "nudge": {
     slug: "nudge",
