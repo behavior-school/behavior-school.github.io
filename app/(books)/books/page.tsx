@@ -94,8 +94,7 @@ export const booksDataList = [
       "Growth Mindset: Belief that abilities can be developed through dedication.",
       "The Power of 'Yet': Transform 'I can't do this' into 'I can't do this YET'."
     ]
-  }
-
+  },
   {
     slug: "nudge",
     title: "Nudge",
