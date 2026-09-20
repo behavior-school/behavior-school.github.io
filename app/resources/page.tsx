@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, BookOpen, Brain, FlaskConical, Wrench } from "lucide-react";
-import { getAllArticles } from "../../lib/content";
+import { getAllArticles } from "../lib/content";
 
 export const metadata: Metadata = {
   title: "Learning Resources | Behavior School",
