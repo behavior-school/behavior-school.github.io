@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, BookOpen, Sparkles, CheckCircle2, FileCode } from "lucide-react";
+import { ArrowLeft, BookOpen, Sparkles, CheckCircle2, FileCode, Brain, ExternalLink } from "lucide-react";
 import { allBooksData } from "../../../../content/book-catalog";
 import MarkdownRenderer from "../../../components/MarkdownRenderer";
 import HabitSimulator from "../../../components/HabitSimulator";
 import CognitiveTester from "../../../components/CognitiveTester";
-import InteractiveQuiz, { Question } from "../../../components/InteractiveQuiz";
-import InteractivePoll, { PollOption } from "../../../components/InteractivePoll";
+import InteractiveQuiz from "../../../components/InteractiveQuiz";
+import InteractivePoll from "../../../components/InteractivePoll";
 import BookArtifacts from "../../../components/BookArtifacts";
+import BookLearningLab from "../../../components/BookLearningLab";
 
 export function generateStaticParams() {
   return Object.keys(allBooksData).map((slug) => ({ slug }));
@@ -20,14 +22,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!book) return { title: "Book Not Found | Behavior School" };
 
   return {
-    title: `${book.title} Summary & Guide | Behavior School`,
-    description: book.summary,
+    title: `${book.title}: Deep Summary, Neuroscience & Practical Guide | Behavior School`,
+    description: `${book.summary} Explore the deeper mental models, neuroscience lens, visual frameworks, real-world examples, and field exercises.`,
+    keywords: [book.title, book.author, "book summary", "behavioral science", "psychology", "neuroscience", ...(book.tags ?? [])],
     openGraph: {
-      title: `${book.title} Summary — ${book.author}`,
+      title: `${book.title} — Deep Behavioral Science Guide`,
       description: book.summary,
       url: `https://behavior-school.github.io/books/${book.slug}`,
       siteName: "Behavior School",
       type: "article",
+      images: book.coverImageUrl ? [{ url: book.coverImageUrl, alt: book.title }] : undefined,
     },
   };
 }
@@ -40,115 +44,202 @@ export default async function IndividualBookPage({ params }: { params: Promise<{
   const jsonLdBook = {
     "@context": "https://schema.org",
     "@type": "Book",
-    "name": book.title,
-    "author": {
-      "@type": "Person",
-      "name": book.author
-    },
-    "datePublished": book.year,
-    "description": book.summary,
-    "url": `https://behavior-school.github.io/books/${book.slug}`,
-    "publisher": {
-      "@type": "Organization",
-      "name": "Behavior School"
-    }
+    name: book.title,
+    author: { "@type": "Person", name: book.author },
+    datePublished: book.year,
+    description: book.summary,
+    url: `https://behavior-school.github.io/books/${book.slug}`,
+    image: book.coverImageUrl,
+    publisher: { "@type": "Organization", name: "Behavior School" },
   };
+
+  const sections = [
+    { id: "summary", label: "Core thesis" },
+    { id: "learning-lab", label: "Learning lab" },
+    { id: "takeaways", label: "Mental models" },
+    { id: "protocol", label: "Action protocol" },
+    { id: "deep-dive", label: "Deep dive" },
+  ];
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdBook) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdBook) }} />
 
-      <main className="pt-32 pb-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <main className="pt-28 pb-24 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <Link
           href="/books"
-          className="inline-flex items-center gap-2 text-xs font-semibold text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors mb-8"
+          className="inline-flex items-center gap-2 text-xs font-semibold text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors mb-7"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Back to All Book Summaries</span>
         </Link>
 
-        <article className="bg-[var(--card)] p-8 sm:p-12 rounded-3xl border border-[var(--border)] shadow-2xl space-y-8">
-          <div>
-            <div className="flex items-center gap-3 mb-4 text-xs">
-              <span className="font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-[var(--muted)] text-[var(--primary)] border border-[var(--border)]">
-                {book.year} Publication
-              </span>
-              <span className="text-[var(--muted-foreground)]">•</span>
-              <span className="text-[var(--muted-foreground)] font-semibold">Author: {book.author}</span>
-            </div>
+        <nav aria-label="On this page" className="mb-7 flex gap-2 overflow-x-auto pb-1">
+          {sections.map((section) => (
+            <a
+              key={section.id}
+              href={`#${section.id}`}
+              className="shrink-0 rounded-full border border-[var(--border)] bg-[var(--card)] px-3 py-1.5 text-[11px] font-semibold text-[var(--muted-foreground)] hover:text-[var(--foreground)]"
+            >
+              {section.label}
+            </a>
+          ))}
+        </nav>
 
-            <h1 className="text-3xl sm:text-5xl font-extrabold text-[var(--foreground)] tracking-tight leading-tight mb-2">
-              {book.title}
-            </h1>
-            <p className="text-base sm:text-lg text-[var(--primary)] font-medium italic">
-              "{book.tagline}"
-            </p>
-          </div>
-
-          {/* Core Summary Box */}
-          <div className="p-6 rounded-2xl bg-[var(--muted)] border border-[var(--border)] space-y-3">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-[var(--primary)] flex items-center gap-2">
-              <BookOpen className="w-4 h-4" />
-              <span>Core Thesis & Summary</span>
-            </h3>
-            <p className="text-xs sm:text-sm text-[var(--foreground)] leading-relaxed">
-              {book.summary}
-            </p>
-          </div>
-
-          {/* Embedded Interactive Simulators */}
-          {book.hasHabitSimulator && <HabitSimulator />}
-          {book.hasCognitiveTester && <CognitiveTester />}
-
-          {/* Embedded Community Poll */}
-          {book.poll && (
-            <InteractivePoll question={book.poll.question} options={book.poll.options} />
-          )}
-
-          {/* Key Takeaways */}
-          <div className="space-y-4">
-            <h3 className="text-sm font-bold uppercase tracking-wider text-[var(--foreground)] flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-[var(--primary)]" />
-              <span>Key takeaways & Mental Models</span>
-            </h3>
-            <ul className="space-y-2.5 text-xs sm:text-sm text-[var(--foreground)]">
-              {book.keyTakeaways.map((takeaway, idx) => (
-                <li key={idx} className="flex items-start gap-2.5 p-3 rounded-xl bg-[var(--muted)]/50 border border-[var(--border)]">
-                  <CheckCircle2 className="w-4 h-4 text-[var(--primary)] shrink-0 mt-0.5" />
-                  <span>{takeaway}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Action Protocol Steps */}
-          <div className="space-y-4 pt-4 border-t border-[var(--border)]">
-            <h3 className="text-sm font-bold uppercase tracking-wider text-[var(--foreground)] flex items-center gap-2">
-              <FileCode className="w-4 h-4 text-[var(--primary)]" />
-              <span>Execution Protocol Steps</span>
-            </h3>
-            <div className="space-y-2">
-              {book.protocolSteps.map((step, idx) => (
-                <div key={idx} className="p-3.5 rounded-xl bg-[var(--muted)] border border-[var(--border)] text-xs sm:text-sm text-[var(--foreground)] flex items-start gap-3">
-                  <span className="font-mono font-bold text-[var(--primary)]">{idx + 1}.</span>
-                  <span>{step}</span>
+        <article className="overflow-hidden rounded-[2rem] border border-[var(--border)] bg-[var(--card)] shadow-2xl">
+          <header className="grid gap-8 border-b border-[var(--border)] p-6 sm:p-10 lg:grid-cols-[180px_1fr] lg:p-12">
+            <div className="mx-auto w-full max-w-[180px]">
+              {book.coverImageUrl ? (
+                <div className="overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--muted)] shadow-lg">
+                  <Image
+                    src={book.coverImageUrl}
+                    alt={`${book.title} cover`}
+                    width={360}
+                    height={540}
+                    className="h-auto w-full object-cover"
+                    unoptimized
+                  />
                 </div>
-              ))}
+              ) : (
+                <div className="aspect-[2/3] rounded-2xl border border-[var(--border)] bg-[var(--muted)] flex items-center justify-center p-5 text-center">
+                  <span className="text-sm font-bold">{book.title}</span>
+                </div>
+              )}
+              {book.amazonUrl && (
+                <a
+                  href={book.amazonUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-3 flex items-center justify-center gap-2 rounded-xl border border-[var(--border)] px-3 py-2 text-[11px] font-bold text-[var(--foreground)] hover:bg-[var(--muted)]"
+                >
+                  View edition <ExternalLink className="h-3.5 w-3.5" />
+                </a>
+              )}
             </div>
-          </div>
 
-          {/* Markdown Content Section */}
-          <div className="pt-6 border-t border-[var(--border)]">
-            <MarkdownRenderer content={book.markdownContent} />
-          </div>
+            <div className="min-w-0">
+              <div className="flex flex-wrap items-center gap-2 text-[10px]">
+                <span className="rounded-full bg-[var(--muted)] px-2.5 py-1 font-bold uppercase tracking-wider text-[var(--primary)] border border-[var(--border)]">
+                  {book.year} publication
+                </span>
+                {book.category && (
+                  <span className="rounded-full border border-[var(--border)] px-2.5 py-1 font-semibold text-[var(--muted-foreground)]">
+                    {book.category}
+                  </span>
+                )}
+                <span className="text-[var(--muted-foreground)]">by {book.author}</span>
+              </div>
 
-          {/* Embedded Interactive Quiz */}
-          {book.quiz && (
-            <InteractiveQuiz title={book.quiz.title} questions={book.quiz.questions} />
-          )}
+              <h1 className="mt-4 text-4xl sm:text-6xl font-extrabold text-[var(--foreground)] tracking-tight leading-[1.02]">
+                {book.title}
+              </h1>
+              <p className="mt-3 text-base sm:text-xl text-[var(--primary)] font-medium italic">
+                “{book.tagline}”
+              </p>
+
+              {book.tags && (
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {book.tags.map((tag) => (
+                    <span key={tag} className="rounded-full border border-[var(--border)] bg-[var(--muted)]/50 px-2.5 py-1 text-[10px] font-medium text-[var(--muted-foreground)]">
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+          </header>
+
+          <div className="space-y-10 p-6 sm:p-10 lg:p-12">
+            <section id="summary" className="scroll-mt-24 grid gap-5 lg:grid-cols-[1.35fr_.65fr]">
+              <div className="rounded-2xl border border-[var(--border)] bg-[var(--muted)]/50 p-6">
+                <h2 className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--primary)] flex items-center gap-2">
+                  <BookOpen className="w-4 h-4" />
+                  Core thesis
+                </h2>
+                <p className="mt-3 text-sm sm:text-base text-[var(--foreground)] leading-8">
+                  {book.summary}
+                </p>
+              </div>
+              <div className="rounded-2xl border border-[var(--primary)]/25 bg-[var(--card)] p-6">
+                <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-[var(--primary)]">Read it in one line</div>
+                <p className="mt-3 text-lg font-bold leading-7 text-[var(--foreground)]">
+                  {book.learningLab?.coreModel ?? book.keyTakeaways[0]}
+                </p>
+              </div>
+            </section>
+
+            {book.learningLab && (
+              <section id="learning-lab" className="scroll-mt-24">
+                <BookLearningLab book={book} />
+              </section>
+            )}
+
+            {(book.visual || book.artifact) && (
+              <section className="scroll-mt-24">
+                <BookArtifacts visual={book.visual} artifact={book.artifact} />
+              </section>
+            )}
+
+            {book.hasHabitSimulator && <HabitSimulator />}
+            {book.hasCognitiveTester && <CognitiveTester />}
+
+            {book.poll && (
+              <InteractivePoll question={book.poll.question} options={book.poll.options} />
+            )}
+
+            <section id="takeaways" className="scroll-mt-24 space-y-4">
+              <h2 className="text-sm font-bold uppercase tracking-[0.18em] text-[var(--foreground)] flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-[var(--primary)]" />
+                Key takeaways & mental models
+              </h2>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {book.keyTakeaways.map((takeaway, idx) => (
+                  <div key={idx} className="flex items-start gap-3 p-4 rounded-2xl bg-[var(--muted)]/50 border border-[var(--border)]">
+                    <CheckCircle2 className="w-4 h-4 text-[var(--primary)] shrink-0 mt-1" />
+                    <span className="text-sm leading-6 text-[var(--foreground)]">{takeaway}</span>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            <section id="protocol" className="scroll-mt-24 space-y-4 pt-2 border-t border-[var(--border)]">
+              <h2 className="text-sm font-bold uppercase tracking-[0.18em] text-[var(--foreground)] flex items-center gap-2">
+                <FileCode className="w-4 h-4 text-[var(--primary)]" />
+                Execution protocol
+              </h2>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {book.protocolSteps.map((step, idx) => (
+                  <div key={idx} className="p-4 rounded-2xl bg-[var(--muted)] border border-[var(--border)] text-sm text-[var(--foreground)] flex items-start gap-3">
+                    <span className="font-mono font-bold text-[var(--primary)]">{String(idx + 1).padStart(2, "0")}</span>
+                    <span className="leading-6">{step}</span>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            <section id="deep-dive" className="scroll-mt-24 pt-2 border-t border-[var(--border)]">
+              <div className="mb-6 flex items-end justify-between gap-4">
+                <div>
+                  <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-[var(--primary)]">
+                    <Brain className="h-4 w-4" />
+                    Deep dive
+                  </div>
+                  <h2 className="mt-2 text-2xl sm:text-3xl font-extrabold text-[var(--foreground)]">Understand it before you use it.</h2>
+                  <p className="mt-2 max-w-2xl text-sm leading-7 text-[var(--muted-foreground)]">
+                    Read the model as a connected system: mechanism, examples, limits, and application.
+                    The interactive lab above is the “see it”; this section is the “read it slowly.”
+                  </p>
+                </div>
+              </div>
+              <MarkdownRenderer content={book.markdownContent} />
+            </section>
+
+            {book.quiz && (
+              <section className="pt-2">
+                <InteractiveQuiz title={book.quiz.title} questions={book.quiz.questions} />
+              </section>
+            )}
+          </div>
         </article>
       </main>
     </>
