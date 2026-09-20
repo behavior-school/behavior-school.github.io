@@ -1,6 +1,7 @@
 import { detailedBooksData } from "./books";
 import { manipulationBooksData } from "./manipulation-books";
 import { bookLearningLab } from "./book-learning-lab";
+import { generatedBooksData } from "./generated-books";
 
 const amazonBook = (asin: string) => ({
   amazonUrl: `https://www.amazon.in/dp/${asin}`,
@@ -42,7 +43,7 @@ const bookMeta: Record<string, {
 
 export const allBooksData: Record<string, import("../lib/book-types").BookDetail> = {
   ...Object.fromEntries(
-    Object.entries({ ...detailedBooksData, ...manipulationBooksData }).map(([slug, book]) => {
+    Object.entries({ ...detailedBooksData, ...manipulationBooksData, ...generatedBooksData }).map(([slug, book]) => {
       const meta = bookMeta[slug];
       return [
         slug,
@@ -50,7 +51,7 @@ export const allBooksData: Record<string, import("../lib/book-types").BookDetail
           ...book,
           ...meta,
           ...amazonBook(meta?.asin ?? book.slug),
-          learningLab: bookLearningLab[slug],
+          learningLab: book.learningLab ?? bookLearningLab[slug],
         },
       ];
     })
@@ -69,10 +70,12 @@ export const booksCatalog = Object.values(allBooksData).map((book) => {
     tagline: book.tagline,
     excerpt: book.summary,
     keyTakeaways: book.keyTakeaways.slice(0, 3),
-    category: meta?.category ?? "Behavioral Science",
-    tags: meta?.tags ?? [],
-    featured: meta?.featured ?? false,
-    ...amazon,
+    category: book.category ?? meta?.category ?? "Behavioral Science",
+    tags: book.tags ?? meta?.tags ?? [],
+    featured: book.featured ?? meta?.featured ?? false,
+    coverImageUrl: book.coverImageUrl ?? amazon.coverImageUrl,
+    amazonImageUrl: book.amazonImageUrl ?? amazon.amazonImageUrl,
+    amazonUrl: book.amazonUrl ?? amazon.amazonUrl,
   };
 });
 
