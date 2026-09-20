@@ -11,6 +11,7 @@ import InteractivePoll from "../../../components/InteractivePoll";
 import BookArtifacts from "../../../components/BookArtifacts";
 import BookLearningLab from "../../../components/BookLearningLab";
 import BookPoster from "../../../components/BookPoster";
+import BookLongform from "../../../components/BookLongform";
 import { booksCatalog } from "../../../../content/book-catalog";
 
 export function generateStaticParams() {
@@ -268,6 +269,7 @@ export default async function IndividualBookPage({ params }: { params: Promise<{
                 </div>
               </div>
               <MarkdownRenderer content={book.markdownContent} />
+              <BookLongform book={book} />
             </section>
 
             {relatedBooks.length > 0 && (
