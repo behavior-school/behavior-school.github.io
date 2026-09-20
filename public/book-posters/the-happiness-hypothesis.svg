@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1600" viewBox="0 0 1200 1600" role="img" aria-labelledby="title desc">
+<title id="title">The Happiness Hypothesis — Jonathan Haidt</title>
+<desc id="desc">A behavioral map showing intention, automatic tendencies, environment, behavior, consequences, and learning.</desc>
+<rect width="1200" height="1600" rx="48" fill="#171717"/>
+<path d="M180 1050 C330 800 470 690 610 650 C760 605 900 450 1010 250" fill="none" stroke="#e98561" stroke-width="72" opacity=".16" stroke-linecap="round"/>
+<path d="M180 1050 C330 800 470 690 610 650 C760 605 900 450 1010 250" fill="none" stroke="#e98561" stroke-width="10" stroke-linecap="round"/>
+<g fill="#262626" stroke="#e98561" stroke-width="5"><circle cx="180" cy="1050" r="72"/><circle cx="410" cy="770" r="72"/><circle cx="640" cy="640" r="72"/><circle cx="820" cy="500" r="72"/><circle cx="1010" cy="250" r="72"/></g>
+<g fill="#f4f0ea" font-family="Arial, sans-serif" font-size="25" font-weight="700" text-anchor="middle"><text x="180" y="1040">INTENT</text><text x="180" y="1070">+ CONTEXT</text><text x="410" y="760">PULLS</text><text x="410" y="790">+ HABITS</text><text x="640" y="630">ACTION</text><text x="820" y="490">FEEDBACK</text><text x="1010" y="240">LEARN</text></g>
+<text x="100" y="145" fill="#e98561" font-family="Arial, sans-serif" font-size="28" font-weight="700" letter-spacing="5">BEHAVIOR SCHOOL · PSYCHOLOGY</text>
+<text x="100" y="250" fill="#f4f0ea" font-family="Arial, sans-serif" font-size="72" font-weight="800">THE HAPPINESS</text>
+<text x="100" y="325" fill="#f4f0ea" font-family="Arial, sans-serif" font-size="72" font-weight="800">HYPOTHESIS</text>
+<text x="100" y="380" fill="#bcb7af" font-family="Arial, sans-serif" font-size="30">Jonathan Haidt · 2006</text>
+<rect x="100" y="1320" width="1000" height="150" rx="28" fill="#262626" stroke="#3b3b3b"/>
+<text x="145" y="1380" fill="#e98561" font-family="Arial, sans-serif" font-size="25" font-weight="700">BEHAVIORAL FORMULA</text>
+<text x="145" y="1430" fill="#f4f0ea" font-family="Arial, sans-serif" font-size="31">Values + environment + relationships → repeated behavior → flourishing</text>
+</svg>

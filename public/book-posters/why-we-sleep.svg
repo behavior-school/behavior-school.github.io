@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1600" viewBox="0 0 1200 1600" role="img" aria-labelledby="title desc">
+<title id="title">Why We Sleep — Matthew Walker</title>
+<desc id="desc">A night-cycle visual connecting daytime learning to sleep, memory processing, physiological regulation, and next-day performance.</desc>
+<rect width="1200" height="1600" rx="48" fill="#10151f"/>
+<circle cx="600" cy="760" r="310" fill="#192235" stroke="#e98561" stroke-width="10"/>
+<path d="M330 760 A270 270 0 0 1 870 760" fill="none" stroke="#e98561" stroke-width="34" stroke-linecap="round"/>
+<path d="M870 760 A270 270 0 0 1 330 760" fill="none" stroke="#6d7890" stroke-width="34" stroke-linecap="round"/>
+<g font-family="Arial, sans-serif" font-weight="700" fill="#f4f0ea" text-anchor="middle"><text x="600" y="520" font-size="38">DAY</text><text x="600" y="1020" font-size="38">SLEEP</text><text x="600" y="710" font-size="32">LEARN</text><text x="600" y="770" font-size="32">PROCESS</text><text x="600" y="830" font-size="32">REGULATE</text></g>
+<text x="100" y="145" fill="#e98561" font-family="Arial, sans-serif" font-size="28" font-weight="700" letter-spacing="5">BEHAVIOR SCHOOL · NEUROSCIENCE</text>
+<text x="100" y="245" fill="#f4f0ea" font-family="Arial, sans-serif" font-size="78" font-weight="800">WHY WE</text>
+<text x="100" y="325" fill="#f4f0ea" font-family="Arial, sans-serif" font-size="78" font-weight="800">SLEEP</text>
+<text x="100" y="380" fill="#b7bdc9" font-family="Arial, sans-serif" font-size="30">Matthew Walker · 2017</text>
+<rect x="100" y="1320" width="1000" height="150" rx="28" fill="#192235" stroke="#303b50"/>
+<text x="145" y="1380" fill="#e98561" font-family="Arial, sans-serif" font-size="25" font-weight="700">BEHAVIORAL FORMULA</text>
+<text x="145" y="1430" fill="#f4f0ea" font-family="Arial, sans-serif" font-size="31">Wakeful learning → sleep → processing → next-day function</text>
+</svg>

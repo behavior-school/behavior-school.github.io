@@ -2,6 +2,7 @@ import { detailedBooksData } from "./books";
 import { manipulationBooksData } from "./manipulation-books";
 import { bookLearningLab } from "./book-learning-lab";
 import { generatedBooksData } from "./generated-books";
+import { generatedBooksBatch2Data } from "./generated-books-batch-2";
 
 const amazonBook = (asin: string) => ({
   amazonUrl: `https://www.amazon.in/dp/${asin}`,
@@ -43,12 +44,17 @@ const bookMeta: Record<string, {
   "the-power-of-moments": { category: "Behavior Design", tags: ["memory", "experiences", "peak moments", "connection"], asin: "1501147760" },
   "make-it-stick": { category: "Learning", tags: ["learning science", "memory", "retrieval practice", "spaced practice"], asin: "0674729013" },
   "peak": { category: "Learning", tags: ["deliberate practice", "expertise", "skill", "feedback"], asin: "0544456238" },
-  "ultralearning": { category: "Learning", tags: ["self-directed learning", "skills", "practice", "transfer"], asin: "006285268X" }
+  "ultralearning": { category: "Learning", tags: ["self-directed learning", "skills", "practice", "transfer"], asin: "006285268X" },
+  "range": { category: "Learning", tags: ["generalists", "career", "learning", "transfer", "experimentation", "breadth"], asin: "0735214506" },
+  "mind-for-numbers": { category: "Learning", tags: ["learning", "math", "memory", "problem solving", "chunking", "study skills"], asin: "039916524X" },
+  "why-we-sleep": { category: "Neuroscience", tags: ["sleep", "memory", "brain", "health", "circadian rhythm", "recovery"], asin: "1501144316" },
+  "the-happiness-hypothesis": { category: "Psychology", tags: ["happiness", "emotion", "moral psychology", "virtue", "meaning", "well-being"], asin: "0465028020" },
+  "stumbling-on-happiness": { category: "Psychology", tags: ["happiness", "prediction", "decision making", "affective forecasting", "imagination"], asin: "140007742X" }
 };
 
 export const allBooksData: Record<string, import("../lib/book-types").BookDetail> = {
   ...Object.fromEntries(
-    Object.entries({ ...detailedBooksData, ...manipulationBooksData, ...generatedBooksData }).map(([slug, book]) => {
+    Object.entries({ ...detailedBooksData, ...manipulationBooksData, ...generatedBooksData, ...generatedBooksBatch2Data }).map(([slug, book]) => {
       const meta = bookMeta[slug];
       return [
         slug,

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1600" viewBox="0 0 1200 1600" role="img" aria-labelledby="title desc">
+<title id="title">A Mind for Numbers — Barbara Oakley</title>
+<desc id="desc">A visual learning cycle showing focused work, chunking, a short reset, retrieval, mixed problems, and explanation.</desc>
+<rect width="1200" height="1600" rx="48" fill="#171717"/>
+<circle cx="600" cy="760" r="320" fill="none" stroke="#e98561" stroke-width="12" opacity=".35"/>
+<circle cx="600" cy="760" r="190" fill="#242424" stroke="#e98561" stroke-width="5"/>
+<text x="600" y="735" text-anchor="middle" fill="#f4f0ea" font-family="Arial, sans-serif" font-size="42" font-weight="800">BUILD</text>
+<text x="600" y="790" text-anchor="middle" fill="#bcb7af" font-family="Arial, sans-serif" font-size="28">usable chunks</text>
+<g fill="#e98561" font-family="Arial, sans-serif" font-size="26" font-weight="700">
+<text x="530" y="360">FOCUS</text><text x="820" y="570">CHUNK</text><text x="820" y="980">RESET</text><text x="500" y="1190">RETRIEVE</text><text x="200" y="980">MIX</text><text x="190" y="570">EXPLAIN</text>
+</g>
+<g stroke="#e98561" stroke-width="7" fill="none" stroke-linecap="round"><path d="M600 420 L790 590"/><path d="M790 930 L600 1100"/><path d="M410 1100 L220 930"/><path d="M220 590 L410 420"/></g>
+<text x="100" y="145" fill="#e98561" font-family="Arial, sans-serif" font-size="28" font-weight="700" letter-spacing="5">BEHAVIOR SCHOOL · LEARNING</text>
+<text x="100" y="250" fill="#f4f0ea" font-family="Arial, sans-serif" font-size="76" font-weight="800">A MIND FOR</text>
+<text x="100" y="330" fill="#f4f0ea" font-family="Arial, sans-serif" font-size="76" font-weight="800">NUMBERS</text>
+<text x="100" y="385" fill="#bcb7af" font-family="Arial, sans-serif" font-size="30">Barbara Oakley · 2014</text>
+<rect x="100" y="1320" width="1000" height="150" rx="28" fill="#262626" stroke="#3b3b3b"/>
+<text x="145" y="1380" fill="#e98561" font-family="Arial, sans-serif" font-size="25" font-weight="700">BEHAVIORAL FORMULA</text>
+<text x="145" y="1430" fill="#f4f0ea" font-family="Arial, sans-serif" font-size="31">Focus → chunk → reset → retrieve → transfer</text>
+</svg>
