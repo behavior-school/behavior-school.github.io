@@ -42,10 +42,18 @@ const bookMeta: Record<string, {
 
 export const allBooksData: Record<string, import("../lib/book-types").BookDetail> = {
   ...Object.fromEntries(
-    Object.entries({ ...detailedBooksData, ...manipulationBooksData }).map(([slug, book]) => [
-      slug,
-      { ...book, ...meta, ...amazonBook(meta?.asin ?? book.slug), learningLab: bookLearningLab[slug] }
-    ])
+    Object.entries({ ...detailedBooksData, ...manipulationBooksData }).map(([slug, book]) => {
+      const meta = bookMeta[slug];
+      return [
+        slug,
+        {
+          ...book,
+          ...meta,
+          ...amazonBook(meta?.asin ?? book.slug),
+          learningLab: bookLearningLab[slug],
+        },
+      ];
+    })
   ),
 };
 
