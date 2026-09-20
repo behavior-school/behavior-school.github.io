@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, BookOpen, Sparkles, CheckCircle2, FileCode, Brain, ExternalLink } from "lucide-react";
@@ -91,13 +90,13 @@ export default async function IndividualBookPage({ params }: { params: Promise<{
             <div className="mx-auto w-full max-w-[180px]">
               {book.coverImageUrl ? (
                 <div className="overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--muted)] shadow-lg">
-                  <Image
+                  <img
                     src={book.coverImageUrl}
                     alt={`${book.title} cover`}
                     width={360}
                     height={540}
+                    loading="lazy"
                     className="h-auto w-full object-cover"
-                    unoptimized
                   />
                 </div>
               ) : (
