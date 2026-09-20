@@ -7,6 +7,7 @@ export interface Article {
   category: string;
   readTime: string;
   date: string;
+  revisionDate?: string;
   recommendedVideo: string;
   hasProcrastinationSimulator?: boolean;
   keyTakeaways: string[];
