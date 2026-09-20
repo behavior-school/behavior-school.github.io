@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import articles from "../content/articles.json";
 import { getAllBookSlugs } from "../lib/book-repository";
 
 const BASE_URL = "https://behavior-school.github.io";
@@ -31,5 +32,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticEntries, ...bookEntries];
+  const articleEntries = articles.map((article) => ({
+    url: `${BASE_URL}/blog/${article.slug}`,
+    changeFrequency: "monthly" as const,
+    priority: 0.75,
+  }));
+
+  return [...staticEntries, ...bookEntries, ...articleEntries];
 }
