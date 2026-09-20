@@ -36,7 +36,7 @@ interface BookLibraryProps {
 
 function initials(title: string) {
   return title
-    .split(/s+/)
+    .split(/\s+/)
     .slice(0, 3)
     .map((word) => word[0])
     .join("")
@@ -51,6 +51,7 @@ export default function BookLibrary({ books }: BookLibraryProps) {
 
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("All");
+  const [shelf, setShelf] = useState<"all" | "manipulation">("all");
   const [sort, setSort] = useState<SortMode>("featured");
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(12);
@@ -59,6 +60,7 @@ export default function BookLibrary({ books }: BookLibraryProps) {
     const params = new URLSearchParams(window.location.search);
     setQuery(params.get("q") ?? "");
     setCategory(params.get("category") ?? "All");
+    setShelf(params.get("shelf") === "manipulation" ? "manipulation" : "all");
 
     const requestedSort = params.get("sort");
     if (
@@ -86,12 +88,14 @@ export default function BookLibrary({ books }: BookLibraryProps) {
     nextCategory: string,
     nextSort: SortMode,
     nextPage: number,
-    nextPageSize: number
+    nextPageSize: number,
+    nextShelf: "all" | "manipulation" = shelf
   ) => {
     const params = new URLSearchParams();
 
     if (nextQuery.trim()) params.set("q", nextQuery.trim());
     if (nextCategory !== "All") params.set("category", nextCategory);
+    if (nextShelf === "manipulation") params.set("shelf", "manipulation");
     if (nextSort !== "featured") params.set("sort", nextSort);
     if (nextPage > 1) params.set("page", String(nextPage));
     if (nextPageSize !== 12) params.set("size", String(nextPageSize));
@@ -106,6 +110,7 @@ export default function BookLibrary({ books }: BookLibraryProps) {
     return [...books]
       .filter((book) => {
         if (category !== "All" && book.category !== category) return false;
+        if (shelf === "manipulation" && !MANIPULATION_CATEGORIES.has(book.category)) return false;
         if (!q) return true;
 
         const haystack = [
@@ -128,7 +133,7 @@ export default function BookLibrary({ books }: BookLibraryProps) {
         if (sort === "author") return a.author.localeCompare(b.author);
         return Number(b.featured) - Number(a.featured) || Number(b.year) - Number(a.year);
       });
-  }, [books, category, query, sort]);
+  }, [books, category, query, shelf, sort]);
 
   const totalPages = Math.max(1, Math.ceil(filteredBooks.length / pageSize));
   const safePage = Math.min(page, totalPages);
@@ -146,23 +151,26 @@ export default function BookLibrary({ books }: BookLibraryProps) {
     nextCategory: string,
     nextSort: SortMode,
     nextPage = 1,
-    nextPageSize = pageSize
+    nextPageSize = pageSize,
+    nextShelf = shelf
   ) => {
     setQuery(nextQuery);
     setCategory(nextCategory);
+    setShelf(nextShelf);
     setSort(nextSort);
     setPage(nextPage);
     setPageSize(nextPageSize);
-    syncUrl(nextQuery, nextCategory, nextSort, nextPage, nextPageSize);
+    syncUrl(nextQuery, nextCategory, nextSort, nextPage, nextPageSize, nextShelf);
   };
 
-  const clearFilters = () => updateFilters("", "All", "featured", 1, 12);
+  const clearFilters = () => updateFilters("", "All", "featured", 1, 12, "all");
 
   const manipulationCount = books.filter((book) => MANIPULATION_CATEGORIES.has(book.category)).length;
-  const isManipulationShelf = MANIPULATION_CATEGORIES.has(category);
+  const isManipulationShelf = shelf === "manipulation";
   const activeFilterCount =
     Number(Boolean(query.trim())) +
     Number(category !== "All") +
+    Number(shelf === "manipulation") +
     Number(sort !== "featured");
 
   return (
@@ -249,7 +257,7 @@ export default function BookLibrary({ books }: BookLibraryProps) {
           <button
             type="button"
             onClick={() =>
-              updateFilters(query, isManipulationShelf ? "All" : "Power & Manipulation", sort, 1)
+              updateFilters(query, "All", sort, 1, pageSize, isManipulationShelf ? "all" : "manipulation")
             }
             className="inline-flex items-center justify-center gap-2 rounded-2xl border border-[var(--primary)]/35 bg-[var(--muted)] px-4 py-3.5 text-sm font-bold text-[var(--foreground)] transition hover:border-[var(--primary)] hover:-translate-y-0.5"
           >
@@ -287,7 +295,7 @@ export default function BookLibrary({ books }: BookLibraryProps) {
             <strong className="text-[var(--foreground)]">{filteredBooks.length}</strong> matching books
           </p>
           <div className="flex items-center gap-2">
-            {(query || category !== "All" || sort !== "featured") && (
+            {(query || category !== "All" || shelf !== "all" || sort !== "featured") && (
               <button
                 type="button"
                 onClick={clearFilters}
