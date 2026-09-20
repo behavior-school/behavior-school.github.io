@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1600" role="img" aria-labelledby="title desc">
+<title id="title">Games People Play behavioral science learning poster</title>
+<desc id="desc">Behavior School visual poster for Games People Play by Eric Berne. A conceptual model of attention, prediction, action and feedback.</desc>
+<defs>
+ <linearGradient id="g" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#1f1815"/><stop offset="1" stop-color="#5b3022"/></linearGradient>
+ <filter id="s"><feDropShadow dx="0" dy="16" stdDeviation="18" flood-opacity=".24"/></filter>
+</defs>
+<rect width="1200" height="1600" fill="url(#g)"/>
+<circle cx="980" cy="180" r="260" fill="#c47445" opacity=".16"/>
+<circle cx="1030" cy="540" r="170" fill="#f6d3bf" opacity=".08"/>
+<rect x="64" y="64" width="1072" height="1472" rx="44" fill="none" stroke="#f7efe9" stroke-opacity=".18" stroke-width="3"/>
+<text x="80" y="120" font-family="Arial,sans-serif" font-size="22" font-weight="700" letter-spacing="6" fill="#f2b18d">BEHAVIOR SCHOOL</text>
+<text x="80" y="170" font-family="Arial,sans-serif" font-size="16" fill="#e6d6ce">RELATIONSHIPS</text>
+<text x="80" y="340" font-family="Arial,sans-serif" font-size="54" font-weight="800" fill="#f7efe9">Games People Play</text>
+<text x="80" y="620" font-family="Arial,sans-serif" font-size="24" fill="#e7d9d1">READ → SEE → TEST → REMEMBER</text>
+<g transform="translate(80,700)" filter="url(#s)">
+<rect width="1040" height="520" rx="32" fill="#f7efe9" fill-opacity=".07" stroke="#f7efe9" stroke-opacity=".18"/>
+<text x="42" y="64" font-family="Arial,sans-serif" font-size="15" font-weight="700" letter-spacing="4" fill="#f2b18d">BEHAVIORAL MAP</text>
+<rect x="40" y="125" width="158" height="100" rx="20" fill="#f7efe9" fill-opacity=".08" stroke="#f7efe9" stroke-opacity=".16"/><text x="119" y="168" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#fff6f1">Context</text><text x="119" y="196" text-anchor="middle" font-family="monospace" font-size="13" fill="#d8c7bd">01</text><path d="M198 175 H226" stroke="#f2b18d" stroke-width="3" fill="none"/><rect x="232" y="125" width="158" height="100" rx="20" fill="#f7efe9" fill-opacity=".08" stroke="#f7efe9" stroke-opacity=".16"/><text x="311" y="168" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#fff6f1">Attention</text><text x="311" y="196" text-anchor="middle" font-family="monospace" font-size="13" fill="#d8c7bd">02</text><path d="M390 175 H418" stroke="#f2b18d" stroke-width="3" fill="none"/><rect x="424" y="125" width="158" height="100" rx="20" fill="#f7efe9" fill-opacity=".08" stroke="#f7efe9" stroke-opacity=".16"/><text x="503" y="168" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#fff6f1">Prediction</text><text x="503" y="196" text-anchor="middle" font-family="monospace" font-size="13" fill="#d8c7bd">03</text><path d="M582 175 H610" stroke="#f2b18d" stroke-width="3" fill="none"/><rect x="616" y="125" width="158" height="100" rx="20" fill="#f7efe9" fill-opacity=".08" stroke="#f7efe9" stroke-opacity=".16"/><text x="695" y="168" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#fff6f1">Action</text><text x="695" y="196" text-anchor="middle" font-family="monospace" font-size="13" fill="#d8c7bd">04</text><path d="M774 175 H802" stroke="#f2b18d" stroke-width="3" fill="none"/><rect x="808" y="125" width="158" height="100" rx="20" fill="#f7efe9" fill-opacity=".08" stroke="#f7efe9" stroke-opacity=".16"/><text x="887" y="168" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#fff6f1">Feedback</text><text x="887" y="196" text-anchor="middle" font-family="monospace" font-size="13" fill="#d8c7bd">05</text>
+<path d="M960 260 C920 380 450 420 130 315" fill="none" stroke="#f2b18d" stroke-width="3" stroke-dasharray="10 10" opacity=".75"/>
+<text x="520" y="454" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#dbc9c0">feedback reshapes the next prediction</text>
+</g>
+<text x="80" y="1318" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#f7efe9">ONE IDEA TO CARRY OUT</text>
+<text x="80" y="1364" font-family="Arial,sans-serif" font-size="17" fill="#ddcbc1">Turn an invisible behavioral mechanism into a visible choice.</text>
+<text x="80" y="1466" font-family="Arial,sans-serif" font-size="16" fill="#cbb7ad">Eric Berne</text>
+<text x="1120" y="1466" text-anchor="end" font-family="monospace" font-size="14" fill="#cbb7ad">behaviorschool.github.io</text>
+</svg>
