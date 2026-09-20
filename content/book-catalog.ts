@@ -38,7 +38,12 @@ const bookMeta: Record<string, {
   "pre-suasion": { category: "Persuasion", tags: ["persuasion", "attention", "framing"], asin: "1501109790" },
   "propaganda": { category: "Mass Persuasion", tags: ["propaganda", "public opinion", "media"], featured: true, asin: "080461511X" },
   "snakes-in-suits": { category: "Workplace Manipulation", tags: ["workplace", "psychopathy", "organizational behavior"], asin: "0060837721" },
-  "without-conscience": { category: "Psychopathy", tags: ["psychopathy", "deception", "forensic psychology"], asin: "1572304510" }
+  "without-conscience": { category: "Psychopathy", tags: ["psychopathy", "deception", "forensic psychology"], asin: "1572304510" },
+  "tiny-habits": { category: "Habits", tags: ["behavior design", "habits", "motivation", "prompts"], asin: "0358003326" },
+  "the-power-of-moments": { category: "Behavior Design", tags: ["memory", "experiences", "peak moments", "connection"], asin: "1501147760" },
+  "make-it-stick": { category: "Learning", tags: ["learning science", "memory", "retrieval practice", "spaced practice"], asin: "0674729013" },
+  "peak": { category: "Learning", tags: ["deliberate practice", "expertise", "skill", "feedback"], asin: "0544456238" },
+  "ultralearning": { category: "Learning", tags: ["self-directed learning", "skills", "practice", "transfer"], asin: "006285268X" }
 };
 
 export const allBooksData: Record<string, import("../lib/book-types").BookDetail> = {

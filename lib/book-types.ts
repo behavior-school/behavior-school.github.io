@@ -57,6 +57,7 @@ export interface BookDetail {
   visual?: BookVisual;
   artifact?: BookArtifact;
   learningLab?: BookLearningLab;
+  mermaidDiagram?: string;
   category?: string;
   tags?: string[];
   coverImageUrl?: string;
