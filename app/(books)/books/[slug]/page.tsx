@@ -22,7 +22,7 @@ interface BookDetail {
   hasHabitSimulator?: boolean;
   hasCognitiveTester?: boolean;
   quiz?: { title: string; questions: Question[] };
-  poll?: { question: string; options: PollOption[] };
+  poll?: { question: string; options: PollOption[] };\n  visual?: BookVisual;\n  artifact?: BookArtifact;
 }
 
 const detailedBooksData: Record<string, BookDetail> = {
