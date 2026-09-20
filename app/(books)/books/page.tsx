@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import BookLibrary from "../../../components/BookLibrary";
-import { getBookCatalog } from "../../../lib/book-repository";
+import BookLibrary from "../../components/BookLibrary";
+import { getBookCatalog } from "../../lib/book-repository";
 
 export const metadata: Metadata = {
   title: "Behavioral Science Book Summaries & Manipulation Psychology Library | Behavior School",
