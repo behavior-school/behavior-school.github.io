@@ -144,7 +144,7 @@ export default function BookLibrary({ books }: BookLibraryProps) {
       setPage(safePage);
       syncUrl(query, category, sort, safePage, pageSize);
     }
-  }, [page, safePage, query, category, sort, pageSize]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [page, safePage, query, category, shelf, sort, pageSize]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const updateFilters = (
     nextQuery: string,
@@ -272,7 +272,7 @@ export default function BookLibrary({ books }: BookLibraryProps) {
         <div className="mt-4 flex items-center gap-2 overflow-x-auto pb-1">
           <button
             type="button"
-            onClick={() => updateFilters(query, "All", sort, 1)}
+            onClick={() => updateFilters(query, "All", sort, 1, pageSize, "all")}
             className={`shrink-0 rounded-full border px-3 py-1.5 text-xs font-semibold transition ${category === "All" ? "border-[var(--primary)] bg-[var(--primary)] text-[var(--primary-foreground)]" : "border-[var(--border)] bg-[var(--background)] text-[var(--muted-foreground)] hover:text-[var(--foreground)]"}`}
           >
             All books
@@ -281,7 +281,7 @@ export default function BookLibrary({ books }: BookLibraryProps) {
             <button
               key={item}
               type="button"
-              onClick={() => updateFilters(query, item, sort, 1)}
+              onClick={() => updateFilters(query, item, sort, 1, pageSize, "all")}
               className={`shrink-0 rounded-full border px-3 py-1.5 text-xs font-semibold transition ${category === item ? "border-[var(--primary)] bg-[var(--primary)] text-[var(--primary-foreground)]" : "border-[var(--border)] bg-[var(--background)] text-[var(--muted-foreground)] hover:text-[var(--foreground)]"}`}
             >
               {item}
