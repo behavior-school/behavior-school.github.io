@@ -10,6 +10,8 @@ import InteractiveQuiz from "../../../components/InteractiveQuiz";
 import InteractivePoll from "../../../components/InteractivePoll";
 import BookArtifacts from "../../../components/BookArtifacts";
 import BookLearningLab from "../../../components/BookLearningLab";
+import BookPoster from "../../../components/BookPoster";
+import { booksCatalog } from "../../../../content/book-catalog";
 
 export function generateStaticParams() {
   return Object.keys(allBooksData).map((slug) => ({ slug }));
@@ -24,6 +26,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: `${book.title}: Deep Summary, Neuroscience & Practical Guide | Behavior School`,
     description: `${book.summary} Explore the deeper mental models, neuroscience lens, visual frameworks, real-world examples, and field exercises.`,
     keywords: [book.title, book.author, "book summary", "behavioral science", "psychology", "neuroscience", ...(book.tags ?? [])],
+    alternates: {
+      canonical: `https://behavior-school.github.io/books/${book.slug}`,
+    },
     openGraph: {
       title: `${book.title} — Deep Behavioral Science Guide`,
       description: book.summary,
@@ -48,9 +53,36 @@ export default async function IndividualBookPage({ params }: { params: Promise<{
     datePublished: book.year,
     description: book.summary,
     url: `https://behavior-school.github.io/books/${book.slug}`,
-    image: book.coverImageUrl,
+    image: [
+      book.coverImageUrl,
+      `https://behavior-school.github.io/book-posters/${book.slug}.svg`,
+    ].filter(Boolean),
+    genre: book.category,
+    keywords: book.tags?.join(", "),
     publisher: { "@type": "Organization", name: "Behavior School" },
   };
+
+  const jsonLdBreadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Behavior School", item: "https://behavior-school.github.io/" },
+      { "@type": "ListItem", position: 2, name: "Books", item: "https://behavior-school.github.io/books" },
+      { "@type": "ListItem", position: 3, name: book.title, item: `https://behavior-school.github.io/books/${book.slug}` },
+    ],
+  };
+
+  const relatedBooks = booksCatalog
+    .filter((candidate) => candidate.slug !== book.slug)
+    .map((candidate) => ({
+      candidate,
+      score:
+        (candidate.category === book.category ? 3 : 0) +
+        (candidate.tags ?? []).filter((tag) => (book.tags ?? []).includes(tag)).length,
+    }))
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 4)
+    .map(({ candidate }) => candidate);
 
   const sections = [
     { id: "summary", label: "Core thesis" },
@@ -63,6 +95,7 @@ export default async function IndividualBookPage({ params }: { params: Promise<{
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdBook) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdBreadcrumb) }} />
 
       <main className="pt-28 pb-24 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <Link
@@ -86,8 +119,8 @@ export default async function IndividualBookPage({ params }: { params: Promise<{
         </nav>
 
         <article className="overflow-hidden rounded-[2rem] border border-[var(--border)] bg-[var(--card)] shadow-2xl">
-          <header className="grid gap-8 border-b border-[var(--border)] p-6 sm:p-10 lg:grid-cols-[180px_1fr] lg:p-12">
-            <div className="mx-auto w-full max-w-[180px]">
+          <header className="grid gap-8 border-b border-[var(--border)] p-6 sm:p-10 lg:grid-cols-[150px_150px_1fr] lg:p-12">
+            <div className="mx-auto w-full max-w-[150px]">
               {book.coverImageUrl ? (
                 <div className="overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--muted)] shadow-lg">
                   <img
@@ -114,6 +147,10 @@ export default async function IndividualBookPage({ params }: { params: Promise<{
                   View edition <ExternalLink className="h-3.5 w-3.5" />
                 </a>
               )}
+            </div>
+
+            <div className="mx-auto w-full max-w-[150px]">
+              <BookPoster book={book} />
             </div>
 
             <div className="min-w-0">
@@ -232,6 +269,27 @@ export default async function IndividualBookPage({ params }: { params: Promise<{
               </div>
               <MarkdownRenderer content={book.markdownContent} />
             </section>
+
+            {relatedBooks.length > 0 && (
+              <section className="pt-2 border-t border-[var(--border)]" aria-labelledby="related-reading">
+                <div className="mb-5">
+                  <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-[var(--primary)]">Continue the learning path</div>
+                  <h2 id="related-reading" className="mt-2 text-2xl font-extrabold text-[var(--foreground)]">Related books</h2>
+                  <p className="mt-2 text-sm leading-6 text-[var(--muted-foreground)]">
+                    Keep the mental model active by comparing it with adjacent ideas.
+                  </p>
+                </div>
+                <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                  {relatedBooks.map((related) => (
+                    <Link key={related.slug} href={`/books/${related.slug}`} className="rounded-2xl border border-[var(--border)] bg-[var(--muted)]/40 p-4 transition-transform hover:-translate-y-1">
+                      <div className="text-xs font-bold leading-5 text-[var(--foreground)]">{related.title}</div>
+                      <div className="mt-1 text-[10px] text-[var(--muted-foreground)]">{related.author}</div>
+                      <div className="mt-3 text-[10px] font-semibold text-[var(--primary)]">Read guide →</div>
+                    </Link>
+                  ))}
+                </div>
+              </section>
+            )}
 
             {book.quiz && (
               <section className="pt-2">
