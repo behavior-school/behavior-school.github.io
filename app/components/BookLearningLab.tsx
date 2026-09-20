@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import MermaidDiagram from "./MermaidDiagram";
 import type { BookDetail } from "../../lib/book-types";
 
 type Props = {
@@ -53,6 +54,21 @@ export default function BookLearningLab({ book }: Props) {
   );
 
   if (!lab) return null;
+
+  const mermaidByCategory: Record<string, string> = {
+    Habits: "flowchart LR\n  C[Cue] --> A[Attention]\n  A --> R[Response]\n  R --> F[Feedback]\n  F --> C",
+    Cognition: "flowchart LR\n  I[Information] --> H[Heuristic]\n  H --> J[Judgment]\n  J --> R[Review]\n  R --> I",
+    "Decision Making": "flowchart TD\n  O[Options] --> Ref[Reference point]\n  Ref --> V[Valuation]\n  V --> D[Decision]\n  D --> Out[Outcome]\n  Out --> Ref",
+    Persuasion: "flowchart LR\n  S[Signal] --> T[Attention]\n  T --> M[Meaning]\n  M --> B[Behavior]\n  B --> F[Feedback]",
+    "Power & Manipulation": "flowchart LR\n  Info[Information] --> Status[Status]\n  Status --> Dependence[Dependence]\n  Dependence --> Choice[Behavior]\n  Choice --> Reputation[Reputation]\n  Reputation --> Info",
+    "Manipulation Defense": "flowchart TD\n  Cue[Concerning cue] --> Check[Independent check]\n  Check --> Pattern[Repeated pattern]\n  Pattern --> Boundary[Boundary]\n  Boundary --> System[Safer system]",
+    "Social Psychology": "flowchart LR\n  Context --> Attention\n  Attention --> Social[Social signal]\n  Social --> Interpretation\n  Interpretation --> Action\n  Action --> Context",
+    Neuroscience: "flowchart LR\n  Environment --> Prediction\n  Prediction --> State[Internal state]\n  State --> Action\n  Action --> Feedback\n  Feedback --> Prediction",
+    Focus: "flowchart LR\n  Goal --> Attention\n  Attention --> Deep[Deep processing]\n  Deep --> Output\n  Output --> Feedback\n  Feedback --> Goal",
+  };
+
+  const mermaidChart = mermaidByCategory[book.category ?? ""] ??
+    "flowchart LR\n  Context --> Attention\n  Attention --> Prediction\n  Prediction --> Action\n  Action --> Feedback\n  Feedback --> Prediction";
 
   const togglePractice = (index: number) => {
     setChecked((current) => current.map((value, i) => (i === index ? !value : value)));
@@ -155,6 +171,11 @@ export default function BookLearningLab({ book }: Props) {
           </div>
         </div>
       </div>
+
+      <MermaidDiagram
+        chart={mermaidChart}
+        title={book.title + " — behavioral mechanism map"}
+      />
 
       <div className="grid gap-5 lg:grid-cols-2">
         <article className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5 sm:p-6">
