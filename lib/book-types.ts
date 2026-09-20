@@ -26,6 +26,20 @@ export interface BookPollOption {
   votes: number;
 }
 
+export interface BookStory {
+  title: string;
+  text: string;
+}
+
+export interface BookLearningLab {
+  coreModel: string;
+  brainLens: string;
+  story: BookStory;
+  examples: string[];
+  watchFor: string[];
+  practice: string[];
+}
+
 export interface BookDetail {
   slug: string;
   title: string;
@@ -42,6 +56,7 @@ export interface BookDetail {
   poll?: { question: string; options: BookPollOption[] };
   visual?: BookVisual;
   artifact?: BookArtifact;
+  learningLab?: BookLearningLab;
   category?: string;
   tags?: string[];
   coverImageUrl?: string;
