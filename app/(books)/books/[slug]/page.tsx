@@ -7,7 +7,7 @@ import HabitSimulator from "../../../components/HabitSimulator";
 import CognitiveTester from "../../../components/CognitiveTester";
 import InteractiveQuiz, { Question } from "../../../components/InteractiveQuiz";
 import InteractivePoll, { PollOption } from "../../../components/InteractivePoll";
-import BookArtifacts, { BookArtifact, BookVisual } from "../../../components/BookArtifacts";
+import BookArtifacts, { type BookArtifact, type BookVisual } from "../../../components/BookArtifacts";
 
 interface BookDetail {
   slug: string;
