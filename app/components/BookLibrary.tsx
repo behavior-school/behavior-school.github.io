@@ -202,7 +202,7 @@ export default function BookLibrary({ books }: BookLibraryProps) {
         <div className="grid grid-cols-2 gap-2.5 sm:gap-3 lg:grid-cols-[minmax(0,1fr)_220px_220px_auto]">
           <label className="relative block">
             <span className="sr-only">Search books</span>
-            <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--muted-foreground)]" />
+            <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--muted-foreground)]" />
             <input
               value={query}
               onChange={(event) => updateFilters(event.target.value, category, sort, 1)}
@@ -261,7 +261,7 @@ export default function BookLibrary({ books }: BookLibraryProps) {
             onClick={() =>
               updateFilters(query, "All", sort, 1, pageSize, isManipulationShelf ? "all" : "manipulation")
             }
-            className="inline-flex items-center justify-center gap-2 rounded-2xl border border-[var(--primary)]/35 bg-[var(--muted)] px-4 py-3.5 text-sm font-bold text-[var(--foreground)] transition hover:border-[var(--primary)] hover:-translate-y-0.5"
+            className="col-span-2 inline-flex items-center justify-center gap-2 rounded-2xl border border-[var(--primary)]/35 bg-[var(--muted)] px-4 py-3.5 text-sm font-bold text-[var(--foreground)] transition hover:border-[var(--primary)] hover:-translate-y-0.5 lg:col-span-1"
           >
             <Sparkles className="h-4 w-4 text-[var(--primary)]" />
             <span>Manipulation shelf</span>
