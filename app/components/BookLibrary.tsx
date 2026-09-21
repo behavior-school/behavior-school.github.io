@@ -28,7 +28,7 @@ const MANIPULATION_CATEGORIES = new Set([
   "Psychopathy",
 ]);
 
-type SortMode = "featured" | "newest" | "oldest" | "title" | "author";
+type SortMode = "popularity" | "featured" | "newest" | "oldest" | "title" | "author";
 
 interface BookLibraryProps {
   books: BookCatalogItem[];
@@ -52,7 +52,7 @@ export default function BookLibrary({ books }: BookLibraryProps) {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("All");
   const [shelf, setShelf] = useState<"all" | "manipulation">("all");
-  const [sort, setSort] = useState<SortMode>("featured");
+  const [sort, setSort] = useState<SortMode>("popularity");
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(12);
 
@@ -64,6 +64,7 @@ export default function BookLibrary({ books }: BookLibraryProps) {
 
     const requestedSort = params.get("sort");
     if (
+      requestedSort === "popularity" ||
       requestedSort === "newest" ||
       requestedSort === "oldest" ||
       requestedSort === "title" ||
@@ -96,7 +97,7 @@ export default function BookLibrary({ books }: BookLibraryProps) {
     if (nextQuery.trim()) params.set("q", nextQuery.trim());
     if (nextCategory !== "All") params.set("category", nextCategory);
     if (nextShelf === "manipulation") params.set("shelf", "manipulation");
-    if (nextSort !== "featured") params.set("sort", nextSort);
+    if (nextSort !== "popularity") params.set("sort", nextSort);
     if (nextPage > 1) params.set("page", String(nextPage));
     if (nextPageSize !== 12) params.set("size", String(nextPageSize));
 
@@ -131,7 +132,7 @@ export default function BookLibrary({ books }: BookLibraryProps) {
         if (sort === "oldest") return Number(a.year) - Number(b.year);
         if (sort === "title") return a.title.localeCompare(b.title);
         if (sort === "author") return a.author.localeCompare(b.author);
-        return Number(b.featured) - Number(a.featured) || Number(b.year) - Number(a.year);
+        return Number(b.popularityScore) - Number(a.popularityScore) || Number(b.featured) - Number(a.featured) || Number(b.year) - Number(a.year);
       });
   }, [books, category, query, shelf, sort]);
 
@@ -163,7 +164,7 @@ export default function BookLibrary({ books }: BookLibraryProps) {
     syncUrl(nextQuery, nextCategory, nextSort, nextPage, nextPageSize, nextShelf);
   };
 
-  const clearFilters = () => updateFilters("", "All", "featured", 1, 12, "all");
+  const clearFilters = () => updateFilters("", "All", "popularity", 1, 12, "all");
 
   const manipulationCount = books.filter((book) => MANIPULATION_CATEGORIES.has(book.category)).length;
   const isManipulationShelf = shelf === "manipulation";
@@ -171,7 +172,7 @@ export default function BookLibrary({ books }: BookLibraryProps) {
     Number(Boolean(query.trim())) +
     Number(category !== "All") +
     Number(shelf === "manipulation") +
-    Number(sort !== "featured");
+    Number(sort !== "popularity");
 
   return (
     <section className="space-y-7" aria-labelledby="book-library-title">
@@ -198,15 +199,15 @@ export default function BookLibrary({ books }: BookLibraryProps) {
           </div>
         </div>
 
-        <div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_220px_220px_auto]">
+        <div className="grid grid-cols-2 gap-2.5 sm:gap-3 lg:grid-cols-[minmax(0,1fr)_220px_220px_auto]">
           <label className="relative block">
             <span className="sr-only">Search books</span>
             <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--muted-foreground)]" />
             <input
               value={query}
               onChange={(event) => updateFilters(event.target.value, category, sort, 1)}
-              placeholder="Search titles, authors, topics, tags..."
-              className="w-full rounded-2xl border border-[var(--border)] bg-[var(--background)] py-3.5 pl-11 pr-10 text-sm text-[var(--foreground)] outline-none transition focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary)]/15"
+              placeholder="Search books, authors, topics..."
+              className="col-span-2 w-full rounded-2xl border border-[var(--border)] bg-[var(--background)] py-3 pl-10 pr-10 text-sm sm:py-3.5 lg:col-span-1 text-[var(--foreground)] outline-none transition focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary)]/15"
               aria-label="Search book summaries"
             />
             {query && (
@@ -230,6 +231,7 @@ export default function BookLibrary({ books }: BookLibraryProps) {
               className="min-w-0 flex-1 bg-transparent py-3.5 text-sm text-[var(--foreground)] outline-none"
               aria-label="Sort books"
             >
+              <option value="popularity">Popularity (default)</option>
               <option value="featured">Featured first</option>
               <option value="newest">Newest first</option>
               <option value="oldest">Oldest first</option>
@@ -269,7 +271,7 @@ export default function BookLibrary({ books }: BookLibraryProps) {
           </button>
         </div>
 
-        <div className="mt-4 flex items-center gap-2 overflow-x-auto pb-1">
+        <div className="app-horizontal-scroll -mx-1 mt-4 flex snap-x items-center gap-2 overflow-x-auto px-1 pb-1">
           <button
             type="button"
             onClick={() => updateFilters(query, "All", sort, 1, pageSize, "all")}
@@ -313,25 +315,26 @@ export default function BookLibrary({ books }: BookLibraryProps) {
       </div>
 
       {visibleBooks.length > 0 ? (
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 min-[480px]:grid-cols-2 sm:gap-6 md:grid-cols-2 xl:grid-cols-3">
           {visibleBooks.map((book) => (
             <article
               key={book.slug}
-              className="group overflow-hidden rounded-[1.75rem] border border-[var(--border)] bg-[var(--card)] shadow-sm transition duration-300 hover:-translate-y-1 hover:border-[var(--primary)]/45 hover:shadow-xl"
+              className="group min-w-0 overflow-hidden rounded-[1.35rem] border border-[var(--border)] bg-[var(--card)] shadow-sm transition duration-300 hover:-translate-y-1 hover:border-[var(--primary)]/45 hover:shadow-xl sm:rounded-[1.75rem]"
             >
               <Link href={`/books/${book.slug}`} className="block">
                 <div className="relative aspect-[2/3] overflow-hidden bg-[linear-gradient(135deg,var(--muted),var(--card))]">
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_10%,var(--primary)_0%,transparent_46%)] opacity-15" />
 
-                  <div className="absolute left-4 top-4 z-20 flex items-center gap-2">
+                  <div className="absolute inset-x-3 top-3 z-20 flex items-center justify-between gap-2">
                     <span className="rounded-full bg-[var(--card)]/95 px-2.5 py-1 text-[10px] font-bold text-[var(--primary)] shadow">
                       {book.year}
                     </span>
-                    {book.featured && (
-                      <span className="rounded-full bg-[var(--primary)] px-2.5 py-1 text-[10px] font-bold text-[var(--primary-foreground)] shadow">
-                        Featured
-                      </span>
-                    )}
+                    <span
+                      className="rounded-full bg-[var(--card)]/95 px-2 py-1 text-[9px] font-bold text-[var(--primary)] shadow"
+                      title="Behavior School editorial discovery score, not a market or sales rating"
+                    >
+                      {book.popularityScore}/100
+                    </span>
                   </div>
 
                   <div className="absolute inset-0 grid place-items-center p-4 sm:p-5">
@@ -359,7 +362,7 @@ export default function BookLibrary({ books }: BookLibraryProps) {
                 </div>
               </Link>
 
-              <div className="space-y-4 p-5 sm:p-6">
+              <div className="space-y-3 p-3.5 sm:space-y-4 sm:p-6">
                 <div>
                   <div className="flex items-center justify-between gap-3">
                     <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--primary)]">
@@ -367,18 +370,18 @@ export default function BookLibrary({ books }: BookLibraryProps) {
                     </p>
                     <span className="text-[10px] text-[var(--muted-foreground)]">Full guide</span>
                   </div>
-                  <h2 className="mt-1.5 text-xl font-extrabold leading-tight text-[var(--foreground)]">
+                  <h2 className="mt-1.5 text-base font-extrabold leading-tight text-[var(--foreground)] sm:text-xl">
                     {book.title}
                   </h2>
                   <p className="mt-1 text-xs font-semibold text-[var(--muted-foreground)]">{book.author}</p>
                 </div>
 
-                <p className="line-clamp-4 text-sm leading-relaxed text-[var(--muted-foreground)]">
+                <p className="line-clamp-3 text-xs leading-relaxed text-[var(--muted-foreground)] sm:line-clamp-4 sm:text-sm">
                   {book.excerpt}
                 </p>
 
                 <div className="flex flex-wrap gap-1.5">
-                  {book.tags.slice(0, 4).map((tag) => (
+                  {book.tags.slice(0, 3).map((tag) => (
                     <span
                       key={tag}
                       className="rounded-full border border-[var(--border)] bg-[var(--muted)] px-2.5 py-1 text-[10px] text-[var(--muted-foreground)]"
@@ -388,10 +391,10 @@ export default function BookLibrary({ books }: BookLibraryProps) {
                   ))}
                 </div>
 
-                <div className="flex items-center justify-between border-t border-[var(--border)] pt-4">
+                <div className="flex items-center justify-between border-t border-[var(--border)] pt-3 sm:pt-4">
                   <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--muted-foreground)]">
                     <BookOpen className="h-3.5 w-3.5" />
-                    Visual + deep guide
+                    <span className="hidden sm:inline">Visual + deep guide</span><span className="sm:hidden">Guide</span>
                   </span>
                   <Link
                     href={`/books/${book.slug}`}
