@@ -17,10 +17,11 @@ const geistMono = Geist_Mono({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#090d16",
+  themeColor: "#2b2a28",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
+  colorScheme: "dark",
 };
 
 export const metadata: Metadata = {
