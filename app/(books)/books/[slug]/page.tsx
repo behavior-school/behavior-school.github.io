@@ -113,21 +113,21 @@ export default async function IndividualBookPage({ params }: { params: Promise<{
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdBreadcrumb) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdWebPage) }} />
 
-      <main className="pt-28 pb-24 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <main className="pt-[calc(var(--app-header-height)+16px)] pb-24 max-w-6xl mx-auto px-3 sm:px-6 lg:px-8">
         <Link href="/books" className="inline-flex items-center gap-2 text-xs font-semibold text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors mb-7">
           <ArrowLeft className="w-4 h-4" />
           <span>Back to All Book Summaries</span>
         </Link>
 
-        <nav aria-label="On this page" className="mb-7 flex gap-2 overflow-x-auto pb-1">
+        <nav aria-label="On this page" className="app-horizontal-scroll sticky top-[var(--app-header-height)] z-30 -mx-1 mb-5 flex gap-2 overflow-x-auto bg-[var(--background)]/90 px-1 py-2 backdrop-blur-xl">
           {sections.map((section) => (
             <a key={section.id} href={`#${section.id}`} className="shrink-0 rounded-full border border-[var(--border)] bg-[var(--card)] px-3 py-1.5 text-[11px] font-semibold text-[var(--muted-foreground)] hover:text-[var(--foreground)]">{section.label}</a>
           ))}
         </nav>
 
-        <article className="overflow-hidden rounded-[2rem] border border-[var(--border)] bg-[var(--card)] shadow-2xl">
-          <header className="grid gap-8 border-b border-[var(--border)] p-6 sm:p-10 lg:grid-cols-[150px_150px_1fr] lg:p-12">
-            <div className="mx-auto w-full max-w-[150px]">
+        <article className="overflow-hidden rounded-[1.5rem] border sm:rounded-[2rem] border-[var(--border)] bg-[var(--card)] shadow-2xl">
+          <header className="grid grid-cols-2 gap-4 border-b border-[var(--border)] p-4 sm:gap-8 sm:p-10 lg:grid-cols-[150px_150px_1fr] lg:p-12">
+            <div className="mx-auto w-full max-w-[170px] justify-self-center">
               {book.coverImageUrl ? (
                 <div className="overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--muted)] shadow-lg">
                   <img src={book.coverImageUrl} alt={`${book.title} cover`} width={360} height={540} loading="lazy" className="h-auto w-full object-contain" />
@@ -140,21 +140,22 @@ export default async function IndividualBookPage({ params }: { params: Promise<{
 
             <div className="mx-auto w-full max-w-[150px]"><BookPoster book={book} /></div>
 
-            <div className="min-w-0">
-              <div className="flex flex-wrap items-center gap-2 text-[10px]">
+            <div className="col-span-2 min-w-0 lg:col-span-1">
+              <div className="flex flex-wrap items-center gap-1.5 text-[10px]">
                 <span className="rounded-full bg-[var(--muted)] px-2.5 py-1 font-bold uppercase tracking-wider text-[var(--primary)] border border-[var(--border)]">{book.year} publication</span>
                 {book.category && <span className="rounded-full border border-[var(--border)] px-2.5 py-1 font-semibold text-[var(--muted-foreground)]">{book.category}</span>}
                 <span className="text-[var(--muted-foreground)]">by {book.author}</span>
+                <span className="rounded-full border border-[var(--primary)]/25 bg-[var(--primary)]/8 px-2.5 py-1 font-semibold text-[var(--primary)]" title="Behavior School editorial discovery score, not a market or sales rating">Popularity {book.popularityScore}/100</span>
               </div>
-              <h1 className="mt-4 text-4xl sm:text-6xl font-extrabold text-[var(--foreground)] tracking-tight leading-[1.02]">{book.title}</h1>
+              <h1 className="mt-3 text-3xl sm:mt-4 sm:text-6xl font-extrabold text-[var(--foreground)] tracking-tight leading-[1.02]">{book.title}</h1>
               <p className="mt-3 text-base sm:text-xl text-[var(--primary)] font-medium italic">{book.tagline}</p>
               {book.tags && <div className="mt-5 flex flex-wrap gap-2">{book.tags.map((tag) => <span key={tag} className="rounded-full border border-[var(--border)] bg-[var(--muted)]/50 px-2.5 py-1 text-[10px] font-medium text-[var(--muted-foreground)]">#{tag}</span>)}</div>}
             </div>
           </header>
 
-          <div className="space-y-10 p-6 sm:p-10 lg:p-12">
+          <div className="space-y-8 p-4 sm:space-y-10 sm:p-10 lg:p-12">
             <section id="summary" className="scroll-mt-24 grid gap-5 lg:grid-cols-[1.35fr_.65fr]">
-              <div className="rounded-2xl border border-[var(--border)] bg-[var(--muted)]/50 p-6"><h2 className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--primary)] flex items-center gap-2"><BookOpen className="w-4 h-4" />Core thesis</h2><p className="mt-3 text-sm sm:text-base text-[var(--foreground)] leading-8">{book.summary}</p></div>
+              <div className="rounded-2xl border border-[var(--border)] bg-[var(--muted)]/50 p-6"><h2 className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--primary)] flex items-center gap-2"><BookOpen className="w-4 h-4" />Core thesis</h2><p className="mt-3 text-sm leading-7 text-[var(--foreground)] sm:text-base sm:leading-8">{book.summary}</p></div>
               <div className="rounded-2xl border border-[var(--primary)]/25 bg-[var(--card)] p-6"><div className="text-[10px] font-bold uppercase tracking-[0.18em] text-[var(--primary)]">Read it in one line</div><p className="mt-3 text-lg font-bold leading-7 text-[var(--foreground)]">{book.learningLab?.coreModel ?? book.keyTakeaways[0]}</p></div>
             </section>
 
