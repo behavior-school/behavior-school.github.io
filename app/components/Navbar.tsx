@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { BookOpen, Compass, Home, Menu, Search, Wrench, X } from "lucide-react";
 import { YoutubeIcon } from "./Icons";
 
 export default function Navbar() {
@@ -28,17 +28,17 @@ export default function Navbar() {
 
   return (
     <header className={
-      "fixed top-0 left-0 right-0 z-50 transition-all duration-200 " +
+      "fixed inset-x-0 top-0 z-50 h-[var(--app-header-height)] transition-all duration-200 " +
       (scrolled
-        ? "bg-[var(--background)]/90 backdrop-blur-md border-b border-[var(--border)] py-3"
-        : "bg-transparent py-5")
+        ? "bg-[var(--background)]/95 backdrop-blur-xl border-b border-[var(--border)]"
+        : "bg-[var(--background)]/80 backdrop-blur-lg")
     }>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+      <div className="mx-auto flex h-full max-w-6xl items-center justify-between px-3 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-8 h-8 rounded-lg bg-[var(--muted)] border border-[var(--border)] p-1 flex items-center justify-center">
+          <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-[var(--border)] bg-[var(--muted)] p-1.5 shadow-sm">
             <img src="/logo.svg" alt="Behavior School Logo" className="w-full h-full object-contain" />
           </div>
-          <span className="font-bold text-base tracking-tight text-[var(--foreground)]">
+          <span className="font-extrabold text-[15px] tracking-tight text-[var(--foreground)]">
             Behavior<span className="text-[var(--primary)] font-normal">School</span>
           </span>
         </Link>
@@ -65,14 +65,42 @@ export default function Navbar() {
           aria-label={open ? "Close navigation" : "Open navigation"}
           aria-expanded={open}
           onClick={() => setOpen((value) => !value)}
-          className="lg:hidden w-9 h-9 rounded-lg border border-[var(--border)] bg-[var(--muted)] flex items-center justify-center text-[var(--foreground)]"
+          className="lg:hidden flex h-10 w-10 items-center justify-center rounded-xl border border-[var(--border)] bg-[var(--muted)] text-[var(--foreground)] shadow-sm"
         >
           {open ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
         </button>
       </div>
 
+      <nav
+        aria-label="Mobile primary navigation"
+        className="fixed inset-x-0 bottom-0 z-50 border-t border-[var(--border)] bg-[var(--background)]/96 px-2 pb-[env(safe-area-inset-bottom)] backdrop-blur-xl lg:hidden"
+      >
+        <div className="mx-auto grid h-[var(--app-bottom-nav-height)] max-w-md grid-cols-5 items-center">
+          <Link href="/" onClick={() => setOpen(false)} className="flex min-h-11 flex-col items-center justify-center gap-1 rounded-xl text-[10px] font-semibold text-[var(--muted-foreground)] active:bg-[var(--muted)]">
+            <Home className="h-5 w-5" />
+            <span>Home</span>
+          </Link>
+          <Link href="/resources" onClick={() => setOpen(false)} className="flex min-h-11 flex-col items-center justify-center gap-1 rounded-xl text-[10px] font-semibold text-[var(--muted-foreground)] active:bg-[var(--muted)]">
+            <Compass className="h-5 w-5" />
+            <span>Learn</span>
+          </Link>
+          <Link href="/books" onClick={() => setOpen(false)} className="flex min-h-11 flex-col items-center justify-center gap-1 rounded-xl text-[10px] font-semibold text-[var(--muted-foreground)] active:bg-[var(--muted)]">
+            <BookOpen className="h-5 w-5" />
+            <span>Books</span>
+          </Link>
+          <Link href="/tools" onClick={() => setOpen(false)} className="flex min-h-11 flex-col items-center justify-center gap-1 rounded-xl text-[10px] font-semibold text-[var(--muted-foreground)] active:bg-[var(--muted)]">
+            <Wrench className="h-5 w-5" />
+            <span>Tools</span>
+          </Link>
+          <Link href="/books" onClick={() => setOpen(false)} className="flex min-h-11 flex-col items-center justify-center gap-1 rounded-xl text-[10px] font-semibold text-[var(--muted-foreground)] active:bg-[var(--muted)]">
+            <Search className="h-5 w-5" />
+            <span>Search</span>
+          </Link>
+        </div>
+      </nav>
+
       {open && (
-        <div className="lg:hidden border-t border-[var(--border)] bg-[var(--background)]/95 backdrop-blur-md">
+        <div className="absolute left-0 right-0 top-[var(--app-header-height)] lg:hidden border-t border-[var(--border)] bg-[var(--background)]/98 backdrop-blur-xl shadow-xl">
           <nav className="max-w-6xl mx-auto px-4 sm:px-6 py-4 grid gap-1 text-sm">
             {links.map(([href, label]) => (
               <Link
