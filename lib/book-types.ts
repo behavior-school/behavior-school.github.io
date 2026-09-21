@@ -64,4 +64,6 @@ export interface BookDetail {
   amazonUrl?: string;
   amazonImageUrl?: string;
   featured?: boolean;
+  /** Behavior School editorial discovery score (0–100). Not a market/sales rating. */
+  popularityScore?: number;
 }
