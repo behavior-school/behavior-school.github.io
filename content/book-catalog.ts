@@ -16,6 +16,7 @@ const bookMeta: Record<string, {
   tags: string[];
   featured?: boolean;
   asin: string;
+  popularityScore?: number;
 }> = {
   "atomic-habits": { category: "Habits", tags: ["habits", "behavior change", "productivity"], featured: true, asin: "0735211299" },
   "thinking-fast-and-slow": { category: "Cognition", tags: ["cognitive science", "biases", "decision making"], featured: true, asin: "0374533555" },
@@ -58,6 +59,62 @@ const bookMeta: Record<string, {
   "difficult-conversations": { category: "Communication", tags: ["conflict", "communication", "negotiation", "emotions", "identity", "relationships"], asin: "0143137597" }
 };
 
+
+const curatedPopularityScores: Record<string, number> = {
+  "atomic-habits": 100,
+  "thinking-fast-and-slow": 98,
+  "deep-work": 97,
+  "power-of-habit": 90,
+  "drive": 86,
+  "mindset": 94,
+  "nudge": 88,
+  "predictably-irrational": 91,
+  "influence": 96,
+  "thinking-in-bets": 85,
+  "scout-mindset": 89,
+  "paradox-of-choice": 84,
+  "48-laws-of-power": 95,
+  "laws-of-human-nature": 92,
+  "art-of-seduction": 87,
+  "games-people-play": 80,
+  "emotional-blackmail": 76,
+  "gaslight-effect": 79,
+  "in-sheeps-clothing": 77,
+  "confidence-game": 74,
+  "pre-suasion": 82,
+  "propaganda": 83,
+  "snakes-in-suits": 71,
+  "without-conscience": 72,
+  "tiny-habits": 81,
+  "the-power-of-moments": 78,
+  "make-it-stick": 86,
+  "peak": 80,
+  "ultralearning": 82,
+  "range": 79,
+  "mind-for-numbers": 75,
+  "why-we-sleep": 93,
+  "the-happiness-hypothesis": 83,
+  "stumbling-on-happiness": 73,
+  "emotional-intelligence": 91,
+  "social-intelligence": 78,
+  "nonviolent-communication": 87,
+  "crucial-conversations": 90,
+  "difficult-conversations": 84
+};
+
+function fallbackPopularityScore(book: import("../lib/book-types").BookDetail, meta?: { featured?: boolean }) {
+  const richness =
+    Math.min((book.keyTakeaways?.length ?? 0) * 2, 12) +
+    (book.learningLab ? 8 : 0) +
+    (book.visual ? 5 : 0) +
+    (book.artifact ? 5 : 0) +
+    (book.mermaidDiagram ? 4 : 0) +
+    (book.quiz ? 3 : 0) +
+    Math.min(Math.round((book.summary?.length ?? 0) / 120), 6);
+  const featuredBoost = meta?.featured ? 10 : 0;
+  return Math.min(95, Math.max(35, 45 + featuredBoost + richness));
+}
+
 export const allBooksData: Record<string, import("../lib/book-types").BookDetail> = {
   ...Object.fromEntries(
     Object.entries({ ...detailedBooksData, ...manipulationBooksData, ...generatedBooksData, ...generatedBooksBatch2Data, ...generatedBooksBatch3Data }).map(([slug, book]) => {
@@ -65,6 +122,7 @@ export const allBooksData: Record<string, import("../lib/book-types").BookDetail
       return [slug, {
         ...book,
         ...meta,
+        popularityScore: meta?.popularityScore ?? curatedPopularityScores[slug] ?? fallbackPopularityScore(book, meta),
         ...amazonBook(meta?.asin ?? book.slug),
         learningLab: book.learningLab ?? bookLearningLab[slug],
       }];
@@ -89,6 +147,7 @@ export const booksCatalog = Object.values(allBooksData).map((book) => {
     coverImageUrl: book.coverImageUrl ?? amazon.coverImageUrl,
     amazonImageUrl: book.amazonImageUrl ?? amazon.amazonImageUrl,
     amazonUrl: book.amazonUrl ?? amazon.amazonUrl,
+    popularityScore: book.popularityScore ?? meta?.popularityScore ?? curatedPopularityScores[book.slug] ?? fallbackPopularityScore(book, meta),
   };
 });
 
