@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1600" viewBox="0 0 1200 1600" role="img" aria-labelledby="title desc">
+<title id="title">Emotional Intelligence — Daniel Goleman</title><desc id="desc">A terracotta and cream poster showing an emotion signal moving through interpretation, regulation, choice, and feedback.</desc>
+<rect width="1200" height="1600" fill="#1f1e1c"/><rect x="70" y="70" width="1060" height="1460" rx="42" fill="#f3eee6"/>
+<text x="120" y="155" font-family="Arial,sans-serif" font-size="28" font-weight="700" fill="#c96f4a">BEHAVIOR SCHOOL · SOCIAL PSYCHOLOGY</text>
+<text x="120" y="260" font-family="Arial,sans-serif" font-size="74" font-weight="800" fill="#242220">EMOTIONAL</text><text x="120" y="340" font-family="Arial,sans-serif" font-size="74" font-weight="800" fill="#c96f4a">INTELLIGENCE</text>
+<text x="120" y="410" font-family="Arial,sans-serif" font-size="28" fill="#57524d">Daniel Goleman · 1995</text>
+<circle cx="600" cy="650" r="190" fill="#c96f4a" opacity=".18"/><circle cx="600" cy="650" r="130" fill="#c96f4a"/>
+<text x="600" y="640" text-anchor="middle" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#fff">EMOTION</text><text x="600" y="680" text-anchor="middle" font-family="Arial,sans-serif" font-size="24" fill="#fff">is information</text>
+<g font-family="Arial,sans-serif" font-size="25" font-weight="700" fill="#242220">
+<rect x="130" y="900" width="260" height="120" rx="22" fill="#ead6cb"/><text x="260" y="970" text-anchor="middle">NOTICE</text><text x="260" y="1002" text-anchor="middle" font-size="18" font-weight="400">What happened?</text>
+<rect x="470" y="900" width="260" height="120" rx="22" fill="#ead6cb"/><text x="600" y="970" text-anchor="middle">INTERPRET</text><text x="600" y="1002" text-anchor="middle" font-size="18" font-weight="400">What story am I adding?</text>
+<rect x="810" y="900" width="260" height="120" rx="22" fill="#ead6cb"/><text x="940" y="970" text-anchor="middle">REGULATE</text><text x="940" y="1002" text-anchor="middle" font-size="18" font-weight="400">Create choice</text>
+<path d="M390 960h80M730 960h80" stroke="#c96f4a" stroke-width="8"/>
+<rect x="260" y="1120" width="680" height="170" rx="28" fill="#242220"/><text x="600" y="1180" text-anchor="middle" fill="#f3eee6" font-size="28">BEHAVIORAL MAP</text><text x="600" y="1230" text-anchor="middle" fill="#f3eee6" font-size="23" font-weight="400">event → signal → meaning → action urge → choice → feedback</text>
+</g>
+<text x="120" y="1410" font-family="Arial,sans-serif" font-size="25" font-weight="700" fill="#c96f4a">MENTAL MODEL</text><text x="120" y="1455" font-family="Arial,sans-serif" font-size="25" fill="#242220">Notice the signal without surrendering the decision.</text>
+</svg>

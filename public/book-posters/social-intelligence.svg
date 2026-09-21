@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1600" viewBox="0 0 1200 1600" role="img" aria-labelledby="title desc">
+<title id="title">Social Intelligence — Daniel Goleman</title><desc id="desc">A visual loop showing social cue, interpretation, response, feedback, and relationship pattern.</desc>
+<rect width="1200" height="1600" fill="#1f1e1c"/><rect x="70" y="70" width="1060" height="1460" rx="42" fill="#f3eee6"/>
+<text x="120" y="155" font-family="Arial,sans-serif" font-size="28" font-weight="700" fill="#c96f4a">BEHAVIOR SCHOOL · SOCIAL PSYCHOLOGY</text>
+<text x="120" y="260" font-family="Arial,sans-serif" font-size="74" font-weight="800" fill="#242220">SOCIAL</text><text x="120" y="340" font-family="Arial,sans-serif" font-size="74" font-weight="800" fill="#c96f4a">INTELLIGENCE</text>
+<text x="120" y="410" font-family="Arial,sans-serif" font-size="28" fill="#57524d">Daniel Goleman · 2006</text>
+<g font-family="Arial,sans-serif" font-size="24" font-weight="700">
+<circle cx="600" cy="680" r="250" fill="none" stroke="#c96f4a" stroke-width="12" stroke-dasharray="24 16"/>
+<rect x="480" y="520" width="240" height="90" rx="20" fill="#c96f4a"/><text x="600" y="577" text-anchor="middle" fill="#fff">SOCIAL CUE</text>
+<rect x="780" y="640" width="240" height="90" rx="20" fill="#ead6cb"/><text x="900" y="697" text-anchor="middle" fill="#242220">INTERPRET</text>
+<rect x="650" y="900" width="240" height="90" rx="20" fill="#ead6cb"/><text x="770" y="957" text-anchor="middle" fill="#242220">RESPOND</text>
+<rect x="310" y="900" width="240" height="90" rx="20" fill="#ead6cb"/><text x="430" y="957" text-anchor="middle" fill="#242220">FEEDBACK</text>
+<rect x="180" y="640" width="240" height="90" rx="20" fill="#ead6cb"/><text x="300" y="697" text-anchor="middle" fill="#242220">UPDATE MODEL</text>
+</g>
+<path d="M720 565 Q900 580 900 640M900 730 Q900 850 790 900M650 945 Q500 1030 430 990M310 940 Q210 850 300 730M300 640 Q360 550 480 565" fill="none" stroke="#c96f4a" stroke-width="8"/>
+<text x="120" y="1160" font-family="Arial,sans-serif" font-size="25" font-weight="700" fill="#c96f4a">BEHAVIORAL MAP</text><text x="120" y="1210" font-family="Arial,sans-serif" font-size="23" fill="#242220">signal → interpretation → response → feedback → updated belief</text>
+<text x="120" y="1320" font-family="Arial,sans-serif" font-size="25" font-weight="700" fill="#c96f4a">DEFENSIVE RULE</text><text x="120" y="1365" font-family="Arial,sans-serif" font-size="25" fill="#242220">Treat first impressions as hypotheses, not verdicts.</text>
+</svg>

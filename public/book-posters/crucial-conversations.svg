@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1600" viewBox="0 0 1200 1600" role="img" aria-labelledby="title desc">
+<title id="title">Crucial Conversations — Patterson, Grenny, McMillan, Switzler and Gregory</title><desc id="desc">A dialogue safety map showing high stakes, safety, shared information, decision, and follow-up.</desc>
+<rect width="1200" height="1600" fill="#1f1e1c"/><rect x="70" y="70" width="1060" height="1460" rx="42" fill="#f3eee6"/>
+<text x="120" y="155" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#c96f4a">BEHAVIOR SCHOOL · COMMUNICATION</text>
+<text x="120" y="250" font-family="Arial,sans-serif" font-size="67" font-weight="800" fill="#242220">CRUCIAL</text><text x="120" y="325" font-family="Arial,sans-serif" font-size="67" font-weight="800" fill="#c96f4a">CONVERSATIONS</text>
+<text x="120" y="395" font-family="Arial,sans-serif" font-size="25" fill="#57524d">Patterson · Grenny · McMillan · Switzler · Gregory</text>
+<g font-family="Arial,sans-serif" text-anchor="middle">
+<circle cx="600" cy="680" r="190" fill="#c96f4a" opacity=".2"/><circle cx="600" cy="680" r="125" fill="#c96f4a"/><text x="600" y="670" font-size="27" font-weight="700" fill="#fff">SAFETY</text><text x="600" y="705" font-size="18" fill="#fff">enough to speak</text>
+<rect x="140" y="570" width="220" height="100" rx="20" fill="#ead6cb"/><text x="250" y="630" font-size="22" font-weight="700">STAKES</text>
+<rect x="840" y="570" width="220" height="100" rx="20" fill="#ead6cb"/><text x="950" y="630" font-size="22" font-weight="700">DIFFERENCE</text>
+<rect x="180" y="850" width="260" height="105" rx="20" fill="#ead6cb"/><text x="310" y="912" font-size="22" font-weight="700">FACTS + STORY</text>
+<rect x="760" y="850" width="260" height="105" rx="20" fill="#ead6cb"/><text x="890" y="912" font-size="22" font-weight="700">OTHER VIEW</text>
+<rect x="360" y="1080" width="480" height="120" rx="24" fill="#242220"/><text x="600" y="1130" font-size="25" font-weight="700" fill="#f3eee6">DECISION + FOLLOW-UP</text><text x="600" y="1165" font-size="17" fill="#f3eee6">owner · action · deadline · review</text>
+</g>
+<path d="M360 620h110M730 620h110M520 760L380 850M680 760l140 90M440 950l140 130M760 950l-160 130" stroke="#c96f4a" stroke-width="8" fill="none"/>
+<text x="120" y="1320" font-family="Arial,sans-serif" font-size="25" font-weight="700" fill="#c96f4a">BEHAVIORAL MAP</text><text x="120" y="1370" font-family="Arial,sans-serif" font-size="23" fill="#242220">stakes → safety → information → decision → follow-up</text>
+<text x="120" y="1450" font-family="Arial,sans-serif" font-size="22" fill="#242220">If safety fails, pause, set a boundary, or use the appropriate formal process.</text>
+</svg>

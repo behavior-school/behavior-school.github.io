@@ -3,6 +3,7 @@ import { manipulationBooksData } from "./manipulation-books";
 import { bookLearningLab } from "./book-learning-lab";
 import { generatedBooksData } from "./generated-books";
 import { generatedBooksBatch2Data } from "./generated-books-batch-2";
+import { generatedBooksBatch3Data } from "./generated-books-batch-3";
 
 const amazonBook = (asin: string) => ({
   amazonUrl: `https://www.amazon.in/dp/${asin}`,
@@ -49,22 +50,24 @@ const bookMeta: Record<string, {
   "mind-for-numbers": { category: "Learning", tags: ["learning", "math", "memory", "problem solving", "chunking", "study skills"], asin: "039916524X" },
   "why-we-sleep": { category: "Neuroscience", tags: ["sleep", "memory", "brain", "health", "circadian rhythm", "recovery"], asin: "1501144316" },
   "the-happiness-hypothesis": { category: "Psychology", tags: ["happiness", "emotion", "moral psychology", "virtue", "meaning", "well-being"], asin: "0465028020" },
-  "stumbling-on-happiness": { category: "Psychology", tags: ["happiness", "prediction", "decision making", "affective forecasting", "imagination"], asin: "140007742X" }
+  "stumbling-on-happiness": { category: "Psychology", tags: ["happiness", "prediction", "decision making", "affective forecasting", "imagination"], asin: "140007742X" },
+  "emotional-intelligence": { category: "Social Psychology", tags: ["emotion", "self-awareness", "self-regulation", "empathy", "relationships", "social skills"], asin: "055380491X" },
+  "social-intelligence": { category: "Social Psychology", tags: ["social cognition", "relationships", "empathy", "social skills", "groups", "connection"], asin: "0553384499" },
+  "nonviolent-communication": { category: "Relationships", tags: ["communication", "conflict", "empathy", "needs", "boundaries", "relationships"], asin: "189200528X" },
+  "crucial-conversations": { category: "Communication", tags: ["communication", "conflict", "psychological safety", "dialogue", "feedback", "difficult conversations"], asin: "1260474186" },
+  "difficult-conversations": { category: "Communication", tags: ["conflict", "communication", "negotiation", "emotions", "identity", "relationships"], asin: "0143137597" }
 };
 
 export const allBooksData: Record<string, import("../lib/book-types").BookDetail> = {
   ...Object.fromEntries(
-    Object.entries({ ...detailedBooksData, ...manipulationBooksData, ...generatedBooksData, ...generatedBooksBatch2Data }).map(([slug, book]) => {
+    Object.entries({ ...detailedBooksData, ...manipulationBooksData, ...generatedBooksData, ...generatedBooksBatch2Data, ...generatedBooksBatch3Data }).map(([slug, book]) => {
       const meta = bookMeta[slug];
-      return [
-        slug,
-        {
-          ...book,
-          ...meta,
-          ...amazonBook(meta?.asin ?? book.slug),
-          learningLab: book.learningLab ?? bookLearningLab[slug],
-        },
-      ];
+      return [slug, {
+        ...book,
+        ...meta,
+        ...amazonBook(meta?.asin ?? book.slug),
+        learningLab: book.learningLab ?? bookLearningLab[slug],
+      }];
     })
   ),
 };
@@ -72,7 +75,6 @@ export const allBooksData: Record<string, import("../lib/book-types").BookDetail
 export const booksCatalog = Object.values(allBooksData).map((book) => {
   const meta = bookMeta[book.slug];
   const amazon = amazonBook(meta?.asin ?? book.slug);
-
   return {
     slug: book.slug,
     title: book.title,

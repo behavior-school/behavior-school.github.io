@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1600" viewBox="0 0 1200 1600" role="img" aria-labelledby="title desc">
+<title id="title">Nonviolent Communication — Marshall B. Rosenberg</title><desc id="desc">A visual bridge from observable facts through feelings and needs to a concrete request and negotiated response.</desc>
+<rect width="1200" height="1600" fill="#1f1e1c"/><rect x="70" y="70" width="1060" height="1460" rx="42" fill="#f3eee6"/>
+<text x="120" y="155" font-family="Arial,sans-serif" font-size="27" font-weight="700" fill="#c96f4a">BEHAVIOR SCHOOL · RELATIONSHIPS</text>
+<text x="120" y="255" font-family="Arial,sans-serif" font-size="72" font-weight="800" fill="#242220">NONVIOLENT</text><text x="120" y="335" font-family="Arial,sans-serif" font-size="72" font-weight="800" fill="#c96f4a">COMMUNICATION</text>
+<text x="120" y="405" font-family="Arial,sans-serif" font-size="28" fill="#57524d">Marshall B. Rosenberg · 1999</text>
+<g font-family="Arial,sans-serif" text-anchor="middle">
+<rect x="120" y="560" width="200" height="115" rx="22" fill="#ead6cb"/><text x="220" y="615" font-size="24" font-weight="700">OBSERVE</text><text x="220" y="648" font-size="17">facts, not labels</text>
+<rect x="350" y="560" width="200" height="115" rx="22" fill="#ead6cb"/><text x="450" y="615" font-size="24" font-weight="700">FEEL</text><text x="450" y="648" font-size="17">inner experience</text>
+<rect x="580" y="560" width="200" height="115" rx="22" fill="#ead6cb"/><text x="680" y="615" font-size="24" font-weight="700">NEED</text><text x="680" y="648" font-size="17">value underneath</text>
+<rect x="810" y="560" width="270" height="115" rx="22" fill="#c96f4a"/><text x="945" y="615" font-size="24" font-weight="700" fill="#fff">REQUEST</text><text x="945" y="648" font-size="17" fill="#fff">specific + answerable</text>
+<path d="M320 617h30M550 617h30M780 617h30" stroke="#c96f4a" stroke-width="8"/>
+<rect x="210" y="820" width="780" height="190" rx="30" fill="#242220"/><text x="600" y="880" font-size="27" font-weight="700" fill="#f3eee6">FROM BLAME TO CHOICE</text><text x="600" y="930" font-size="22" fill="#f3eee6">What happened? → What do I feel? → What matters? → What can we ask?</text>
+</g>
+<text x="120" y="1190" font-family="Arial,sans-serif" font-size="25" font-weight="700" fill="#c96f4a">ETHICAL BOUNDARY</text><text x="120" y="1240" font-family="Arial,sans-serif" font-size="24" fill="#242220">A request allows a real “no.” A boundary states what you will do next.</text>
+<text x="120" y="1380" font-family="Arial,sans-serif" font-size="25" font-weight="700" fill="#c96f4a">MENTAL MODEL</text><text x="120" y="1430" font-family="Arial,sans-serif" font-size="25" fill="#242220">Separate the layers so the disagreement has something concrete to solve.</text>
+</svg>
