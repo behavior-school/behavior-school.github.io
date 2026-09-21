@@ -3,11 +3,14 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { BookOpen, Compass, Home, Menu, Search, Wrench, X } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { YoutubeIcon } from "./Icons";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  const isActive = (href: string) => href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(href + "/");
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -45,7 +48,7 @@ export default function Navbar() {
 
         <nav className="hidden lg:flex items-center gap-4 text-xs font-medium">
           {links.map(([href, label]) => (
-            <Link key={href} href={href} className="text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors">
+            <Link key={href} href={href} className={isActive(href) ? "font-semibold text-[var(--foreground)]" : "text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors"}>
               {label}
             </Link>
           ))}
@@ -76,19 +79,19 @@ export default function Navbar() {
         className="fixed inset-x-0 bottom-0 z-50 border-t border-[var(--border)] bg-[var(--background)]/96 px-2 pb-[env(safe-area-inset-bottom)] backdrop-blur-xl lg:hidden"
       >
         <div className="mx-auto grid h-[var(--app-bottom-nav-height)] max-w-md grid-cols-5 items-center">
-          <Link href="/" onClick={() => setOpen(false)} className="flex min-h-11 flex-col items-center justify-center gap-1 rounded-xl text-[10px] font-semibold text-[var(--muted-foreground)] active:bg-[var(--muted)]">
+          <Link href="/" onClick={() => setOpen(false)} className={isActive("/") ? "flex min-h-11 flex-col items-center justify-center gap-1 rounded-xl bg-[var(--muted)] text-[10px] font-bold text-[var(--primary)] active:bg-[var(--muted)]" : "flex min-h-11 flex-col items-center justify-center gap-1 rounded-xl text-[10px] font-semibold text-[var(--muted-foreground)] active:bg-[var(--muted)]"}>
             <Home className="h-5 w-5" />
             <span>Home</span>
           </Link>
-          <Link href="/resources" onClick={() => setOpen(false)} className="flex min-h-11 flex-col items-center justify-center gap-1 rounded-xl text-[10px] font-semibold text-[var(--muted-foreground)] active:bg-[var(--muted)]">
+          <Link href="/resources" onClick={() => setOpen(false)} className={isActive("/resources") ? "flex min-h-11 flex-col items-center justify-center gap-1 rounded-xl bg-[var(--muted)] text-[10px] font-bold text-[var(--primary)] active:bg-[var(--muted)]" : "flex min-h-11 flex-col items-center justify-center gap-1 rounded-xl text-[10px] font-semibold text-[var(--muted-foreground)] active:bg-[var(--muted)]"}>
             <Compass className="h-5 w-5" />
             <span>Learn</span>
           </Link>
-          <Link href="/books" onClick={() => setOpen(false)} className="flex min-h-11 flex-col items-center justify-center gap-1 rounded-xl text-[10px] font-semibold text-[var(--muted-foreground)] active:bg-[var(--muted)]">
+          <Link href="/books" onClick={() => setOpen(false)} className={isActive("/books") ? "flex min-h-11 flex-col items-center justify-center gap-1 rounded-xl bg-[var(--muted)] text-[10px] font-bold text-[var(--primary)] active:bg-[var(--muted)]" : "flex min-h-11 flex-col items-center justify-center gap-1 rounded-xl text-[10px] font-semibold text-[var(--muted-foreground)] active:bg-[var(--muted)]"}>
             <BookOpen className="h-5 w-5" />
             <span>Books</span>
           </Link>
-          <Link href="/tools" onClick={() => setOpen(false)} className="flex min-h-11 flex-col items-center justify-center gap-1 rounded-xl text-[10px] font-semibold text-[var(--muted-foreground)] active:bg-[var(--muted)]">
+          <Link href="/tools" onClick={() => setOpen(false)} className={isActive("/tools") ? "flex min-h-11 flex-col items-center justify-center gap-1 rounded-xl bg-[var(--muted)] text-[10px] font-bold text-[var(--primary)] active:bg-[var(--muted)]" : "flex min-h-11 flex-col items-center justify-center gap-1 rounded-xl text-[10px] font-semibold text-[var(--muted-foreground)] active:bg-[var(--muted)]"}>
             <Wrench className="h-5 w-5" />
             <span>Tools</span>
           </Link>
