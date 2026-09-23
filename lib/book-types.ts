@@ -62,6 +62,8 @@ export interface BookDetail {
   tags?: string[];
   coverImageUrl?: string;
   amazonUrl?: string;
+  /** Optional affiliate URL managed centrally in data/book-affiliate-links.json. */
+  affiliateUrl?: string;
   amazonImageUrl?: string;
   featured?: boolean;
   /** Behavior School editorial discovery score (0–100). Not a market/sales rating. */
