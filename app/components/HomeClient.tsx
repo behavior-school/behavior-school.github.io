@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowRight, BookOpen, Github, Globe } from "lucide-react";
+import { ArrowRight, BookOpen, Code2, Globe } from "lucide-react";
 import Hero from "./Hero";
 import CategoriesSection from "./CategoriesSection";
 import VisualGraphs from "./VisualGraphs";
@@ -76,7 +76,7 @@ export default function HomeClient() {
                     <Globe className="h-3.5 w-3.5" /> Portfolio
                   </a>
                   <a href="https://github.com/sh20raj/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-xl border border-[var(--border)] bg-[var(--background)] px-3.5 py-2 text-xs font-bold text-[var(--foreground)] hover:bg-[var(--muted)]">
-                    <Github className="h-3.5 w-3.5" /> GitHub
+                    <Code2 className="h-3.5 w-3.5" /> GitHub
                   </a>
                 </div>
               </div>
