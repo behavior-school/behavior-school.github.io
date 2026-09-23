@@ -10,6 +10,7 @@ import {
   Library,
   Mail,
   Menu,
+  Play,
   Sparkles,
   Wrench,
   X,
