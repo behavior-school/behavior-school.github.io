@@ -9,10 +9,12 @@ export default function DopamineCalculatorTool() {
   const [shortVideoMin, setShortVideoMin] = useState<number>(60); // minutes
   const [calculated, setCalculated] = useState(false);
 
-  // Math logic
-  const spikePenalty = (notifications / 10) * 5 + (shortVideoMin / 15) * 8 + screenTime * 6;
-  const receptorSensitivity = Math.max(15, Math.min(100, Math.round(100 - spikePenalty)));
-  const boredomThreshold = Math.min(95, Math.max(10, Math.round(100 - receptorSensitivity + 20)));
+  // Heuristic self-reflection model; it is not a physiological measurement.
+  const stimulationLoad = Math.min(
+    100,
+    Math.round((screenTime / 12) * 35 + (notifications / 200) * 30 + (shortVideoMin / 240) * 35),
+  );
+  const attentionFriction = Math.min(100, Math.max(0, Math.round(stimulationLoad * 0.9)));
 
   return (
     <div className="bg-[var(--card)] p-6 sm:p-8 rounded-3xl border border-[var(--border)] space-y-6 shadow-xl max-w-3xl mx-auto">
@@ -20,7 +22,7 @@ export default function DopamineCalculatorTool() {
         <div className="flex items-center gap-2">
           <Activity className="w-5 h-5 text-[var(--primary)]" />
           <h3 className="text-base font-bold text-[var(--foreground)]">
-            Dopamine Baseline & Boredom Calculator
+            Stimulation & Focus Environment Audit
           </h3>
         </div>
         <span className="text-[10px] font-mono uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-[var(--muted)] text-[var(--primary)] border border-[var(--border)]">
@@ -85,30 +87,33 @@ export default function DopamineCalculatorTool() {
         className="w-full py-3 rounded-xl bg-[var(--primary)] text-[var(--primary-foreground)] text-xs font-bold hover:opacity-90 transition-opacity flex items-center justify-center gap-2 shadow-sm"
       >
         <Sparkles className="w-4 h-4" />
-        <span>Calculate Neural Baseline</span>
+        <span>Calculate Environment Index</span>
       </button>
 
       {calculated && (
         <div className="p-6 rounded-2xl bg-[var(--muted)] border border-[var(--border)] space-y-4 animate-in fade-in">
           <div className="grid grid-cols-2 gap-4 font-mono">
             <div className="p-4 rounded-xl bg-[var(--card)] border border-[var(--border)]">
-              <span className="text-[10px] text-[var(--muted-foreground)] block">D2 Receptor Sensitivity</span>
-              <span className="text-xl font-extrabold text-[var(--primary)]">{receptorSensitivity}%</span>
+              <span className="text-[10px] text-[var(--muted-foreground)] block">Stimulation Load Index</span>
+              <span className="text-xl font-extrabold text-[var(--primary)]">{stimulationLoad}%</span>
             </div>
             <div className="p-4 rounded-xl bg-[var(--card)] border border-[var(--border)]">
-              <span className="text-[10px] text-[var(--muted-foreground)] block">Boredom Vulnerability</span>
-              <span className="text-xl font-extrabold text-[var(--foreground)]">{boredomThreshold}%</span>
+              <span className="text-[10px] text-[var(--muted-foreground)] block">Attention Friction</span>
+              <span className="text-xl font-extrabold text-[var(--foreground)]">{attentionFriction}%</span>
             </div>
           </div>
 
           <div className="space-y-2 text-xs text-[var(--muted-foreground)]">
-            <strong className="text-[var(--foreground)] block">48-Hour Recovery Protocol:</strong>
+            <strong className="text-[var(--foreground)] block">Practical next experiment:</strong>
             <ul className="space-y-1.5 list-disc pl-5">
-              <li>Place phone in another room for 3 hours before sleep.</li>
-              <li>Spend 5 minutes staring at a wall before initiating deep work.</li>
-              <li>Disable all non-human notifications (apps, news, games).</li>
+              <li>Place the phone outside the immediate work area during focused work.</li>
+              <li>Start one 25-minute block with only the materials required for the task.</li>
+              <li>Silence non-essential notifications during the block.</li>
             </ul>
           </div>
+          <p className="text-[10px] leading-5 text-[var(--muted-foreground)]">
+            Heuristic self-audit only. It does not estimate dopamine levels, receptor sensitivity, or brain chemistry.
+          </p>
         </div>
       )}
     </div>

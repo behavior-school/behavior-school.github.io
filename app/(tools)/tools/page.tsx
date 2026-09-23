@@ -4,7 +4,7 @@ import { Cpu, Activity, Zap, ShieldAlert, Clock, ArrowRight } from "lucide-react
 
 export const metadata: Metadata = {
   title: "Behavioral Science & Neuroscience Web Tools | Behavior School",
-  description: "Interactive Pomodoro timers, neurochemistry calculators, habit shrinkers, dopamine audits, and friction barrier tools.",
+  description: "Interactive focus timers, behavior audits, habit-shrinking tools, and friction-design exercises.",
   openGraph: {
     title: "Behavioral Science Interactive Tools | Behavior School",
     description: "Interactive tools for habit formation, dopamine recalibration, focus timers, and cognitive performance.",
@@ -24,9 +24,9 @@ export const toolsList = [
   },
   {
     slug: "dopamine-calculator",
-    name: "Dopamine Baseline & Boredom Calculator",
+    name: "Stimulation & Focus Environment Audit",
     icon: Activity,
-    desc: "Calculate estimated D2 receptor sensitivity, boredom threshold, and receive a customized digital detox protocol based on daily phone screen time.",
+    desc: "Use screen time, notifications, and rapid-feed exposure as reflection inputs to identify environmental friction around sustained attention. This is a heuristic self-audit, not a physiological measurement.",
     category: "Neuroscience"
   },
   {
@@ -77,7 +77,7 @@ export default function ToolsIndexPage() {
             Behavioral Science <span className="text-[var(--primary)]">Tools</span>
           </h1>
           <p className="text-base sm:text-lg text-[var(--muted-foreground)]">
-            Audit your brain chemistry, time focus sessions, shrink habit friction, and calculate focus parameters using interactive web applications.
+            Reflect on your environment, run small behavior experiments, and turn broad goals into concrete next actions.
           </p>
         </div>
 

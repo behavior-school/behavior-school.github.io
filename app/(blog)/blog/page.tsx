@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, BookOpen, Brain, Clock, Cpu, Eye, HeartHandshake, Scale, Sparkles } from "lucide-react";
 import { getAllArticles } from "../../lib/content";
+import ArticleCover from "../../components/ArticleCover";
 
 export const metadata: Metadata = {
   title: "Behavior School Blog — Practical Psychology & Neuroscience Guides",
@@ -111,19 +111,7 @@ export default function BlogIndexPage() {
                 className="group overflow-hidden rounded-[1.4rem] border border-[var(--border)] bg-[var(--card)] transition duration-200 hover:-translate-y-1 hover:border-[var(--primary)]/45"
               >
                 <Link href={"/blog/" + post.slug} className="block">
-                  <div className="relative aspect-[16/8] overflow-hidden bg-[var(--muted)]">
-                    <Image
-                      src="/og-image.png"
-                      alt=""
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover opacity-90 transition-transform duration-300 group-hover:scale-[1.03]"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
-                    <div className="absolute bottom-3 left-3 rounded-full border border-white/15 bg-black/35 px-2.5 py-1 text-[9px] font-semibold text-white backdrop-blur-md">
-                      {post.category}
-                    </div>
-                  </div>
+<ArticleCover title={post.title} category={post.category} />
                 </Link>
 
                 <div className="p-5 sm:p-6">

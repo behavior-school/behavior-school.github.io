@@ -5,6 +5,8 @@ import { ArrowLeft, Clock, Sparkles, CheckCircle2, ArrowRight } from "lucide-rea
 import { YoutubeIcon } from "../../../components/Icons";
 import MarkdownRenderer from "../../../components/MarkdownRenderer";
 import ProcrastinationSimulator from "../../../components/ProcrastinationSimulator";
+import ArticleCover from "../../../components/ArticleCover";
+import ArticleLearningExtension from "../../../components/ArticleLearningExtension";
 import { getAllArticles, getArticleBySlug } from "../../../lib/content";
 
 export function generateStaticParams() {
@@ -124,9 +126,17 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             </ul>
           </section>
 
-          {article.hasProcrastinationSimulator && <ProcrastinationSimulator />}
+          {article.hasProcrastinationSimulator && <div className="mt-7"><ProcrastinationSimulator /></div>}
 
-          <div className="mt-10"><MarkdownRenderer content={article.content} /></div>
+          <div className="mt-8">
+            <ArticleCover title={article.title} category={article.category} />
+          </div>
+
+          <div className="mt-10 max-w-[74ch]">
+            <MarkdownRenderer content={article.content} />
+          </div>
+
+          <ArticleLearningExtension title={article.title} takeaways={article.keyTakeaways} />
 
           <section className="mt-12 p-6 rounded-2xl bg-[var(--muted)] border border-[var(--border)]">
             <h2 className="text-sm font-bold text-[var(--foreground)] mb-2">Research & educational note</h2>
@@ -159,7 +169,9 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             </section>
           )}
 
-          <section className="mt-12 p-6 rounded-2xl bg-[var(--muted)] border border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4">
+          {article.recommendedVideo && (
+            <section className="mt-12 p-6 rounded-2xl bg-[var(--muted)] border border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4">
+
             <div>
               <span className="text-[10px] font-bold uppercase tracking-wider text-[var(--muted-foreground)]">Recommended Video Lesson</span>
               <h2 className="text-base font-bold text-[var(--foreground)] mt-0.5">{article.recommendedVideo}</h2>
@@ -167,7 +179,8 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             <a href="https://www.youtube.com/@behavior-school" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto px-5 py-2.5 rounded-xl font-bold text-xs bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-90 transition-opacity flex items-center justify-center gap-2 shrink-0">
               <YoutubeIcon className="w-4 h-4 fill-current" /><span>Watch on YouTube</span>
             </a>
-          </section>
+            </section>
+          )}
         </article>
       </main>
     </>

@@ -26,9 +26,9 @@ const toolsData: Record<string, ToolDetail> = {
   },
   "dopamine-calculator": {
     slug: "dopamine-calculator",
-    name: "Dopamine Baseline & Boredom Calculator",
+    name: "Stimulation & Focus Environment Audit",
     category: "Neuroscience",
-    desc: "Calculate estimated D2 receptor sensitivity, boredom threshold, and receive a customized digital detox protocol based on daily phone screen time.",
+    desc: "Reflect on stimulation and attention-friction patterns using screen time, notifications, and rapid-feed exposure. Results are heuristic indicators, not measurements of dopamine or receptor sensitivity.",
     component: "dopamine"
   },
   "habit-shrinker": {

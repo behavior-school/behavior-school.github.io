@@ -50,10 +50,38 @@ export default function AboutPage() {
           <section className="space-y-3">
             <h2 className="text-lg font-bold text-[var(--foreground)]">Our Content Philosophy</h2>
             <ul className="list-disc pl-5 space-y-1">
-              <li><strong>No Jargon</strong>: Complex ideas simplified into clear visual metaphors.</li>
-              <li><strong>No Boring Lectures</strong>: Story-driven, highly visual, engaging lessons.</li>
-              <li><strong>Actionable Focus</strong>: Knowledge must lead to physical behavioral change.</li>
+              <li><strong>Plain language:</strong> explain the mechanism before introducing technical vocabulary.</li>
+              <li><strong>Visual thinking:</strong> use sketches, models, diagrams, and examples when they clarify an idea.</li>
+              <li><strong>Actionable learning:</strong> connect knowledge to an observable experiment or behavior.</li>
+              <li><strong>Evidence with caveats:</strong> distinguish established findings from simplified models, hypotheses, and popular claims.</li>
+              <li><strong>Context matters:</strong> behavioral frameworks are tools for thinking, not universal diagnoses of people.</li>
             </ul>
+          </section>
+
+          <section className="space-y-3 pt-4 border-t border-[var(--border)]">
+            <h2 className="text-lg font-bold text-[var(--foreground)]">How to Use the Library</h2>
+            <p>
+              Start with one question you actually care about. Read the guide for the mechanism, not just the headline. Then use the visual or interactive element to reconstruct the idea from memory. Finally, test one small change in a real environment and observe what happens.
+            </p>
+            <p>
+              For books, the same pattern is applied at a larger scale: central thesis, mental models, context, examples, failure modes, action protocol, and active-recall prompts. The intent is to help readers understand a framework without treating every memorable line as settled science.
+            </p>
+          </section>
+
+          <section className="space-y-3 pt-4 border-t border-[var(--border)]">
+            <h2 className="text-lg font-bold text-[var(--foreground)]">Meet the Creator</h2>
+            <div className="flex flex-col gap-5 sm:flex-row sm:items-center">
+              <div className="h-24 w-24 shrink-0 overflow-hidden rounded-full border border-[var(--border)] bg-[var(--muted)] p-1">
+                <img src="https://avatars.githubusercontent.com/u/66713844" alt="Shaswat Raj" width="512" height="512" loading="lazy" className="h-full w-full rounded-full object-cover" />
+              </div>
+              <div>
+                <h3 className="text-lg font-bold text-[var(--foreground)]">Shaswat Raj</h3>
+                <p className="mt-1 text-xs font-mono text-[var(--muted-foreground)]">Software Engineer & Tech Educator</p>
+                <p className="mt-3 text-sm leading-7">
+                  The project focuses on turning research-heavy behavioral concepts into clear explanations, visual models, and small experiments that readers can inspect and challenge.
+                </p>
+              </div>
+            </div>
           </section>
         </div>
       </main>

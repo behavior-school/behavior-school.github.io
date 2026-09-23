@@ -25,7 +25,7 @@ export default function VisualGraphs() {
             <span>Interactive Behavioral Graphs</span>
           </div>
           <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--foreground)] tracking-tight mb-3">
-            Neuroscience Visualized
+            Behavioral Models Visualized
           </h2>
           <p className="text-xs sm:text-sm text-[var(--muted-foreground)] max-w-lg mx-auto">
             Adjust the sliders below to see how physical environment friction and active retrieval shape your brain.
@@ -42,7 +42,7 @@ export default function VisualGraphs() {
                 : "bg-[var(--muted)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] border border-[var(--border)]"
             }`}
           >
-            Dopamine Baseline vs Spike Dynamics
+            Stimulation vs Attention
           </button>
           <button
             onClick={() => setActiveTab("memory")}
@@ -62,14 +62,14 @@ export default function VisualGraphs() {
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[var(--border)] pb-4">
               <div>
                 <h3 className="text-base font-bold text-[var(--foreground)]">
-                  Dopamine Tonic Baseline vs Phasic Spikes
+                  Dopamine Lower distraction vs More competing cuess
                 </h3>
                 <p className="text-xs text-[var(--muted-foreground)] mt-0.5">
-                  High notification frequency causes receptor down-regulation, crashing baseline drive.
+                  Illustrative model: more competing cues can make sustained attention harder.
                 </p>
               </div>
               <div className="text-right">
-                <span className="text-xs font-mono text-[var(--muted-foreground)]">Baseline Drive: </span>
+                <span className="text-xs font-mono text-[var(--muted-foreground)]">Attention friction: </span>
                 <span className="text-sm font-extrabold text-[var(--primary)]">{baselineDopamine}%</span>
               </div>
             </div>
@@ -100,17 +100,17 @@ export default function VisualGraphs() {
                     style={{ height: `${baselineDopamine}%` }}
                     className="w-full bg-[var(--primary)] rounded-t-xl transition-all duration-300 opacity-90"
                   />
-                  <span className="text-[10px] font-mono text-[var(--muted-foreground)]">Tonic Baseline</span>
+                  <span className="text-[10px] font-mono text-[var(--muted-foreground)]">Lower distraction</span>
                 </div>
 
-                {/* Phasic Spike Bar */}
+                {/* More competing cues Bar */}
                 <div className="w-1/3 flex flex-col items-center gap-2 h-full justify-end">
                   <span className="text-[10px] font-bold text-[var(--foreground)]">{peakSpike}%</span>
                   <div
                     style={{ height: `${Math.min(100, peakSpike / 2)}%` }}
                     className="w-full bg-[var(--primary)]/40 rounded-t-xl border-2 border-dashed border-[var(--primary)] transition-all duration-300"
                   />
-                  <span className="text-[10px] font-mono text-[var(--muted-foreground)]">Phasic Spike</span>
+                  <span className="text-[10px] font-mono text-[var(--muted-foreground)]">More competing cues</span>
                 </div>
               </div>
             </div>
@@ -118,7 +118,7 @@ export default function VisualGraphs() {
             <div className="p-4 rounded-xl bg-[var(--muted)] border border-[var(--border)] text-xs text-[var(--muted-foreground)] flex items-start gap-2.5">
               <TrendingUp className="w-4 h-4 text-[var(--primary)] shrink-0 mt-0.5" />
               <p>
-                <strong>Scientific Insight:</strong> When notification frequency is reduced, D2 dopamine receptor density restores within 48-72 hours, allowing standard deep work to feel engaging again.
+                <strong>Model note:</strong> These bars are illustrative teaching aids, not measurements of dopamine, receptor density, or recovery time.
               </p>
             </div>
           </div>
@@ -196,7 +196,7 @@ export default function VisualGraphs() {
             <div className="p-4 rounded-xl bg-[var(--muted)] border border-[var(--border)] text-xs text-[var(--muted-foreground)] flex items-start gap-2.5">
               <RefreshCw className="w-4 h-4 text-[var(--primary)] shrink-0 mt-0.5" />
               <p>
-                <strong>Memory Plasticity Rule:</strong> Forcing retrieval strengthens hippocampal synapses via Long-Term Potentiation (LTP), preventing memory decay.
+                <strong>Learning note:</strong> Retrieval practice can improve later recall. The size and durability of the benefit depend on spacing, difficulty, feedback, and the material being learned.
               </p>
             </div>
           </div>

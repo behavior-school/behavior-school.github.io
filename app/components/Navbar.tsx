@@ -97,7 +97,7 @@ export default function Navbar() {
             <Wrench className="h-5 w-5" />
             <span>Tools</span>
           </Link>
-          <Link href="/books" onClick={() => setOpen(false)} className="flex min-h-11 flex-col items-center justify-center gap-1 rounded-xl text-[10px] font-semibold text-[var(--muted-foreground)] active:bg-[var(--muted)]">
+          <Link href="/search" onClick={() => setOpen(false)} className={pathname === "/search" ? "flex min-h-11 flex-col items-center justify-center gap-1 rounded-xl bg-[var(--muted)] text-[10px] font-bold text-[var(--primary)] active:bg-[var(--muted)]" : "flex min-h-11 flex-col items-center justify-center gap-1 rounded-xl text-[10px] font-semibold text-[var(--muted-foreground)] active:bg-[var(--muted)]"}>
             <Search className="h-5 w-5" />
             <span>Search</span>
           </Link>

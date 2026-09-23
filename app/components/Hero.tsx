@@ -11,25 +11,25 @@ export default function Hero() {
   const stateConfigs = {
     focus: {
       title: "Deep Focus State",
-      dopamine: "85% Tonic Stability",
-      cortex: "Prefrontal Activation",
-      desc: "Phone in separate room, digital notifications silenced, single-task priority.",
-      chip: "dopamine-protocol.md",
-      link: "/blog/dopamine-fasting-myth-vs-science"
+      signal: "Low-distraction environment",
+      mechanism: "Single task + clear next action",
+      desc: "Reduce competing cues, define one concrete task, and make the first action obvious.",
+      chip: "focus-environment.md",
+      link: "/blog/attention-switching-deep-work"
     },
     flow: {
-      title: "Flow State Protocol",
-      dopamine: "95% Peak Control",
-      cortex: "Transient Hypofrontality",
-      desc: "Clear challenge-skill balance, 90-minute ultradian rhythm, zero interruption.",
-      chip: "flow-state-framework.md",
-      link: "/blog/active-recall-spaced-repetition-guide"
+      title: "Flow Conditions",
+      signal: "Challenge matched to skill",
+      mechanism: "Clear goals + fast feedback",
+      desc: "Create a focused task with an appropriate level of difficulty and fewer interruptions.",
+      chip: "flow-conditions.md",
+      link: "/blog/attention-switching-deep-work"
     },
     reset: {
-      title: "2-Min Procrastination Reset",
-      dopamine: "Limbic Threat Bypassed",
-      cortex: "120s Activation Energy",
-      desc: "Shrinking task initiation threshold so small the Amygdala alarm never triggers.",
+      title: "2-Minute Reset",
+      signal: "Lower the starting friction",
+      mechanism: "Tiny action + defined stopping point",
+      desc: "Replace a vague intention with a small, observable action you can start immediately.",
       chip: "procrastination-reset.md",
       link: "/blog/neuroscience-of-procrastination"
     }
@@ -60,7 +60,7 @@ export default function Hero() {
 
             {/* Subtitle */}
             <p className="text-base sm:text-lg text-[var(--muted-foreground)] max-w-xl mx-auto lg:mx-0 font-normal leading-relaxed">
-              Understand the neuroscience behind procrastination, dopamine, habits, and focus. Built on peer-reviewed behavioral research.
+              Explore psychology, behavioral science, learning, and neuroscience through long-form guides, visual models, interactive tools, and practice.
             </p>
 
             {/* Action Buttons & Quick Artifact Chips */}
@@ -157,12 +157,12 @@ export default function Hero() {
 
                 <div className="grid grid-cols-2 gap-2 text-xs font-mono">
                   <div className="p-2.5 rounded-xl bg-[var(--card)] border border-[var(--border)]">
-                    <span className="text-[10px] text-[var(--muted-foreground)] block">Dopamine</span>
-                    <span className="font-bold text-[var(--primary)]">{current.dopamine}</span>
+                    <span className="text-[10px] text-[var(--muted-foreground)] block">Signal</span>
+                    <span className="font-bold text-[var(--primary)]">{current.signal}</span>
                   </div>
                   <div className="p-2.5 rounded-xl bg-[var(--card)] border border-[var(--border)]">
-                    <span className="text-[10px] text-[var(--muted-foreground)] block">Cortex State</span>
-                    <span className="font-bold text-[var(--foreground)]">{current.cortex}</span>
+                    <span className="text-[10px] text-[var(--muted-foreground)] block">Mechanism</span>
+                    <span className="font-bold text-[var(--foreground)]">{current.mechanism}</span>
                   </div>
                 </div>
 

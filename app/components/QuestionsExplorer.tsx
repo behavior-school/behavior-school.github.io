@@ -12,22 +12,22 @@ export default function QuestionsExplorer() {
     {
       question: "Why do we procrastinate?",
       category: "Psychology",
-      shortAnswer: "Procrastination is emotional avoidance, not poor time management.",
-      breakdown: "The amygdala perceives task difficulty or uncertainty as a threat, triggering avoidance for short-term emotional relief.",
+      shortAnswer: "Procrastination can involve emotion regulation, task aversiveness, delay discounting, and self-control—not just time management.",
+      breakdown: "Difficult, uncertain, or emotionally costly tasks can make avoidance more immediately appealing; the exact mechanisms vary by person and context.",
       link: "/blog/neuroscience-of-procrastination"
     },
     {
       question: "Why do we lose focus so easily?",
       category: "Neuroscience",
-      shortAnswer: "Digital novelty floods the brain with rapid dopamine spikes.",
-      breakdown: "High baseline stimulation makes low-stimulus work feel unbearable. Friction design restores natural focus.",
+      shortAnswer: "Frequent digital novelty can create a strong stream of competing cues that makes sustained attention harder.",
+      breakdown: "Reducing interruptions and environmental switching can make sustained work easier; this is a behavioral design strategy, not a claim about a measurable dopamine reset.",
       link: "/blog/dopamine-fasting-myth-vs-science"
     },
     {
       question: "Why are bad habits so hard to break?",
       category: "Behavior Science",
-      shortAnswer: "Habits are automated pathways carved into the basal ganglia.",
-      breakdown: "Suppressing habits via willpower fails under fatigue. Keep the Cue and Reward, but swap out the Response.",
+      shortAnswer: "Repeated cue-response patterns can become more automatic, with brain systems including the basal ganglia involved in habit learning.",
+      breakdown: "Changing cues, increasing friction, and practicing an alternative response can reduce reliance on willpower alone.",
       link: "/books/power-of-habit"
     }
   ];

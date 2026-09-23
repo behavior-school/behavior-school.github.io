@@ -13,7 +13,7 @@ export default function BehaviorDiagnostic() {
       id: "procrastination",
       label: "Procrastination",
       desc: "Delaying tasks until the last minute.",
-      diagnosis: "Limbic system emotional avoidance triggered by task anxiety.",
+      diagnosis: "Possible friction: the task may feel vague, aversive, or emotionally costly.",
       steps: [
         "Lower activation energy to 120 seconds.",
         "Separate drafting stage from editing stage.",
@@ -25,7 +25,7 @@ export default function BehaviorDiagnostic() {
       id: "focus",
       label: "Low Focus",
       desc: "Checking notifications every 10 minutes.",
-      diagnosis: "Dopamine receptor desensitization caused by digital stimuli.",
+      diagnosis: "Possible friction: frequent context switching and high-stimulation cues may be competing with sustained attention.",
       steps: [
         "Store phone in another room.",
         "Execute 25-minute Pomodoro blocks.",
@@ -37,7 +37,7 @@ export default function BehaviorDiagnostic() {
       id: "overthinking",
       label: "Overthinking",
       desc: "Constant rumination and mental worry loops.",
-      diagnosis: "Default Mode Network hyper-activity seeking certainty.",
+      diagnosis: "Possible friction: unresolved questions, uncertainty, or repetitive thinking may be keeping attention on the same problem.",
       steps: [
         "Perform a 5-minute written brain dump.",
         "Ask: 'And then what happens?'",
@@ -53,10 +53,10 @@ export default function BehaviorDiagnostic() {
     <section id="diagnostic" className="py-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
         <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--foreground)] tracking-tight mb-2">
-          Mind Diagnostic
+          Behavior Pattern Check
         </h2>
         <p className="text-xs sm:text-sm text-[var(--muted-foreground)] mb-8">
-          Select your primary bottleneck to generate an immediate action plan.
+          Choose a behavior pattern to get a practical starting plan. This is a reflection tool, not a clinical diagnosis.
         </p>
 
         {!analyzed ? (
@@ -99,7 +99,7 @@ export default function BehaviorDiagnostic() {
             <div className="flex items-center justify-between border-b border-[var(--border)] pb-4">
               <div>
                 <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--primary)]">
-                  Diagnostic Result
+                  Behavior Pattern
                 </span>
                 <h3 className="text-lg font-bold text-[var(--foreground)]">{current?.label} Protocol</h3>
               </div>
@@ -116,7 +116,7 @@ export default function BehaviorDiagnostic() {
             </div>
 
             <p className="text-xs text-[var(--muted-foreground)]">
-              <strong className="text-[var(--foreground)]">Diagnosis: </strong>{current?.diagnosis}
+              <strong className="text-[var(--foreground)]">Working hypothesis: </strong>{current?.diagnosis}
             </p>
 
             <div className="space-y-2">
