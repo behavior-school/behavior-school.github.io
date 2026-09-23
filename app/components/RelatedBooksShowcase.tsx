@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { BookCatalogItem } from "../../lib/book-types";
+import type { BookCatalogItem } from "../../content/book-catalog";
 
 function coverFor(book: BookCatalogItem) {
   return book.coverImageUrl || book.amazonImageUrl || "/book-posters/" + book.slug + ".svg";
