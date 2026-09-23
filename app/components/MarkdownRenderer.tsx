@@ -18,6 +18,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
             <h2
               key={idx}
               className="text-xl sm:text-2xl font-bold text-[var(--foreground)] tracking-tight pt-4 pb-1 border-b border-[var(--border)]"
+              id={slugifyHeading(trimmed.replace(/^##\\s+/, ""))}
             >
               {parseInlineMarkdown(trimmed.replace(/^##\s+/, ""))}
             </h2>
@@ -30,6 +31,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
             <h3
               key={idx}
               className="text-lg sm:text-xl font-bold text-[var(--primary)] tracking-tight pt-3 pb-1"
+              id={slugifyHeading(trimmed.replace(/^###\\s+/, ""))}
             >
               {parseInlineMarkdown(trimmed.replace(/^###\s+/, ""))}
             </h3>
@@ -107,4 +109,13 @@ function parseInlineMarkdown(text: string): React.ReactNode {
     }
     return part;
   });
+}
+
+
+function slugifyHeading(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9\\s-]/g, "")
+    .trim()
+    .replace(/\\s+/g, "-");
 }
