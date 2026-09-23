@@ -13,9 +13,9 @@ import {
   Sparkles,
   Wrench,
   X,
-  Youtube,
 } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
+import { YoutubeIcon } from "./Icons";
 
 const links = [
   { href: "/resources", label: "Resources", icon: Boxes },
@@ -78,7 +78,7 @@ export default function Navbar() {
             rel="noopener noreferrer"
             className="inline-flex h-8 items-center rounded-full bg-[var(--foreground)] px-3 text-[10px] font-bold text-[var(--background)] transition-all hover:opacity-90"
           >
-            <Youtube className="mr-1.5 h-3.5 w-3.5 fill-current" />
+            <YoutubeIcon className="mr-1.5 h-3.5 w-3.5" />
             YouTube
           </a>
         </div>
@@ -129,7 +129,7 @@ export default function Navbar() {
                 rel="noopener noreferrer"
                 className="mt-4 inline-flex h-11 items-center justify-center rounded-xl bg-[var(--foreground)] text-sm font-semibold text-[var(--background)]"
               >
-                <Youtube className="mr-2 h-4 w-4 fill-current" />
+                <YoutubeIcon className="mr-2 h-4 w-4" />
                 Subscribe on YouTube
               </a>
 

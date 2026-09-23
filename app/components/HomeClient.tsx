@@ -1,19 +1,18 @@
 "use client";
 
 import React from "react";
+import { GithubIcon, YoutubeIcon } from "./Icons";
 import Link from "next/link";
 import {
   ArrowRight,
   ArrowUpRight,
   BookOpen,
   Brain,
-  Github,
   Globe,
   Repeat2,
   Sparkles,
   Users,
   Wrench,
-  Youtube,
 } from "lucide-react";
 
 const focusAreas = [
@@ -157,7 +156,7 @@ export default function HomeClient() {
               rel="noopener noreferrer"
               className="flex w-full items-center justify-center rounded-xl bg-[var(--foreground)] px-8 py-4 text-sm font-bold text-[var(--background)] shadow-lg transition-transform duration-300 hover:scale-[1.02] hover:opacity-90 sm:w-auto"
             >
-              <Youtube className="mr-2 h-5 w-5 fill-current" />
+              <YoutubeIcon className="mr-2 h-5 w-5" />
               Watch on YouTube
             </a>
 
@@ -398,7 +397,7 @@ export default function HomeClient() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center rounded-lg bg-[var(--muted)] px-3.5 py-2 text-xs font-semibold transition-colors hover:bg-[var(--secondary)]"
                 >
-                  <Github className="mr-1.5 h-3.5 w-3.5 text-[var(--muted-foreground)]" />
+                  <GithubIcon className="mr-1.5 h-3.5 w-3.5 text-[var(--muted-foreground)]" />
                   GitHub
                   <ArrowUpRight className="ml-1.5 h-3.5 w-3.5" />
                 </a>

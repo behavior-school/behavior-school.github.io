@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowUpRight, Github, Youtube } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+import { GithubIcon, YoutubeIcon } from "./Icons";
 
 export default function Footer() {
   return (
@@ -63,7 +64,7 @@ export default function Footer() {
             aria-label="Behavior School on YouTube"
             className="text-[var(--muted-foreground)] transition-colors hover:text-[var(--foreground)]"
           >
-            <Youtube className="h-5 w-5 fill-current" />
+            <YoutubeIcon className="h-5 w-5" />
           </a>
           <a
             href="https://github.com/sh20raj"
@@ -72,7 +73,7 @@ export default function Footer() {
             aria-label="GitHub Profile"
             className="text-[var(--muted-foreground)] transition-colors hover:text-[var(--foreground)]"
           >
-            <Github className="h-5 w-5" />
+            <GithubIcon className="h-5 w-5" />
           </a>
           <a
             href="/about"
