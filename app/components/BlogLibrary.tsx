@@ -106,7 +106,7 @@ export default function BlogLibrary({ articles }: { articles: Article[] }) {
                 className="group grid grid-cols-[5rem_1fr] gap-4 border-b border-[var(--border)] p-4 transition hover:bg-[var(--muted)]/40 last:border-b-0 sm:grid-cols-[5.5rem_1fr] lg:grid-cols-[6rem_1fr]"
               >
                 <div className="overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--muted)]">
-                  <ArticleCover title={article.title} category={article.category} />
+                  <ArticleCover title={article.title} category={article.category} compact />
                 </div>
                 <div className="min-w-0">
                   <div className="flex items-center gap-2 text-[9px] uppercase tracking-[0.14em] text-[var(--muted-foreground)]">
