@@ -1,0 +1,282 @@
+{
+  "_meta": {
+    "description": "Affiliate links for Behavior School book guides. Add a direct affiliate URL for each book. Empty strings are intentionally left as placeholders.",
+    "howToUse": "Replace the empty affiliateUrl value with your affiliate link. Keep the slug unchanged because it matches the book page URL.",
+    "lastUpdated": "2026-09-23"
+  },
+  "books": [
+    {
+      "slug": "atomic-habits",
+      "title": "Atomic Habits",
+      "author": "James Clear",
+      "affiliateUrl": "https://link.amazon/B01M0UOVE",
+      "enabled": true
+    },
+    {
+      "slug": "thinking-fast-and-slow",
+      "title": "Thinking, Fast and Slow",
+      "author": "Daniel Kahneman",
+      "affiliateUrl": "",
+      "enabled": false
+    },
+    {
+      "slug": "deep-work",
+      "title": "Deep Work",
+      "author": "Cal Newport",
+      "affiliateUrl": "",
+      "enabled": false
+    },
+    {
+      "slug": "power-of-habit",
+      "title": "The Power of Habit",
+      "author": "Charles Duhigg",
+      "affiliateUrl": "",
+      "enabled": false
+    },
+    {
+      "slug": "drive",
+      "title": "Drive: The Surprising Truth About Motivation",
+      "author": "Daniel H. Pink",
+      "affiliateUrl": "",
+      "enabled": false
+    },
+    {
+      "slug": "mindset",
+      "title": "Mindset: The New Psychology of Success",
+      "author": "Carol S. Dweck",
+      "affiliateUrl": "",
+      "enabled": false
+    },
+    {
+      "slug": "nudge",
+      "title": "Nudge",
+      "author": "Richard H. Thaler & Cass R. Sunstein",
+      "affiliateUrl": "",
+      "enabled": false
+    },
+    {
+      "slug": "predictably-irrational",
+      "title": "Predictably Irrational",
+      "author": "Dan Ariely",
+      "affiliateUrl": "",
+      "enabled": false
+    },
+    {
+      "slug": "influence",
+      "title": "Influence",
+      "author": "Robert B. Cialdini",
+      "affiliateUrl": "",
+      "enabled": false
+    },
+    {
+      "slug": "thinking-in-bets",
+      "title": "Thinking in Bets",
+      "author": "Annie Duke",
+      "affiliateUrl": "",
+      "enabled": false
+    },
+    {
+      "slug": "scout-mindset",
+      "title": "The Scout Mindset",
+      "author": "Julia Galef",
+      "affiliateUrl": "",
+      "enabled": false
+    },
+    {
+      "slug": "paradox-of-choice",
+      "title": "The Paradox of Choice",
+      "author": "Barry Schwartz",
+      "affiliateUrl": "",
+      "enabled": false
+    },
+    {
+      "slug": "48-laws-of-power",
+      "title": "The 48 Laws of Power",
+      "author": "Robert Greene",
+      "affiliateUrl": "",
+      "enabled": false
+    },
+    {
+      "slug": "laws-of-human-nature",
+      "title": "The Laws of Human Nature",
+      "author": "Robert Greene",
+      "affiliateUrl": "",
+      "enabled": false
+    },
+    {
+      "slug": "art-of-seduction",
+      "title": "The Art of Seduction",
+      "author": "Robert Greene",
+      "affiliateUrl": "",
+      "enabled": false
+    },
+    {
+      "slug": "games-people-play",
+      "title": "Games People Play",
+      "author": "Eric Berne",
+      "affiliateUrl": "",
+      "enabled": false
+    },
+    {
+      "slug": "emotional-blackmail",
+      "title": "Emotional Blackmail",
+      "author": "Susan Forward with Donna Frazier",
+      "affiliateUrl": "",
+      "enabled": false
+    },
+    {
+      "slug": "gaslight-effect",
+      "title": "The Gaslight Effect",
+      "author": "Dr. Robin Stern",
+      "affiliateUrl": "",
+      "enabled": false
+    },
+    {
+      "slug": "in-sheeps-clothing",
+      "title": "In Sheep's Clothing",
+      "author": "George K. Simon",
+      "affiliateUrl": "",
+      "enabled": false
+    },
+    {
+      "slug": "confidence-game",
+      "title": "The Confidence Game",
+      "author": "Maria Konnikova",
+      "affiliateUrl": "",
+      "enabled": false
+    },
+    {
+      "slug": "pre-suasion",
+      "title": "Pre-Suasion",
+      "author": "Robert B. Cialdini",
+      "affiliateUrl": "",
+      "enabled": false
+    },
+    {
+      "slug": "propaganda",
+      "title": "Propaganda",
+      "author": "Edward L. Bernays",
+      "affiliateUrl": "",
+      "enabled": false
+    },
+    {
+      "slug": "snakes-in-suits",
+      "title": "Snakes in Suits",
+      "author": "Paul Babiak & Robert D. Hare",
+      "affiliateUrl": "",
+      "enabled": false
+    },
+    {
+      "slug": "without-conscience",
+      "title": "Without Conscience",
+      "author": "Robert D. Hare",
+      "affiliateUrl": "",
+      "enabled": false
+    },
+    {
+      "slug": "tiny-habits",
+      "title": "Tiny Habits",
+      "author": "B. J. Fogg",
+      "affiliateUrl": "",
+      "enabled": false
+    },
+    {
+      "slug": "the-power-of-moments",
+      "title": "The Power of Moments",
+      "author": "Chip Heath & Dan Heath",
+      "affiliateUrl": "",
+      "enabled": false
+    },
+    {
+      "slug": "make-it-stick",
+      "title": "Make It Stick",
+      "author": "Peter C. Brown, Henry L. Roediger III & Mark A. McDaniel",
+      "affiliateUrl": "",
+      "enabled": false
+    },
+    {
+      "slug": "peak",
+      "title": "Peak",
+      "author": "Anders Ericsson & Robert Pool",
+      "affiliateUrl": "",
+      "enabled": false
+    },
+    {
+      "slug": "ultralearning",
+      "title": "Ultralearning",
+      "author": "Scott H. Young",
+      "affiliateUrl": "",
+      "enabled": false
+    },
+    {
+      "slug": "range",
+      "title": "Range",
+      "author": "David Epstein",
+      "affiliateUrl": "",
+      "enabled": false
+    },
+    {
+      "slug": "mind-for-numbers",
+      "title": "A Mind for Numbers",
+      "author": "Barbara Oakley",
+      "affiliateUrl": "",
+      "enabled": false
+    },
+    {
+      "slug": "why-we-sleep",
+      "title": "Why We Sleep",
+      "author": "Matthew Walker",
+      "affiliateUrl": "",
+      "enabled": false
+    },
+    {
+      "slug": "the-happiness-hypothesis",
+      "title": "The Happiness Hypothesis",
+      "author": "Jonathan Haidt",
+      "affiliateUrl": "",
+      "enabled": false
+    },
+    {
+      "slug": "stumbling-on-happiness",
+      "title": "Stumbling on Happiness",
+      "author": "Daniel Gilbert",
+      "affiliateUrl": "",
+      "enabled": false
+    },
+    {
+      "slug": "emotional-intelligence",
+      "title": "Emotional Intelligence",
+      "author": "Daniel Goleman",
+      "affiliateUrl": "",
+      "enabled": false
+    },
+    {
+      "slug": "social-intelligence",
+      "title": "Social Intelligence",
+      "author": "Daniel Goleman",
+      "affiliateUrl": "",
+      "enabled": false
+    },
+    {
+      "slug": "nonviolent-communication",
+      "title": "Nonviolent Communication",
+      "author": "Marshall B. Rosenberg",
+      "affiliateUrl": "",
+      "enabled": false
+    },
+    {
+      "slug": "crucial-conversations",
+      "title": "Crucial Conversations",
+      "author": "Kerry Patterson, Joseph Grenny, Ron McMillan, Al Switzler & Emily Gregory",
+      "affiliateUrl": "",
+      "enabled": false
+    },
+    {
+      "slug": "difficult-conversations",
+      "title": "Difficult Conversations",
+      "author": "Douglas Stone, Bruce Patton & Sheila Heen",
+      "affiliateUrl": "",
+      "enabled": false
+    }
+  ]
+}
