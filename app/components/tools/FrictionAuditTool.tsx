@@ -1,10 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
-import { ShieldAlert, CheckCircle2, ArrowRight } from "lucide-react";
+import { ShieldAlert, CheckCircle2 } from "lucide-react";
 
 export default function FrictionAuditTool() {
-  const [habitType, setHabitType] = useState<"bad" | "good">("bad");
   const [targetHabit, setTargetHabit] = useState("Social Media Scrolling");
 
   const frictionStrategies: Record<string, { title: string; steps: string[] }> = {

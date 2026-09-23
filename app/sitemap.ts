@@ -21,24 +21,57 @@ const staticRoutes = [
   "/books",
 ];
 
+const quizSlugs = [
+  "neuroscience-dopamine-quiz",
+  "atomic-habits-benchmark",
+  "cognitive-biases-test",
+  "deep-work-focus-audit",
+];
+
+const toolSlugs = [
+  "pomodoro-timer",
+  "dopamine-calculator",
+  "habit-shrinker",
+  "friction-audit",
+];
+
 export default function sitemap(): MetadataRoute.Sitemap {
+  const now = new Date();
+
   const staticEntries = staticRoutes.map((path) => ({
     url: `${BASE_URL}${path}`,
-    changeFrequency: path === "/books" || path === "/" ? "weekly" as const : "monthly" as const,
-    priority: path === "/" ? 1 : path === "/books" ? 0.9 : 0.7,
+    lastModified: now,
+    changeFrequency: path === "/" || path === "/books" || path === "/blog" ? ("weekly" as const) : ("monthly" as const),
+    priority: path === "/" ? 1.0 : path === "/books" || path === "/tools" || path === "/quiz" ? 0.9 : 0.7,
   }));
 
   const bookEntries = getAllBookSlugs().map((slug) => ({
     url: `${BASE_URL}/books/${slug}`,
-    changeFrequency: "monthly" as const,
-    priority: 0.8,
+    lastModified: now,
+    changeFrequency: "weekly" as const,
+    priority: 0.85,
   }));
 
   const articleEntries = articles.map((article) => ({
     url: `${BASE_URL}/blog/${article.slug}`,
+    lastModified: article.revisionDate ? new Date(article.revisionDate) : now,
     changeFrequency: "monthly" as const,
-    priority: 0.75,
+    priority: 0.8,
   }));
 
-  return [...staticEntries, ...bookEntries, ...articleEntries];
+  const quizEntries = quizSlugs.map((slug) => ({
+    url: `${BASE_URL}/quiz/${slug}`,
+    lastModified: now,
+    changeFrequency: "weekly" as const,
+    priority: 0.85,
+  }));
+
+  const toolEntries = toolSlugs.map((slug) => ({
+    url: `${BASE_URL}/tools/${slug}`,
+    lastModified: now,
+    changeFrequency: "weekly" as const,
+    priority: 0.85,
+  }));
+
+  return [...staticEntries, ...bookEntries, ...articleEntries, ...quizEntries, ...toolEntries];
 }

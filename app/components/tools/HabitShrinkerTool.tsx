@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Zap, CheckCircle2, Copy, Check } from "lucide-react";
+import { Zap, Copy, Check } from "lucide-react";
 
 export default function HabitShrinkerTool() {
   const [goal, setGoal] = useState("Read 30 Books This Year");
@@ -86,7 +86,7 @@ export default function HabitShrinkerTool() {
           <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--primary)] block mb-1">
             Shrunken 120-Second Micro-Action (2-Minute Rule):
           </span>
-          <p className="text-sm font-bold text-[var(--foreground)]">"{microAction}"</p>
+          <p className="text-sm font-bold text-[var(--foreground)]">&ldquo;{microAction}&rdquo;</p>
         </div>
 
         <div className="pt-3 border-t border-[var(--border)] flex items-center justify-between">

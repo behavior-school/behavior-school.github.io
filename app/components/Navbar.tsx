@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { BookOpen, Compass, Home, Menu, Search, Wrench, X } from "lucide-react";
+import Image from "next/image";
+import { BookOpen, Compass, Home, Menu, Wrench, X, Search } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { YoutubeIcon } from "./Icons";
 import ThemeToggle from "./ThemeToggle";
@@ -40,7 +41,7 @@ export default function Navbar() {
       <div className="mx-auto flex h-full max-w-6xl items-center justify-between px-3 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-3 group">
           <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-[var(--border)] bg-[var(--muted)] p-1.5 shadow-sm">
-            <img src="/logo.svg" alt="Behavior School Logo" className="w-full h-full object-contain" />
+            <Image src="/logo.svg" alt="Behavior School Logo" width={32} height={32} className="w-full h-full object-contain" priority />
           </div>
           <span className="font-extrabold text-[15px] tracking-tight text-[var(--foreground)]">
             Behavior<span className="text-[var(--primary)] font-normal">School</span>

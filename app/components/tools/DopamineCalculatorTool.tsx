@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Activity, Sparkles, CheckCircle2, RotateCcw } from "lucide-react";
+import { Activity, Sparkles } from "lucide-react";
 
 export default function DopamineCalculatorTool() {
   const [screenTime, setScreenTime] = useState<number>(4); // hours

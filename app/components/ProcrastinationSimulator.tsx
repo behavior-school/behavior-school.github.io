@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Activity, Zap, Play, RotateCcw, AlertTriangle, ShieldCheck } from "lucide-react";
+import { Activity, Zap, Play, RotateCcw, AlertTriangle } from "lucide-react";
 
 export default function ProcrastinationSimulator() {
   const [amygdalaThreat, setAmygdalaThreat] = useState(75); // 0 to 100

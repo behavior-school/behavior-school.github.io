@@ -130,7 +130,15 @@ export default function RootLayout({
     "@type": "WebSite",
     "name": "Behavior School",
     "url": "https://behavior-school.github.io",
-    "description": "Practical Psychology & Neuroscience for Real Life"
+    "description": "Practical Psychology & Neuroscience for Real Life",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://behavior-school.github.io/books?q={search_term_string}"
+      },
+      "query-input": "required name=search_term_string"
+    }
   };
 
   return (

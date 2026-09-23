@@ -13,6 +13,15 @@ export const metadata: Metadata = {
 export default function ResourcesPage() {
   const articles = [...getAllArticles()].sort((a, b) => (a.date < b.date ? 1 : -1));
 
+  const jsonLdBreadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Behavior School", "item": "https://behavior-school.github.io/" },
+      { "@type": "ListItem", "position": 2, "name": "Resources", "item": "https://behavior-school.github.io/resources" }
+    ]
+  };
+
   const cards = [
     ["/blog", "Field Guides", "Long-form explanations of habits, attention, learning, decision-making, neuroscience, and human behavior.", BookOpen],
     ["/quiz", "Quizzes", "Test whether you can retrieve and apply ideas rather than only recognize them.", Brain],
@@ -21,15 +30,20 @@ export default function ResourcesPage() {
   ] as const;
 
   return (
-    <main className="pt-32 pb-24 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="max-w-3xl mb-14">
-        <p className="text-xs uppercase tracking-widest font-bold text-[var(--primary)] mb-3">Behavior School Resources</p>
-        <h1 className="text-4xl sm:text-5xl font-extrabold text-[var(--foreground)] tracking-tight mb-5">Learn by reading, testing, and practicing.</h1>
-        <p className="text-base sm:text-lg text-[var(--muted-foreground)] leading-relaxed">
-          Use the field guides to build a mental model, then reinforce it with quizzes,
-          tools, book summaries, and the channel's video lessons.
-        </p>
-      </div>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdBreadcrumb) }}
+      />
+      <main className="pt-32 pb-24 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mb-14">
+          <p className="text-xs uppercase tracking-widest font-bold text-[var(--primary)] mb-3">Behavior School Resources</p>
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-[var(--foreground)] tracking-tight mb-5">Learn by reading, testing, and practicing.</h1>
+          <p className="text-base sm:text-lg text-[var(--muted-foreground)] leading-relaxed">
+            Use the field guides to build a mental model, then reinforce it with quizzes,
+            tools, book summaries, and the channel&apos;s video lessons.
+          </p>
+        </div>
 
       <div className="grid md:grid-cols-4 gap-4 mb-14">
         {cards.map(([href, title, desc, Icon]) => (
@@ -66,5 +80,6 @@ export default function ResourcesPage() {
         </div>
       </section>
     </main>
+    </>
   );
 }

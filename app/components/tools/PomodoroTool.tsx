@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Play, Pause, RotateCcw, ShieldCheck, Sparkles, Bell } from "lucide-react";
+import { Play, Pause, RotateCcw, ShieldCheck, Sparkles } from "lucide-react";
 
 export default function PomodoroTool() {
   const [mode, setMode] = useState<"pomodoro" | "ultradian" | "shortBreak" | "longBreak">("pomodoro");
@@ -18,18 +18,22 @@ export default function PomodoroTool() {
 
   useEffect(() => {
     let timer: NodeJS.Timeout;
-    if (isRunning && timeLeft > 0) {
+    if (isRunning) {
       timer = setInterval(() => {
-        setTimeLeft((prev) => prev - 1);
+        setTimeLeft((prev) => {
+          if (prev <= 1) {
+            setIsRunning(false);
+            if (mode === "pomodoro" || mode === "ultradian") {
+              setCompletedSessions((c) => c + 1);
+            }
+            return 0;
+          }
+          return prev - 1;
+        });
       }, 1000);
-    } else if (timeLeft === 0 && isRunning) {
-      setIsRunning(false);
-      if (mode === "pomodoro" || mode === "ultradian") {
-        setCompletedSessions((prev) => prev + 1);
-      }
     }
     return () => clearInterval(timer);
-  }, [isRunning, timeLeft, mode]);
+  }, [isRunning, mode]);
 
   const handleModeChange = (newMode: "pomodoro" | "ultradian" | "shortBreak" | "longBreak") => {
     setMode(newMode);

@@ -4,12 +4,40 @@ export const metadata: Metadata = {
   title: "Terms of Service | Behavior School",
   description: "Terms governing use of Behavior School's educational website, articles, quizzes, and interactive tools.",
   alternates: { canonical: "https://behavior-school.github.io/terms" },
+  openGraph: {
+    title: "Terms of Service | Behavior School",
+    description: "Terms governing use of Behavior School's educational website, articles, quizzes, and interactive tools.",
+    url: "https://behavior-school.github.io/terms",
+    siteName: "Behavior School",
+    images: ["https://behavior-school.github.io/og-image.png"],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Terms of Service | Behavior School",
+    description: "Terms governing use of Behavior School's educational website.",
+    images: ["https://behavior-school.github.io/og-image.png"],
+  },
   robots: { index: true, follow: true },
 };
 
 export default function TermsPage() {
+  const jsonLdBreadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Behavior School", "item": "https://behavior-school.github.io/" },
+      { "@type": "ListItem", "position": 2, "name": "Terms of Service", "item": "https://behavior-school.github.io/terms" }
+    ]
+  };
+
   return (
-    <main className="pt-32 pb-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdBreadcrumb) }}
+      />
+      <main className="pt-32 pb-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="bg-[var(--card)] p-8 sm:p-12 rounded-3xl border border-[var(--border)] shadow-2xl space-y-8 text-[var(--muted-foreground)] text-sm leading-relaxed">
         <div>
           <p className="text-xs uppercase tracking-widest font-bold text-[var(--primary)] mb-3">Behavior School</p>
@@ -63,5 +91,6 @@ export default function TermsPage() {
         </section>
       </div>
     </main>
+    </>
   );
 }

@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ExternalLink, ArrowUp } from "lucide-react";
 
 export default function Footer() {
@@ -14,7 +15,7 @@ export default function Footer() {
           <div className="md:col-span-2 space-y-3">
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 rounded-lg bg-[var(--muted)] border border-[var(--border)] p-1 flex items-center justify-center">
-                <img src="/logo.svg" alt="Behavior School" className="w-full h-full object-contain" />
+                <Image src="/logo.svg" alt="Behavior School" width={28} height={28} className="w-full h-full object-contain" />
               </div>
               <span className="font-bold text-base text-[var(--foreground)] tracking-tight">
                 Behavior<span className="text-[var(--primary)] font-normal">School</span>

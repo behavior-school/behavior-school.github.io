@@ -59,12 +59,20 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: `${tool.name} | Behavior School Tools`,
     description: tool.desc,
+    alternates: { canonical: `https://behavior-school.github.io/tools/${tool.slug}` },
     openGraph: {
       title: tool.name,
       description: tool.desc,
       url: `https://behavior-school.github.io/tools/${tool.slug}`,
       siteName: "Behavior School",
+      images: ["https://behavior-school.github.io/og-image.png"],
       type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: tool.name,
+      description: tool.desc,
+      images: ["https://behavior-school.github.io/og-image.png"],
     },
   };
 }
@@ -84,11 +92,25 @@ export default async function IndividualToolPage({ params }: { params: Promise<{
     "operatingSystem": "All"
   };
 
+  const jsonLdBreadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Behavior School", "item": "https://behavior-school.github.io/" },
+      { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://behavior-school.github.io/tools" },
+      { "@type": "ListItem", "position": 3, "name": tool.name, "item": `https://behavior-school.github.io/tools/${tool.slug}` }
+    ]
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdTool) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdBreadcrumb) }}
       />
 
       <main className="pt-32 pb-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -5,12 +5,20 @@ import { Cpu, Activity, Zap, ShieldAlert, Clock, ArrowRight } from "lucide-react
 export const metadata: Metadata = {
   title: "Behavioral Science & Neuroscience Web Tools | Behavior School",
   description: "Interactive focus timers, behavior audits, habit-shrinking tools, and friction-design exercises.",
+  alternates: { canonical: "https://behavior-school.github.io/tools" },
   openGraph: {
     title: "Behavioral Science Interactive Tools | Behavior School",
     description: "Interactive tools for habit formation, dopamine recalibration, focus timers, and cognitive performance.",
     url: "https://behavior-school.github.io/tools",
     siteName: "Behavior School",
+    images: ["https://behavior-school.github.io/og-image.png"],
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Behavioral Science Interactive Tools | Behavior School",
+    description: "Interactive tools for habit formation, dopamine recalibration, focus timers, and cognitive performance.",
+    images: ["https://behavior-school.github.io/og-image.png"],
   },
 };
 

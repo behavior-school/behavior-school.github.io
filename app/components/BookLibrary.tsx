@@ -57,31 +57,33 @@ export default function BookLibrary({ books }: BookLibraryProps) {
   const [pageSize, setPageSize] = useState(12);
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    setQuery(params.get("q") ?? "");
-    setCategory(params.get("category") ?? "All");
-    setShelf(params.get("shelf") === "manipulation" ? "manipulation" : "all");
+    queueMicrotask(() => {
+      const params = new URLSearchParams(window.location.search);
+      setQuery(params.get("q") ?? "");
+      setCategory(params.get("category") ?? "All");
+      setShelf(params.get("shelf") === "manipulation" ? "manipulation" : "all");
 
-    const requestedSort = params.get("sort");
-    if (
-      requestedSort === "popularity" ||
-      requestedSort === "newest" ||
-      requestedSort === "oldest" ||
-      requestedSort === "title" ||
-      requestedSort === "author"
-    ) {
-      setSort(requestedSort);
-    }
+      const requestedSort = params.get("sort");
+      if (
+        requestedSort === "popularity" ||
+        requestedSort === "newest" ||
+        requestedSort === "oldest" ||
+        requestedSort === "title" ||
+        requestedSort === "author"
+      ) {
+        setSort(requestedSort);
+      }
 
-    const requestedPage = Number(params.get("page"));
-    if (Number.isInteger(requestedPage) && requestedPage > 0) {
-      setPage(requestedPage);
-    }
+      const requestedPage = Number(params.get("page"));
+      if (Number.isInteger(requestedPage) && requestedPage > 0) {
+        setPage(requestedPage);
+      }
 
-    const requestedSize = Number(params.get("size"));
-    if (PAGE_SIZE_OPTIONS.includes(requestedSize)) {
-      setPageSize(requestedSize);
-    }
+      const requestedSize = Number(params.get("size"));
+      if (PAGE_SIZE_OPTIONS.includes(requestedSize)) {
+        setPageSize(requestedSize);
+      }
+    });
   }, []);
 
   const syncUrl = (
@@ -142,8 +144,10 @@ export default function BookLibrary({ books }: BookLibraryProps) {
 
   useEffect(() => {
     if (page !== safePage) {
-      setPage(safePage);
-      syncUrl(query, category, sort, safePage, pageSize);
+      queueMicrotask(() => {
+        setPage(safePage);
+        syncUrl(query, category, sort, safePage, pageSize);
+      });
     }
   }, [page, safePage, query, category, shelf, sort, pageSize]); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -346,6 +350,7 @@ export default function BookLibrary({ books }: BookLibraryProps) {
                         <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--primary)]">{book.category}</p>
                       </div>
 
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={book.coverImageUrl ?? book.amazonImageUrl}
                         alt={`${book.title} by ${book.author} book cover`}

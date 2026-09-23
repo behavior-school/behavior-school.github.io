@@ -206,12 +206,20 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: `${pkg.title} | Behavior School Quizzes`,
     description: pkg.desc,
+    alternates: { canonical: `https://behavior-school.github.io/quiz/${pkg.slug}` },
     openGraph: {
       title: pkg.title,
       description: pkg.desc,
       url: `https://behavior-school.github.io/quiz/${pkg.slug}`,
       siteName: "Behavior School",
+      images: ["https://behavior-school.github.io/og-image.png"],
       type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: pkg.title,
+      description: pkg.desc,
+      images: ["https://behavior-school.github.io/og-image.png"],
     },
   };
 }
@@ -227,7 +235,22 @@ export default async function IndividualQuizPackagePage({ params }: { params: Pr
     "name": pkg.title,
     "description": pkg.desc,
     "url": `https://behavior-school.github.io/quiz/${pkg.slug}`,
-    "educationalAlignment": pkg.category
+    "educationalAlignment": pkg.category,
+    "hasPart": pkg.questions.map((q) => ({
+      "@type": "Question",
+      "name": q.question,
+      "text": q.question
+    }))
+  };
+
+  const jsonLdBreadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Behavior School", "item": "https://behavior-school.github.io/" },
+      { "@type": "ListItem", "position": 2, "name": "Quizzes", "item": "https://behavior-school.github.io/quiz" },
+      { "@type": "ListItem", "position": 3, "name": pkg.title, "item": `https://behavior-school.github.io/quiz/${pkg.slug}` }
+    ]
   };
 
   return (
@@ -235,6 +258,10 @@ export default async function IndividualQuizPackagePage({ params }: { params: Pr
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdQuiz) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdBreadcrumb) }}
       />
 
       <main className="pt-32 pb-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -6,12 +6,20 @@ import { Clock, Play, ArrowRight } from "lucide-react";
 export const metadata: Metadata = {
   title: "Behavior School YouTube Video Lessons & Companion Field Guides",
   description: "Watch all video lessons from @behavior-school covering practical psychology, neuroscience, overthinking, procrastination, and cognitive biases.",
+  alternates: { canonical: "https://behavior-school.github.io/videos" },
   openGraph: {
     title: "Behavior School Video Lessons & Field Guides",
     description: "Watch video lessons on practical psychology and human behavior.",
     url: "https://behavior-school.github.io/videos",
     siteName: "Behavior School",
+    images: ["https://behavior-school.github.io/og-image.png"],
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Behavior School Video Lessons & Field Guides",
+    description: "Watch video lessons on practical psychology and human behavior.",
+    images: ["https://behavior-school.github.io/og-image.png"],
   },
 };
 

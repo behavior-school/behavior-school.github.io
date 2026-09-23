@@ -48,7 +48,7 @@ export default function BookSummaries() {
                 </span>
 
                 <p className="text-xs text-[var(--foreground)] font-semibold mb-3 leading-relaxed">
-                  "{book.tagline}"
+                  &ldquo;{book.tagline}&rdquo;
                 </p>
 
                 <p className="text-xs text-[var(--muted-foreground)] leading-relaxed mb-4">

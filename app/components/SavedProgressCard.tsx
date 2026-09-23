@@ -1,14 +1,16 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Award, Trash2, Clock, CheckCircle2 } from "lucide-react";
+import { Award, Trash2, Clock } from "lucide-react";
 import { getSavedResults, clearSavedResults, SavedResult } from "../lib/storage";
 
 export default function SavedProgressCard() {
   const [results, setResults] = useState<SavedResult[]>([]);
 
   useEffect(() => {
-    setResults(getSavedResults());
+    queueMicrotask(() => {
+      setResults(getSavedResults());
+    });
   }, []);
 
   const handleClear = () => {

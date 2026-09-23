@@ -3,11 +3,20 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Contact Us | Behavior School",
   description: "Get in touch with the Behavior School team for research submissions, video ideas, or business inquiries.",
+  alternates: { canonical: "https://behavior-school.github.io/contact" },
   openGraph: {
     title: "Contact Us | Behavior School",
     description: "Get in touch with the Behavior School team.",
     url: "https://behavior-school.github.io/contact",
     siteName: "Behavior School",
+    images: ["https://behavior-school.github.io/og-image.png"],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact Us | Behavior School",
+    description: "Get in touch with the Behavior School team.",
+    images: ["https://behavior-school.github.io/og-image.png"],
   },
 };
 
@@ -16,7 +25,15 @@ export default function ContactPage() {
     "@context": "https://schema.org",
     "@type": "ContactPage",
     "name": "Contact Behavior School",
-    "url": "https://behavior-school.github.io/contact"
+    "url": "https://behavior-school.github.io/contact",
+    "description": "Get in touch with the Behavior School team for research submissions, video ideas, or business inquiries.",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Behavior School", "item": "https://behavior-school.github.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://behavior-school.github.io/contact" }
+      ]
+    }
   };
 
   return (
@@ -32,7 +49,7 @@ export default function ContactPage() {
           </h1>
 
           <p>
-            Have a question, scientific research submission, business inquiry, or video topic suggestion? We'd love to hear from you.
+            Have a question, scientific research submission, business inquiry, or video topic suggestion? We&apos;d love to hear from you.
           </p>
 
           <div className="p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)] space-y-4">

@@ -3,11 +3,20 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "About Us | Behavior School",
   description: "Learn about Behavior School's mission, content philosophy, and practical psychology curriculum.",
+  alternates: { canonical: "https://behavior-school.github.io/about" },
   openGraph: {
     title: "About Us | Behavior School",
     description: "Learn about Behavior School's mission, content philosophy, and practical psychology curriculum.",
     url: "https://behavior-school.github.io/about",
     siteName: "Behavior School",
+    images: ["https://behavior-school.github.io/og-image.png"],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About Us | Behavior School",
+    description: "Learn about Behavior School's mission, content philosophy, and practical psychology curriculum.",
+    images: ["https://behavior-school.github.io/og-image.png"],
   },
 };
 
@@ -17,7 +26,14 @@ export default function AboutPage() {
     "@type": "AboutPage",
     "name": "About Behavior School",
     "url": "https://behavior-school.github.io/about",
-    "description": "Learn about Behavior School's mission and practical psychology curriculum."
+    "description": "Learn about Behavior School's mission and practical psychology curriculum.",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Behavior School", "item": "https://behavior-school.github.io/" },
+        { "@type": "ListItem", "position": 2, "name": "About Us", "item": "https://behavior-school.github.io/about" }
+      ]
+    }
   };
 
   return (
@@ -72,6 +88,7 @@ export default function AboutPage() {
             <h2 className="text-lg font-bold text-[var(--foreground)]">Meet the Creator</h2>
             <div className="flex flex-col gap-5 sm:flex-row sm:items-center">
               <div className="h-24 w-24 shrink-0 overflow-hidden rounded-full border border-[var(--border)] bg-[var(--muted)] p-1">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src="https://avatars.githubusercontent.com/u/66713844" alt="Shaswat Raj" width="512" height="512" loading="lazy" className="h-full w-full rounded-full object-cover" />
               </div>
               <div>

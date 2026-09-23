@@ -238,7 +238,7 @@ export default function BookLearningLab({ book }: Props) {
         <article className="rounded-2xl border border-[var(--primary)]/30 bg-[var(--card)] p-5 shadow-sm">
           <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-[var(--primary)]">Field experiment</div>
           <div className="mt-2 flex items-end justify-between gap-3">
-            <h3 className="text-lg font-bold text-[var(--foreground)]">Do it, don't just read it</h3>
+            <h3 className="text-lg font-bold text-[var(--foreground)]">Do it, don&apos;t just read it</h3>
             <span className="font-mono text-xs text-[var(--primary)]">{completed}/{lab.practice.length}</span>
           </div>
           <div className="mt-4 space-y-3">

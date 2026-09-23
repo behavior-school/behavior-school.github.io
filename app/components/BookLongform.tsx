@@ -13,7 +13,7 @@ export default function BookLongform({ book }: { book: BookDetail }) {
           Go beyond the summary.
         </h2>
         <p className="mt-3 max-w-3xl text-sm leading-7 text-[var(--muted-foreground)]">
-          This section turns the book's central ideas into a connected learning path: thesis → mechanism → examples → mistakes → practice → recall.
+          This section turns the book&apos;s central ideas into a connected learning path: thesis → mechanism → examples → mistakes → practice → recall.
           The aim is understanding, not memorizing slogans.
         </p>
       </div>

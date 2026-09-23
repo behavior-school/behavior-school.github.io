@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Target, Eye, Sparkles, CheckCircle2, HeartHandshake, BookOpen, Compass } from "lucide-react";
+import { Target, Eye, Sparkles } from "lucide-react";
 
 export default function PhilosophyMission() {
   const targetAudience = [
@@ -32,13 +32,13 @@ export default function PhilosophyMission() {
               </div>
             </div>
             <p className="text-xl font-bold text-indigo-200 mb-4 leading-snug">
-              "Help millions of people understand their own minds."
+              &ldquo;Help millions of people understand their own minds.&rdquo;
             </p>
             <p className="text-sm text-slate-300 leading-relaxed mb-6">
               Behavior School exists to bridge the gap between academic psychology research and everyday life by making complex ideas simple, highly visual, engaging, and directly useful.
             </p>
             <div className="p-4 rounded-2xl bg-indigo-950/40 border border-indigo-500/20 text-xs font-semibold text-indigo-300">
-              The goal isn't just to teach psychology—it is to help people change their behavior.
+              The goal isn&apos;t just to teach psychology—it is to help people change their behavior.
             </div>
           </div>
 
@@ -57,7 +57,7 @@ export default function PhilosophyMission() {
               </div>
             </div>
             <p className="text-xl font-bold text-emerald-200 mb-4 leading-snug">
-              "Build the world's most trusted free library for practical psychology."
+              &ldquo;Build the world&apos;s most trusted free library for practical psychology.&rdquo;
             </p>
             <p className="text-sm text-slate-300 leading-relaxed mb-6">
               Behavior School aims to construct a timeless educational media library that helps people think better, learn faster, develop stronger habits, and make wiser decisions for decades to come.

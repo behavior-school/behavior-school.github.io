@@ -7,11 +7,13 @@ export default function ThemeToggle() {
   const [dark, setDark] = useState(true);
 
   useEffect(() => {
-    const root = document.documentElement;
-    const saved = localStorage.getItem("behavior-school-theme");
-    const initial = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
-    root.classList.toggle("dark", initial);
-    setDark(initial);
+    queueMicrotask(() => {
+      const root = document.documentElement;
+      const saved = localStorage.getItem("behavior-school-theme");
+      const initial = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+      root.classList.toggle("dark", initial);
+      setDark(initial);
+    });
   }, []);
 
   const toggle = () => {

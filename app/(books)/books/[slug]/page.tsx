@@ -130,6 +130,7 @@ export default async function IndividualBookPage({ params }: { params: Promise<{
             <div className="mx-auto w-full max-w-[170px] justify-self-center">
               {book.coverImageUrl ? (
                 <div className="overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--muted)] shadow-lg">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={book.coverImageUrl} alt={`${book.title} cover`} width={360} height={540} loading="lazy" className="h-auto w-full object-contain" />
                 </div>
               ) : (

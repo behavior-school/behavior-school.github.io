@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Sparkles, CheckCircle2, RefreshCw } from "lucide-react";
+import { Sparkles, CheckCircle2 } from "lucide-react";
 
 export default function HabitSimulator() {
   const [habitName, setHabitName] = useState("Read 10 Pages Daily");
@@ -127,12 +127,12 @@ export default function HabitSimulator() {
       <div className="p-4 rounded-2xl bg-[var(--muted)] border border-[var(--border)] space-y-2">
         <h4 className="text-xs font-bold text-[var(--foreground)] uppercase tracking-wider flex items-center gap-1.5">
           <CheckCircle2 className="w-4 h-4 text-[var(--primary)]" />
-          <span>Optimized Action Plan for "{habitName}"</span>
+          <span>Optimized Action Plan for &ldquo;{habitName}&rdquo;</span>
         </h4>
         <ul className="text-xs text-[var(--muted-foreground)] space-y-1 list-disc pl-5">
-          <li><strong>Implementation Intention:</strong> "I will execute {habitName} immediately after morning coffee."</li>
-          <li><strong>2-Minute Rule Constraint:</strong> "Commit to starting for just 120 seconds today."</li>
-          <li><strong>Identity Affirmation:</strong> "I am becoming the type of person who stays consistent."</li>
+          <li><strong>Implementation Intention:</strong> &ldquo;I will execute {habitName} immediately after morning coffee.&rdquo;</li>
+          <li><strong>2-Minute Rule Constraint:</strong> &ldquo;Commit to starting for just 120 seconds today.&rdquo;</li>
+          <li><strong>Identity Affirmation:</strong> &ldquo;I am becoming the type of person who stays consistent.&rdquo;</li>
         </ul>
       </div>
     </div>

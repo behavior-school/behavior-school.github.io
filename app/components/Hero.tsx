@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { ArrowRight, Sparkles, Brain, Zap, ShieldCheck, Activity, FileCode } from "lucide-react";
+import { ArrowRight, Sparkles, Brain, Activity, FileCode } from "lucide-react";
 import { YoutubeIcon } from "./Icons";
 
 export default function Hero() {
@@ -39,6 +39,7 @@ export default function Hero() {
 
   return (
     <section className="pt-32 pb-20 md:pt-40 md:pb-28 border-b border-[var(--border)] relative overflow-hidden">
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-[var(--primary)]/10 blur-[120px] rounded-full pointer-events-none -z-10" />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           

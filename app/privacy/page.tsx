@@ -59,7 +59,7 @@ export default function PrivacyPage() {
             </a>.
           </p>
           <p>
-            Where applicable, advertising consent requirements depend on the visitor's
+            Where applicable, advertising consent requirements depend on the visitor&apos;s
             location and the products being used. We do not describe any consent mechanism
             as active unless it is actually implemented on the site.
           </p>
@@ -77,7 +77,7 @@ export default function PrivacyPage() {
           <h2 className="text-lg font-bold text-[var(--foreground)]">Educational and sensitive-topic notice</h2>
           <p>
             Behavior School publishes educational material about psychology and neuroscience.
-            The site's articles and tools are not a substitute for diagnosis, treatment,
+            The site&apos;s articles and tools are not a substitute for diagnosis, treatment,
             crisis support, or professional medical or psychological advice.
           </p>
         </section>

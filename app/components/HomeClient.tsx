@@ -61,6 +61,7 @@ export default function HomeClient() {
             <div className="grid gap-0 md:grid-cols-[11rem_1fr]">
               <div className="flex items-center justify-center border-b border-[var(--border)] bg-[var(--muted)] p-8 md:border-b-0 md:border-r">
                 <div className="h-32 w-32 overflow-hidden rounded-full border border-[var(--border)] bg-[var(--background)] p-1.5 shadow-sm">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src="https://avatars.githubusercontent.com/u/66713844" alt="Shaswat Raj" width="512" height="512" loading="lazy" className="h-full w-full rounded-full object-cover" />
                 </div>
               </div>

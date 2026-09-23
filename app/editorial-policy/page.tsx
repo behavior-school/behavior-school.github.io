@@ -46,7 +46,7 @@ export default function EditorialPolicyPage() {
           <p>
             Human behavior has multiple causes. Articles therefore avoid treating a single
             neurotransmitter, brain region, or cognitive bias as a complete explanation for
-            a person's behavior. Educational examples are simplified and should not be used
+            a person&apos;s behavior. Educational examples are simplified and should not be used
             as individual diagnoses.
           </p>
         </section>

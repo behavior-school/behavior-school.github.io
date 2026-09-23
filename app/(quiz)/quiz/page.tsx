@@ -6,12 +6,20 @@ import SavedProgressCard from "../../components/SavedProgressCard";
 export const metadata: Metadata = {
   title: "Behavioral Science Quizzes & Assessments | Behavior School",
   description: "Test your knowledge on neuroscience, atomic habits, cognitive biases, dopamine mechanics, and deep work focus.",
+  alternates: { canonical: "https://behavior-school.github.io/quiz" },
   openGraph: {
     title: "Behavioral Science Interactive Quizzes | Behavior School",
     description: "Interactive quizzes and self-assessments for habits, focus, and brain science.",
     url: "https://behavior-school.github.io/quiz",
     siteName: "Behavior School",
+    images: ["https://behavior-school.github.io/og-image.png"],
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Behavioral Science Interactive Quizzes | Behavior School",
+    description: "Interactive quizzes and self-assessments for habits, focus, and brain science.",
+    images: ["https://behavior-school.github.io/og-image.png"],
   },
 };
 
