@@ -1,14 +1,15 @@
 import type { Metadata, Viewport } from "next";
-import { Plus_Jakarta_Sans, Geist_Mono } from "next/font/google";
+import { Poppins, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ServiceWorkerRegister from "./components/ServiceWorkerRegister";
 
-const plusJakartaSans = Plus_Jakarta_Sans({
-  variable: "--font-plus-jakarta",
+const poppins = Poppins({
+  variable: "--font-poppins",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
@@ -27,31 +28,28 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://behavior-school.github.io"),
   title: {
-    default: "Behavior School — Practical Psychology & Neuroscience for Real Life",
+    default: "Behavior School — Understand Your Mind, Change Your Behavior",
     template: "%s | Behavior School",
   },
-  description: "Understand how your mind works so you can build better habits, overcome procrastination, make wiser decisions, stay focused, and live more intentionally.",
+  description:
+    "Behavior School is a visual learning library for psychology, behavioral science, habits, attention, learning, and better decision-making.",
   keywords: [
     "Behavior School",
     "Practical Psychology",
-    "Neuroscience",
+    "Behavioral Science",
     "Human Behavior",
     "Habits",
-    "Discipline",
-    "Mental Models",
+    "Learning",
+    "Attention",
+    "Memory",
     "Cognitive Biases",
-    "Behavioral Science",
-    "Productivity",
-    "Focus",
-    "Active Recall",
-    "Self Improvement"
+    "Decision Making",
+    "Self Improvement",
+    "Mental Models",
   ],
   authors: [{ name: "Behavior School", url: "https://www.youtube.com/@behavior-school" }],
   creator: "Behavior School",
   publisher: "Behavior School",
-  other: {
-    "google-adsense-account": "ca-pub-1828915420581549",
-  },
   alternates: {
     canonical: "https://behavior-school.github.io",
   },
@@ -71,25 +69,20 @@ export const metadata: Metadata = {
     title: "Behavior School",
   },
   openGraph: {
-    title: "Behavior School — Practical Psychology & Neuroscience",
-    description: "Understand your mind. Control your behavior. Build better habits. Research-backed actionable psychology.",
+    title: "Behavior School — Understand Your Mind, Change Your Behavior",
+    description:
+      "Visual guides, models, tools, and practice for psychology, habits, learning, attention, and human behavior.",
     url: "https://behavior-school.github.io",
     siteName: "Behavior School",
-    images: [
-      {
-        url: "https://behavior-school.github.io/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Behavior School — Practical Psychology for Real Life",
-      },
-    ],
+    images: ["https://behavior-school.github.io/og-image.png"],
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Behavior School — Practical Psychology for Real Life",
-    description: "Understand how your mind works to build better habits and make wiser decisions.",
+    title: "Behavior School — Understand Your Mind, Change Your Behavior",
+    description:
+      "Visual guides, models, tools, and practice for psychology, habits, learning, attention, and human behavior.",
     images: ["https://behavior-school.github.io/og-image.png"],
     creator: "@behavior-school",
   },
@@ -108,9 +101,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   const jsonLdOrganization = {
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
@@ -118,11 +109,12 @@ export default function RootLayout({
     "url": "https://behavior-school.github.io",
     "logo": "https://behavior-school.github.io/logo.svg",
     "image": "https://behavior-school.github.io/og-image.png",
-    "description": "Behavior School is an educational media brand and web platform dedicated to helping people understand practical psychology, neuroscience, and human behavior.",
+    "description":
+      "Behavior School is an educational media brand and web platform dedicated to helping people understand practical psychology, neuroscience, and human behavior.",
     "sameAs": [
       "https://www.youtube.com/@behavior-school",
-      "https://app.notion.com/p/Behavior-School-373cd0ed0c25801e9a23c4ba60f032fb"
-    ]
+      "https://app.notion.com/p/Behavior-School-373cd0ed0c25801e9a23c4ba60f032fb",
+    ],
   };
 
   const jsonLdWebSite = {
@@ -130,22 +122,15 @@ export default function RootLayout({
     "@type": "WebSite",
     "name": "Behavior School",
     "url": "https://behavior-school.github.io",
-    "description": "Practical Psychology & Neuroscience for Real Life",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": "https://behavior-school.github.io/books?q={search_term_string}"
-      },
-      "query-input": "required name=search_term_string"
-    }
+    "description":
+      "Visual guides, behavioral models, experiments, and practical psychology for real life.",
   };
 
   return (
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${plusJakartaSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${poppins.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
         <script
@@ -159,15 +144,11 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-icon.png" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="google-adsense-account" content="ca-pub-1828915420581549" />
-
-        {/* Google AdSense Script */}
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1828915420581549"
           crossOrigin="anonymous"
         />
-
-        {/* JSON-LD Rich Snippets */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdOrganization) }}
@@ -177,19 +158,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdWebSite) }}
         />
       </head>
-      <body className="min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)] font-sans selection:bg-[var(--primary)] selection:text-[var(--primary-foreground)]">
-        {/* Offline Service Worker Registration */}
+      <body className="min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)] font-sans selection:bg-[var(--foreground)]/15">
         <ServiceWorkerRegister />
-
-        {/* Shared Top Navigation Bar */}
         <Navbar />
-
-        {/* Page Content */}
-        <div className="flex-grow">
-          {children}
-        </div>
-
-        {/* Shared Footer */}
+        <div className="flex-grow">{children}</div>
         <Footer />
       </body>
     </html>

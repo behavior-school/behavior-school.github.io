@@ -1,64 +1,86 @@
 "use client";
 
-import React from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { ExternalLink, ArrowUp } from "lucide-react";
+import { ArrowUpRight, Github, Youtube } from "lucide-react";
 
 export default function Footer() {
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
-
   return (
-    <footer className="bg-[var(--background)] border-t border-[var(--border)] text-[var(--muted-foreground)] py-12">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-          <div className="md:col-span-2 space-y-3">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-[var(--muted)] border border-[var(--border)] p-1 flex items-center justify-center">
-                <Image src="/logo.svg" alt="Behavior School" width={28} height={28} className="w-full h-full object-contain" />
-              </div>
-              <span className="font-bold text-base text-[var(--foreground)] tracking-tight">
-                Behavior<span className="text-[var(--primary)] font-normal">School</span>
-              </span>
-            </div>
-            <p className="text-xs text-[var(--muted-foreground)] max-w-sm leading-relaxed">
-              Practical Psychology & Neuroscience for Real Life.
-            </p>
-            <a href="https://sopkit.github.io/" target="_blank" rel="noopener noreferrer" className="text-xs text-[var(--muted-foreground)] hover:text-[var(--primary)] transition-colors inline-flex items-center gap-1">
-              <span>SOPKit Templates</span><ExternalLink className="w-3 h-3" />
-            </a>
+    <footer className="border-t border-[var(--border)] bg-[var(--background)] py-12">
+      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-4 text-center sm:px-6 md:flex-row md:text-left lg:px-8">
+        <div className="flex items-center gap-2">
+          <div className="flex h-5 w-5 items-center justify-center overflow-hidden rounded-md border border-[var(--border)] bg-[var(--muted)] p-0.5">
+            <img src="/logo.svg" alt="Behavior School" className="h-full w-full object-contain" />
           </div>
-
-          <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-[var(--foreground)] mb-3">Navigation</h4>
-            <ul className="space-y-2 text-xs">
-              <li><Link href="/resources" className="hover:text-[var(--primary)] transition-colors">Learning Resources</Link></li>
-              <li><Link href="/videos" className="hover:text-[var(--primary)] transition-colors">YouTube Videos</Link></li>
-              <li><Link href="/quiz" className="hover:text-[var(--primary)] transition-colors">Quiz Assessments</Link></li>
-              <li><Link href="/tools" className="hover:text-[var(--primary)] transition-colors">Behavioral Tools</Link></li>
-              <li><Link href="/books" className="hover:text-[var(--primary)] transition-colors">Book Summaries</Link></li>
-              <li><Link href="/blog" className="hover:text-[var(--primary)] transition-colors">Blog Field Guides</Link></li>
-              <li><a href="https://www.youtube.com/@behavior-school" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--primary)] transition-colors">YouTube Channel</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-[var(--foreground)] mb-3">About & Legal</h4>
-            <ul className="space-y-2 text-xs">
-              <li><Link href="/about" className="hover:text-[var(--primary)] transition-colors">About Us</Link></li>
-              <li><Link href="/contact" className="hover:text-[var(--primary)] transition-colors">Contact Us</Link></li>
-              <li><Link href="/editorial-policy" className="hover:text-[var(--primary)] transition-colors">Editorial Policy</Link></li>
-              <li><Link href="/privacy" className="hover:text-[var(--primary)] transition-colors">Privacy Policy</Link></li>
-              <li><Link href="/terms" className="hover:text-[var(--primary)] transition-colors">Terms of Service</Link></li>
-            </ul>
-          </div>
+          <span className="font-bold tracking-tight">BehaviorSchool</span>
         </div>
 
-        <div className="pt-6 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
-          <p>© {new Date().getFullYear()} Behavior School. All rights reserved.</p>
-          <button onClick={scrollToTop} className="flex items-center gap-1.5 text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors">
-            <span>Back to top</span><ArrowUp className="w-3.5 h-3.5" />
-          </button>
+        <Link
+          href="/tools"
+          className="text-xs font-semibold text-[var(--foreground)] transition-colors hover:underline sm:text-sm"
+        >
+          Behavior School Lab
+        </Link>
+
+        <div className="flex flex-wrap items-center justify-center gap-4 text-xs sm:text-sm">
+          <Link href="/resources" className="text-[var(--muted-foreground)] transition-colors hover:text-[var(--foreground)]">
+            Resources
+          </Link>
+          <Link href="/about" className="text-[var(--muted-foreground)] transition-colors hover:text-[var(--foreground)]">
+            About
+          </Link>
+          <Link href="/contact" className="text-[var(--muted-foreground)] transition-colors hover:text-[var(--foreground)]">
+            Contact
+          </Link>
+          <Link href="/privacy" className="text-[var(--muted-foreground)] transition-colors hover:text-[var(--foreground)]">
+            Privacy
+          </Link>
+          <Link href="/editorial-policy" className="text-[var(--muted-foreground)] transition-colors hover:text-[var(--foreground)]">
+            Editorial Policy
+          </Link>
+          <Link href="/terms" className="text-[var(--muted-foreground)] transition-colors hover:text-[var(--foreground)]">
+            Terms
+          </Link>
+        </div>
+
+        <p className="text-xs text-[var(--muted-foreground)]/70 sm:text-sm">
+          © {new Date().getFullYear()} Behavior School. Created by{" "}
+          <a
+            href="https://github.com/sh20raj"
+            className="text-[var(--muted-foreground)] transition-colors hover:underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            sh20raj
+          </a>
+          .
+        </p>
+
+        <div className="flex gap-4">
+          <a
+            href="https://www.youtube.com/@behavior-school"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Behavior School on YouTube"
+            className="text-[var(--muted-foreground)] transition-colors hover:text-[var(--foreground)]"
+          >
+            <Youtube className="h-5 w-5 fill-current" />
+          </a>
+          <a
+            href="https://github.com/sh20raj"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub Profile"
+            className="text-[var(--muted-foreground)] transition-colors hover:text-[var(--foreground)]"
+          >
+            <Github className="h-5 w-5" />
+          </a>
+          <a
+            href="/about"
+            aria-label="About Behavior School"
+            className="text-[var(--muted-foreground)] transition-colors hover:text-[var(--foreground)]"
+          >
+            <ArrowUpRight className="h-5 w-5" />
+          </a>
         </div>
       </div>
     </footer>
