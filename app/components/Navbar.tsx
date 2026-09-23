@@ -19,7 +19,7 @@ import { YoutubeIcon } from "./Icons";
 
 const links = [
   { href: "/resources", label: "Resources", icon: Boxes },
-  { href: "/videos", label: "Videos", icon: Youtube },
+  { href: "/videos", label: "Videos", icon: Play },
   { href: "/blog", label: "Blog", icon: Library },
   { href: "/books", label: "Books", icon: BookOpen },
   { href: "/tools", label: "Tools", icon: Wrench },
