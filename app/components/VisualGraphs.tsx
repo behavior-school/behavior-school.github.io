@@ -130,10 +130,10 @@ export default function VisualGraphs() {
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[var(--border)] pb-4">
               <div>
                 <h3 className="text-base font-bold text-[var(--foreground)]">
-                  Ebbinghaus Forgetting Curve Comparison
+                  Illustrative Recall Model
                 </h3>
                 <p className="text-xs text-[var(--muted-foreground)] mt-0.5">
-                  Comparing passive re-reading versus active recall over time.
+                  Illustration of how retrieval practice can differ from passive review; values are an index, not measured retention.
                 </p>
               </div>
               <div className="flex gap-4 text-xs font-mono">
@@ -168,7 +168,7 @@ export default function VisualGraphs() {
             <div className="space-y-4 p-4 rounded-2xl bg-[var(--muted)] border border-[var(--border)]">
               <div>
                 <div className="flex justify-between text-xs font-bold text-[var(--foreground)] mb-1">
-                  <span>Active Recall (Spaced Repetition)</span>
+                  <span>Retrieval practice</span>
                   <span className="text-[var(--primary)]">{activeRecallRetention}% Retained</span>
                 </div>
                 <div className="w-full h-3 bg-[var(--card)] rounded-full overflow-hidden border border-[var(--border)]">
@@ -181,7 +181,7 @@ export default function VisualGraphs() {
 
               <div>
                 <div className="flex justify-between text-xs font-bold text-[var(--muted-foreground)] mb-1">
-                  <span>Passive Re-reading (Fluency Bias)</span>
+                  <span>Passive review</span>
                   <span>{passiveRetention}% Retained</span>
                 </div>
                 <div className="w-full h-3 bg-[var(--card)] rounded-full overflow-hidden border border-[var(--border)]">

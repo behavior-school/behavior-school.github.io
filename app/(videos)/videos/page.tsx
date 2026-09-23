@@ -20,8 +20,6 @@ export const channelVideos = [
     title: "Why Rejection LITERALLY Hurts (According to Neuroscience)",
     duration: "3:57",
     category: "Social Neuroscience",
-    views: "2 views",
-    date: "2 weeks ago",
     slug: "why-rejection-literally-hurts-neuroscience",
     desc: "How the dorsal anterior cingulate cortex processes social pain identically to physical tissue damage."
   },
@@ -29,8 +27,6 @@ export const channelVideos = [
     title: "The Intelligence Trap: Why Smart Brains Overthink Everything",
     duration: "4:44",
     category: "Psychology",
-    views: "New",
-    date: "3 weeks ago",
     slug: "intelligence-trap-why-smart-brains-overthink",
     desc: "Why high cognitive capacity leads to paralysis by analysis and hyper-active Default Mode Network loops."
   },
@@ -38,8 +34,6 @@ export const channelVideos = [
     title: "The Invisible Strings: Mastering the Psychology of Manipulation",
     duration: "4:23",
     category: "Behavior Science",
-    views: "New",
-    date: "3 weeks ago",
     slug: "psychology-of-manipulation-invisible-strings",
     desc: "Deconstructing dark triad traits, gaslighting mechanisms, and emotional manipulation tactics."
   },
@@ -47,8 +41,6 @@ export const channelVideos = [
     title: "The Biological Battlefield: The Neuroscience of Procrastination",
     duration: "4:55",
     category: "Neuroscience",
-    views: "New",
-    date: "3 weeks ago",
     slug: "neuroscience-of-procrastination",
     desc: "Why procrastination is an emotional regulation failure caused by Amygdala threat perception."
   },
@@ -56,8 +48,6 @@ export const channelVideos = [
     title: "You Are Not Lazy",
     duration: "20:07",
     category: "Masterclass",
-    views: "4 views",
-    date: "1 month ago",
     slug: "you-are-not-lazy-behavioral-breakdown",
     desc: "A 20-minute comprehensive masterclass uncoupling state exhaustion from moral failure."
   },
@@ -65,8 +55,6 @@ export const channelVideos = [
     title: "How to Train Your Brain to Be Happy (7 Simple Habits)",
     duration: "6:25",
     category: "Positive Psychology",
-    views: "1 view",
-    date: "1 month ago",
     slug: "train-your-brain-to-be-happy-7-habits",
     desc: "Neuroplasticity protocols to rewire serotonin receptors and regulate baseline tonic mood."
   },
@@ -74,8 +62,6 @@ export const channelVideos = [
     title: "You Love the Dream, Not the Work",
     duration: "4:47",
     category: "Habits & Discipline",
-    views: "1 view",
-    date: "1 month ago",
     slug: "you-love-the-dream-not-the-work",
     desc: "Why fantasy dopamine spikes trick your brain into feeling accomplishment before taking physical action."
   },
@@ -83,8 +69,6 @@ export const channelVideos = [
     title: "Why You Ignore 100 Compliments (The Negativity Bias)",
     duration: "9:00",
     category: "Cognitive Psychology",
-    views: "2 views",
-    date: "1 month ago",
     slug: "why-you-ignore-100-compliments-negativity-bias",
     desc: "Evolutionary psychology reveals why human brains weigh negative feedback 4x heavier than positive reinforcement."
   },
@@ -92,8 +76,6 @@ export const channelVideos = [
     title: "How a Single Number Hacks Your Brain (The Anchoring Effect)",
     duration: "6:08",
     category: "Mental Models",
-    views: "3 views",
-    date: "1 month ago",
     slug: "how-a-single-number-hacks-your-brain-anchoring",
     desc: "How initial numeric anchors skew financial negotiations and intuitive estimations."
   },
@@ -101,8 +83,6 @@ export const channelVideos = [
     title: "Why You Fear the Wrong Things (The Availability Heuristic)",
     duration: "5:22",
     category: "Mental Models",
-    views: "2 views",
-    date: "1 month ago",
     slug: "why-you-fear-the-wrong-things-availability-heuristic",
     desc: "Why news media vividness distorts probability estimation and causes irrational risk assessment."
   },
@@ -110,8 +90,6 @@ export const channelVideos = [
     title: "Why This Ugly Chair Feels Perfect (The IKEA Effect)",
     duration: "4:26",
     category: "Behavioral Economics",
-    views: "3 views",
-    date: "1 month ago",
     slug: "why-this-ugly-chair-feels-perfect-ikea-effect",
     desc: "Cognitive bias breakdown of why humans overvalue products and ideas they personally helped build."
   }

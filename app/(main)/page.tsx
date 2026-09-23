@@ -24,7 +24,7 @@ export default function MainPage() {
         "name": "Why do we procrastinate?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Procrastination is an emotional regulation problem, not a time-management flaw. When faced with anxiety or self-doubt, the brain's limbic system triggers avoidance."
+          "text": "Procrastination can involve emotion regulation, task aversiveness, delay discounting, and self-control; the balance varies with context."
         }
       },
       {
@@ -32,7 +32,7 @@ export default function MainPage() {
         "name": "Why do we lose focus so easily?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Modern digital environments flood the prefrontal cortex with rapid dopamine hits, creating artificial boredom during low-stimulus, high-effort work."
+          "text": "Frequent digital novelty can create competing cues and make sustained attention harder, while the effects depend on context and individual differences."
         }
       },
       {
@@ -40,7 +40,7 @@ export default function MainPage() {
         "name": "Why are bad habits so difficult to break?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Habits are automated neural pathways carved into the basal ganglia. To change a habit, keep the Cue and Reward, but substitute the Response."
+          "text": "Repeated cue-response patterns can become more automatic, and changing cues, friction, or alternative responses can help reshape behavior."
         }
       },
       {
@@ -48,7 +48,7 @@ export default function MainPage() {
         "name": "How can anyone learn faster?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Active recall and spaced repetition trigger synaptic plasticity much more effectively than passive reading or highlighting."
+          "text": "Retrieval practice and spaced practice often improve later recall more than passive review, with outcomes depending on task design and context."
         }
       }
     ]
