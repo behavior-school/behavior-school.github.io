@@ -1,7 +1,7 @@
-import dynamic from "next/dynamic";
-import type { ExcalidrawSketchProps } from "./ExcalidrawClient";
+"use client";
 
-const ExcalidrawClient = dynamic(() => import("./ExcalidrawClient"), { ssr: false });
+import type { ExcalidrawSketchProps } from "./ExcalidrawClient";
+import ExcalidrawClient from "./ExcalidrawClient";
 
 export default function ExcalidrawSketch(props: ExcalidrawSketchProps) {
   return <ExcalidrawClient {...props} />;
