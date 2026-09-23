@@ -19,7 +19,7 @@ export default function SearchPage() {
 
   const books = getBookCatalog().map((book) => ({
     title: book.title,
-    summary: book.summary,
+    summary: book.excerpt,
     slug: book.slug,
     category: book.category,
   }));
