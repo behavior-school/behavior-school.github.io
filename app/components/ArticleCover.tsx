@@ -40,7 +40,7 @@ export default function ArticleCover({
               <path d="M 44 0 L 0 0 0 44" fill="none" stroke="currentColor" strokeWidth="1" opacity=".08" />
             </pattern>
           </defs>
-          <rect width="1200" height="500" fill="url(#behavior-grid)" />
+          <rect width="1200" height="500" fill={"url(#" + patternId + ")"} />
           <circle cx="180" cy="120" r="120" fill="none" stroke="currentColor" strokeWidth="2" opacity=".12" />
           <circle cx="1020" cy="390" r="190" fill="none" stroke="currentColor" strokeWidth="2" opacity=".1" />
           <path d="M120 360 C300 180 420 450 620 250 S940 80 1100 180" fill="none" stroke="currentColor" strokeWidth="3" opacity=".14" />
