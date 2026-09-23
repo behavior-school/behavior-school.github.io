@@ -146,7 +146,24 @@ export default async function IndividualBookPage({ params }: { params: Promise<{
               ) : (
                 <div className="aspect-[2/3] rounded-2xl border border-[var(--border)] bg-[var(--muted)] flex items-center justify-center p-5 text-center"><span className="text-sm font-bold">{book.title}</span></div>
               )}
-              {book.amazonUrl && <a href={book.amazonUrl} target="_blank" rel="noreferrer" className="mt-3 flex items-center justify-center gap-2 rounded-xl border border-[var(--border)] px-3 py-2 text-[11px] font-bold text-[var(--foreground)] hover:bg-[var(--muted)]">View edition <ExternalLink className="h-3.5 w-3.5" /></a>}
+              {(book.affiliateUrl || book.amazonUrl) && (
+                <>
+                  <a
+                    href={book.affiliateUrl || book.amazonUrl}
+                    target="_blank"
+                    rel={book.affiliateUrl ? "sponsored noopener noreferrer" : "noopener noreferrer"}
+                    className="mt-3 flex items-center justify-center gap-2 rounded-xl border border-[var(--border)] px-3 py-2 text-[11px] font-bold text-[var(--foreground)] hover:bg-[var(--muted)]"
+                  >
+                    {book.affiliateUrl ? "View on Amazon" : "View edition"}
+                    <ExternalLink className="h-3.5 w-3.5" />
+                  </a>
+                  {book.affiliateUrl && (
+                    <p className="mt-2 text-center text-[9px] leading-4 text-[var(--muted-foreground)]">
+                      Affiliate link · Behavior School may earn a commission at no extra cost to you.
+                    </p>
+                  )}
+                </>
+              )}
             </div>
 
             <div className="mx-auto w-full max-w-[150px]"><BookPoster book={book} /></div>
