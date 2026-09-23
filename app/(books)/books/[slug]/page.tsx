@@ -14,6 +14,7 @@ import BookPoster from "../../../components/BookPoster";
 import BookLongform from "../../../components/BookLongform";
 import BookConceptMap from "../../../components/BookConceptMap";
 import BookAudiobookBeta from "../../../components/BookAudiobookBeta";
+import RelatedBooksShowcase from "../../../components/RelatedBooksShowcase";
 import { booksCatalog } from "../../../../content/book-catalog";
 
 export function generateStaticParams() {
@@ -93,10 +94,17 @@ export default async function IndividualBookPage({ params }: { params: Promise<{
     .filter((candidate) => candidate.slug !== book.slug)
     .map((candidate) => ({
       candidate,
-      score: (candidate.category === book.category ? 3 : 0) + (candidate.tags ?? []).filter((tag) => (book.tags ?? []).includes(tag)).length,
+      score:
+        (candidate.category === book.category ? 5 : 0) +
+        (candidate.tags ?? []).filter((tag) => (book.tags ?? []).includes(tag)).length * 3 +
+        (candidate.featured ? 1 : 0),
     }))
-    .sort((a, b) => b.score - a.score)
-    .slice(0, 4)
+    .sort(
+      (a, b) =>
+        b.score - a.score ||
+        (b.candidate.popularityScore ?? 0) - (a.candidate.popularityScore ?? 0)
+    )
+    .slice(0, 24)
     .map(({ candidate }) => candidate);
 
   const sections = [
@@ -210,7 +218,7 @@ export default async function IndividualBookPage({ params }: { params: Promise<{
               <BookLongform book={book} />
             </section>
 
-            {relatedBooks.length > 0 && <section className="pt-2 border-t border-[var(--border)]" aria-labelledby="related-reading"><div className="mb-5"><div className="text-[10px] font-bold uppercase tracking-[0.18em] text-[var(--primary)]">Continue the learning path</div><h2 id="related-reading" className="mt-2 text-2xl font-extrabold text-[var(--foreground)]">Related books</h2><p className="mt-2 text-sm leading-6 text-[var(--muted-foreground)]">Keep the mental model active by comparing it with adjacent ideas.</p></div><div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">{relatedBooks.map((related) => <Link key={related.slug} href={`/books/${related.slug}`} className="rounded-2xl border border-[var(--border)] bg-[var(--muted)]/40 p-4 transition-transform hover:-translate-y-1"><div className="text-xs font-bold leading-5 text-[var(--foreground)]">{related.title}</div><div className="mt-1 text-[10px] text-[var(--muted-foreground)]">{related.author}</div><div className="mt-3 text-[10px] font-semibold text-[var(--primary)]">Read guide →</div></Link>)}</div></section>}
+            {relatedBooks.length > 0 && <RelatedBooksShowcase currentTitle={book.title} books={relatedBooks} />}
             {book.quiz && <section className="pt-2"><InteractiveQuiz title={book.quiz.title} questions={book.quiz.questions} /></section>}
           </div>
         </article>
