@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import BookLibrary from "../../components/BookLibrary";
 import { getBookCatalog } from "../../../lib/book-repository";
 
