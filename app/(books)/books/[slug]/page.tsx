@@ -13,6 +13,7 @@ import BookLearningLab from "../../../components/BookLearningLab";
 import BookPoster from "../../../components/BookPoster";
 import BookLongform from "../../../components/BookLongform";
 import BookConceptMap from "../../../components/BookConceptMap";
+import BookAudiobookBeta from "../../../components/BookAudiobookBeta";
 import { booksCatalog } from "../../../../content/book-catalog";
 
 export function generateStaticParams() {
@@ -100,6 +101,7 @@ export default async function IndividualBookPage({ params }: { params: Promise<{
 
   const sections = [
     { id: "summary", label: "Core thesis" },
+    { id: "audiobook", label: "Audiobook beta" },
     { id: "learning-lab", label: "Learning lab" },
     { id: "concept-map", label: "Concept map" },
     { id: "takeaways", label: "Mental models" },
@@ -160,6 +162,31 @@ export default async function IndividualBookPage({ params }: { params: Promise<{
               <div className="rounded-2xl border border-[var(--primary)]/25 bg-[var(--card)] p-6"><div className="text-[10px] font-bold uppercase tracking-[0.18em] text-[var(--primary)]">Read it in one line</div><p className="mt-3 text-lg font-bold leading-7 text-[var(--foreground)]">{book.learningLab?.coreModel ?? book.keyTakeaways[0]}</p></div>
             </section>
 
+            <section id="audiobook" className="scroll-mt-24">
+              <BookAudiobookBeta
+                title={book.title}
+                sections={[
+                  { id: "thesis", label: "Core thesis", text: book.summary },
+                  { id: "models", label: "Key mental models", text: book.keyTakeaways.join(". ") },
+                  { id: "protocol", label: "Action protocol", text: book.protocolSteps.join(". ") },
+                  ...(book.learningLab
+                    ? [
+                        {
+                          id: "learning-lab",
+                          label: "Learning lab",
+                          text: [
+                            book.learningLab.coreModel,
+                            book.learningLab.brainLens,
+                            ...book.learningLab.examples,
+                            ...book.learningLab.watchFor,
+                            ...book.learningLab.practice,
+                          ].join(". "),
+                        },
+                      ]
+                    : []),
+                ]}
+              />
+            </section>
             {book.learningLab && <section id="learning-lab" className="scroll-mt-24"><BookLearningLab book={book} /></section>}
             {book.mermaidDiagram && <section id="concept-map" className="scroll-mt-24"><BookConceptMap title={`${book.title}: behavioral flow`} diagram={book.mermaidDiagram} /></section>}
             {(book.visual || book.artifact) && <section className="scroll-mt-24"><BookArtifacts visual={book.visual} artifact={book.artifact} /></section>}
