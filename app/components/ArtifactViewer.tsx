@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import ExcalidrawSketch from "./ExcalidrawSketch";
 import { X, Copy, Check, FileText, ArrowUpRight } from "lucide-react";
 
 export interface ArtifactData {
@@ -20,6 +21,7 @@ interface ArtifactViewerProps {
 
 export default function ArtifactViewer({ artifact, onClose }: ArtifactViewerProps) {
   const [copied, setCopied] = useState(false);
+  const [sketchOpen, setSketchOpen] = useState(false);
 
   if (!artifact) return null;
 
@@ -52,6 +54,13 @@ export default function ArtifactViewer({ artifact, onClose }: ArtifactViewerProp
 
           <div className="flex items-center gap-2">
             <button
+              onClick={() => setSketchOpen((value) => !value)}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[var(--muted)] border border-[var(--border)] text-xs font-medium text-[var(--foreground)] hover:bg-[var(--accent)] transition-colors"
+            >
+              Sketch
+            </button>
+
+            <button
               onClick={handleCopy}
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[var(--muted)] border border-[var(--border)] text-xs font-medium text-[var(--foreground)] hover:bg-[var(--accent)] transition-colors"
             >
@@ -78,7 +87,15 @@ export default function ArtifactViewer({ artifact, onClose }: ArtifactViewerProp
         </div>
 
         {/* Content */}
-        <div className="flex-1 overflow-y-auto p-6 space-y-6 text-xs text-[var(--muted-foreground)]">
+        <div className="flex-1 overflow-y-auto p-4 space-y-6 text-xs text-[var(--muted-foreground)] sm:p-6">
+          {sketchOpen && (
+            <ExcalidrawSketch
+              title={artifact.title + " — working sketch"}
+              subtitle="Turn the artifact into a visual chain and use fullscreen for annotation or teaching."
+              labels={[artifact.type, artifact.category, ...(artifact.actionProtocol ?? []).slice(0, 2)]}
+              height={420}
+            />
+          )}
           <div className="p-4 rounded-xl bg-[var(--card)] border border-[var(--border)] font-mono leading-relaxed whitespace-pre-line text-[var(--foreground)]">
             {artifact.content}
           </div>

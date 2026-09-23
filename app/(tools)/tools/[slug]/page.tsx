@@ -6,6 +6,7 @@ import DopamineCalculatorTool from "../../../components/tools/DopamineCalculator
 import HabitShrinkerTool from "../../../components/tools/HabitShrinkerTool";
 import PomodoroTool from "../../../components/tools/PomodoroTool";
 import FrictionAuditTool from "../../../components/tools/FrictionAuditTool";
+import ExcalidrawSketch from "../../../components/ExcalidrawSketch";
 
 interface ToolDetail {
   slug: string;
@@ -118,6 +119,13 @@ export default async function IndividualToolPage({ params }: { params: Promise<{
           {tool.component === "dopamine" && <DopamineCalculatorTool />}
           {tool.component === "habit" && <HabitShrinkerTool />}
           {tool.component === "friction" && <FrictionAuditTool />}
+
+          <ExcalidrawSketch
+            title={tool.name + " — visual model"}
+            subtitle="Sketch the inputs, behavior loop, feedback and intervention. Use fullscreen when mapping the model."
+            labels={[tool.category, "Context / input", "Behavior", "Feedback", "Intervention"]}
+            height={400}
+          />
         </div>
       </main>
     </>

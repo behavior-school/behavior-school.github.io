@@ -55,6 +55,23 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
     .slice(0, 3);
 
   const url = "https://behavior-school.github.io/blog/" + article.slug;
+  const jsonLdVideo = article.videoUrl
+    ? {
+        "@context": "https://schema.org",
+        "@type": "VideoObject",
+        name: article.recommendedVideo ?? article.title,
+        description: article.excerpt,
+        uploadDate: article.revisionDate || article.date,
+        contentUrl: article.videoUrl,
+        embedUrl: article.videoUrl.replace("watch?v=", "embed/"),
+        publisher: {
+          "@type": "Organization",
+          name: "Behavior School",
+          url: "https://behavior-school.github.io",
+        },
+      }
+    : null;
+
   const jsonLdArticle = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -75,6 +92,9 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdArticle) }} />
+      {jsonLdVideo && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdVideo) }} />
+      )}
       <main className="pt-32 pb-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <Link href="/blog" className="inline-flex items-center gap-2 text-xs font-semibold text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors mb-8">
           <ArrowLeft className="w-4 h-4" /><span>Back to All Field Guides</span>

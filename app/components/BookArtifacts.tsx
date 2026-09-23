@@ -1,4 +1,5 @@
 import React from "react";
+import ExcalidrawSketch from "./ExcalidrawSketch";
 
 export interface BookVisual {
   title: string;
@@ -69,6 +70,17 @@ export default function BookArtifacts({ visual, artifact }: BookArtifactsProps) 
             {visual.caption}
           </p>
         </div>
+      )}
+
+      {(visual || artifact) && (
+        <ExcalidrawSketch
+          title="Redraw the model"
+          subtitle="Annotate the behavioral chain, then open fullscreen for a clean teaching canvas."
+          labels={(visual?.steps ?? artifact?.items ?? []).slice(0, 4).map((item) =>
+            item.length > 30 ? item.slice(0, 30) + "…" : item
+          )}
+          height={400}
+        />
       )}
 
       {artifact && (

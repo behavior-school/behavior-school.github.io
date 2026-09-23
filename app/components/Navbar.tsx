@@ -5,6 +5,7 @@ import Link from "next/link";
 import { BookOpen, Compass, Home, Menu, Search, Wrench, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { YoutubeIcon } from "./Icons";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -47,6 +48,7 @@ export default function Navbar() {
         </Link>
 
         <nav className="hidden lg:flex items-center gap-4 text-xs font-medium">
+          <ThemeToggle />
           {links.map(([href, label]) => (
             <Link key={href} href={href} className={isActive(href) ? "font-semibold text-[var(--foreground)]" : "text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors"}>
               {label}
@@ -115,6 +117,10 @@ export default function Navbar() {
                 {label}
               </Link>
             ))}
+            <div className="flex items-center justify-between py-2.5">
+              <span className="text-sm font-semibold text-[var(--foreground)]">Appearance</span>
+              <ThemeToggle />
+            </div>
             <a href="https://www.youtube.com/@behavior-school" target="_blank" rel="noopener noreferrer" className="py-2.5 font-semibold text-[var(--primary)]">
               YouTube Channel
             </a>

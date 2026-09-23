@@ -8,7 +8,8 @@ export interface Article {
   readTime: string;
   date: string;
   revisionDate?: string;
-  recommendedVideo: string;
+  recommendedVideo?: string;
+  videoUrl?: string;
   hasProcrastinationSimulator?: boolean;
   keyTakeaways: string[];
   content: string;

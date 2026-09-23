@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import { BookOpen, Clock, ArrowRight, Brain, HeartHandshake, Eye, Cpu, Sparkles, Scale } from "lucide-react";
+import { ArrowRight, BookOpen, Brain, Clock, Cpu, Eye, HeartHandshake, Scale, Sparkles } from "lucide-react";
 import { getAllArticles } from "../../lib/content";
 
 export const metadata: Metadata = {
   title: "Behavior School Blog — Practical Psychology & Neuroscience Guides",
-  description: "Original, research-informed field guides on habits, attention, decision-making, learning, neuroscience, and human behavior.",
+  description:
+    "Original, research-informed field guides on habits, attention, decision-making, learning, neuroscience, and human behavior.",
   alternates: { canonical: "https://behavior-school.github.io/blog" },
   openGraph: {
     title: "Behavior School Blog — Practical Psychology & Neuroscience",
@@ -43,71 +45,111 @@ const iconByCategory: Record<string, typeof Brain> = {
 };
 
 export default function BlogIndexPage() {
-  const articles = [...getAllArticles()].sort((a, b) => a.date < b.date ? 1 : -1);
+  const articles = [...getAllArticles()].sort((a, b) => (a.date < b.date ? 1 : -1));
+
   const jsonLdBlog = {
     "@context": "https://schema.org",
     "@type": "Blog",
-    "name": "Behavior School Blog",
-    "url": "https://behavior-school.github.io/blog",
-    "description": "Original, research-informed articles and field guides on psychology, neuroscience, habits, learning, attention, and decision-making.",
-    "blogPost": articles.map((post) => ({
+    name: "Behavior School Blog",
+    url: "https://behavior-school.github.io/blog",
+    description:
+      "Original, research-informed articles and field guides on psychology, neuroscience, habits, learning, attention, and decision-making.",
+    blogPost: articles.map((post) => ({
       "@type": "BlogPosting",
-      "headline": post.title,
-      "url": "https://behavior-school.github.io/blog/" + post.slug,
-      "datePublished": post.date,
-      "dateModified": post.revisionDate || post.date,
-      "articleSection": post.category,
-      "description": post.excerpt,
+      headline: post.title,
+      url: "https://behavior-school.github.io/blog/" + post.slug,
+      datePublished: post.date,
+      dateModified: post.revisionDate || post.date,
+      articleSection: post.category,
+      description: post.excerpt,
     })),
   };
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdBlog) }} />
-      <main className="pt-32 pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--muted)] border border-[var(--border)] text-xs font-semibold text-[var(--primary)] mb-4">
-            <BookOpen className="w-3.5 h-3.5" />
-            <span>{articles.length} original field guides</span>
-          </div>
-          <h1 className="text-4xl sm:text-6xl font-extrabold text-[var(--foreground)] tracking-tight mb-5">
-            Practical Psychology <span className="text-[var(--primary)]">Explained</span>
-          </h1>
-          <p className="text-base sm:text-lg text-[var(--muted-foreground)] leading-relaxed">
-            Long-form educational guides that turn research, behavioral science, and neuroscience into useful mental models for everyday life.
-          </p>
-          <div className="flex flex-wrap justify-center gap-3 mt-7">
-            <Link href="/resources" className="text-xs font-bold text-[var(--primary)] hover:underline">Learning resources</Link>
-            <span className="text-[var(--border)]">•</span>
-            <Link href="/editorial-policy" className="text-xs font-bold text-[var(--primary)] hover:underline">Editorial policy</Link>
-            <span className="text-[var(--border)]">•</span>
-            <Link href="/about" className="text-xs font-bold text-[var(--primary)] hover:underline">About Behavior School</Link>
-          </div>
-        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <main className="mx-auto w-full max-w-7xl px-3 pb-28 pt-[calc(var(--app-header-height)+18px)] sm:px-6 lg:px-8 lg:pb-20">
+        <section className="border-b border-[var(--border)] pb-10 sm:pb-12">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--muted)] px-3 py-1.5 text-[10px] font-semibold text-[var(--primary)]">
+              <BookOpen className="h-3.5 w-3.5" />
+              {articles.length} field guides
+            </span>
+            <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-[var(--muted-foreground)]">
+              Research → mental model → practice
+            </span>
+          </div>
+
+          <div className="mt-5 grid gap-8 lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-end">
+            <div>
+              <h1 className="max-w-5xl text-4xl font-extrabold leading-[.98] tracking-[-0.05em] text-[var(--foreground)] sm:text-5xl lg:text-6xl">
+                Practical Psychology, <span className="text-[var(--primary)]">Explained.</span>
+              </h1>
+              <p className="mt-5 max-w-3xl text-base leading-7 text-[var(--muted-foreground)] sm:text-lg sm:leading-8">
+                Field guides that turn behavioral science, psychology, and neuroscience into concrete mental models, experiments, and questions you can use in real life.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-[var(--border)] bg-[var(--card)]/60 p-4 sm:p-5">
+              <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-[var(--primary)]">How to use the library</div>
+              <div className="mt-3 space-y-2 text-xs leading-5 text-[var(--muted-foreground)]">
+                <p><strong className="text-[var(--foreground)]">Read:</strong> understand the mechanism.</p>
+                <p><strong className="text-[var(--foreground)]">Sketch:</strong> reconstruct it visually.</p>
+                <p><strong className="text-[var(--foreground)]">Apply:</strong> test it against context.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {articles.map((post) => {
             const Icon = iconByCategory[post.category] || BookOpen;
             return (
-              <article key={post.slug} className="bg-[var(--card)] p-7 rounded-3xl border border-[var(--border)] flex flex-col justify-between hover:border-[var(--primary)]/50 transition-all group">
-                <div>
-                  <div className="flex items-center justify-between gap-3 mb-4">
-                    <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-[var(--muted)] text-[var(--primary)] border border-[var(--border)]">{post.category}</span>
-                    <span className="text-xs font-mono text-[var(--muted-foreground)] flex items-center gap-1 shrink-0"><Clock className="w-3.5 h-3.5" />{post.readTime}</span>
+              <article
+                key={post.slug}
+                className="group overflow-hidden rounded-[1.4rem] border border-[var(--border)] bg-[var(--card)] transition duration-200 hover:-translate-y-1 hover:border-[var(--primary)]/45"
+              >
+                <Link href={"/blog/" + post.slug} className="block">
+                  <div className="relative aspect-[16/8] overflow-hidden bg-[var(--muted)]">
+                    <Image
+                      src="/og-image.png"
+                      alt=""
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover opacity-90 transition-transform duration-300 group-hover:scale-[1.03]"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
+                    <div className="absolute bottom-3 left-3 rounded-full border border-white/15 bg-black/35 px-2.5 py-1 text-[9px] font-semibold text-white backdrop-blur-md">
+                      {post.category}
+                    </div>
                   </div>
-                  <div className="w-10 h-10 rounded-2xl bg-[var(--muted)] border border-[var(--border)] flex items-center justify-center text-[var(--primary)] group-hover:bg-[var(--primary)] group-hover:text-[var(--primary-foreground)] transition-colors mb-4">
-                    <Icon className="w-5 h-5" />
+                </Link>
+
+                <div className="p-5 sm:p-6">
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="inline-flex items-center gap-1 font-mono text-[9px] text-[var(--muted-foreground)]">
+                      <Clock className="h-3.5 w-3.5" />
+                      {post.readTime}
+                    </span>
+                    <span className="font-mono text-[9px] text-[var(--muted-foreground)]">{post.date}</span>
                   </div>
-                  <h2 className="text-lg font-bold text-[var(--foreground)] mb-3 group-hover:text-[var(--primary)] transition-colors leading-snug">
+
+                  <h2 className="mt-3 text-base font-bold leading-5 text-[var(--foreground)] transition-colors group-hover:text-[var(--primary)] sm:text-lg">
                     <Link href={"/blog/" + post.slug}>{post.title}</Link>
                   </h2>
-                  <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">{post.excerpt}</p>
-                </div>
-                <div className="pt-5 mt-6 border-t border-[var(--border)] flex items-center justify-between text-xs">
-                  <span className="text-[var(--muted-foreground)] font-mono">{post.date}</span>
-                  <Link href={"/blog/" + post.slug} className="inline-flex items-center gap-1.5 font-bold text-[var(--primary)] hover:opacity-80 transition-opacity">
-                    Read guide <ArrowRight className="w-4 h-4" />
-                  </Link>
+                  <p className="mt-2.5 line-clamp-4 text-xs leading-5.5 text-[var(--muted-foreground)] sm:text-sm sm:leading-6">
+                    {post.excerpt}
+                  </p>
+
+                  <div className="mt-5 flex items-center justify-between border-t border-[var(--border)] pt-4">
+                    <div className="grid h-9 w-9 place-items-center rounded-xl border border-[var(--border)] bg-[var(--muted)] text-[var(--primary)]">
+                      <Icon className="h-4 w-4" />
+                    </div>
+                    <span className="inline-flex items-center gap-1.5 text-[10px] font-bold text-[var(--primary)]">
+                      Read guide <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+                    </span>
+                  </div>
                 </div>
               </article>
             );
