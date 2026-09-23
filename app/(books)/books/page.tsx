@@ -135,9 +135,6 @@ export default function BooksIndexPage() {
                       width={360}
                       height={480}
                       className="h-full w-full object-cover transition duration-300 group-hover:scale-[1.02]"
-                      onError={(event) => {
-                        event.currentTarget.style.display = "none";
-                      }}
                     />
                     <div className="absolute inset-x-2 bottom-2 rounded-lg bg-[var(--background)]/90 px-2 py-1.5 text-[9px] font-bold uppercase tracking-[0.12em] text-[var(--primary)] backdrop-blur">
                       {book.category}
