@@ -4,6 +4,11 @@ import { bookLearningLab } from "./book-learning-lab";
 import { generatedBooksData } from "./generated-books";
 import { generatedBooksBatch2Data } from "./generated-books-batch-2";
 import { generatedBooksBatch3Data } from "./generated-books-batch-3";
+import affiliateLinks from "../data/book-affiliate-links.json";
+
+const affiliateLinksBySlug = Object.fromEntries(
+  affiliateLinks.books.map((entry) => [entry.slug, entry.affiliateUrl])
+) as Record<string, string>;
 
 const amazonBook = (asin: string) => ({
   amazonUrl: `https://www.amazon.in/dp/${asin}`,
@@ -124,6 +129,7 @@ export const allBooksData: Record<string, import("../lib/book-types").BookDetail
         ...meta,
         popularityScore: meta?.popularityScore ?? curatedPopularityScores[slug] ?? fallbackPopularityScore(book, meta),
         ...amazonBook(meta?.asin ?? book.slug),
+        affiliateUrl: affiliateLinksBySlug[slug] || undefined,
         learningLab: book.learningLab ?? bookLearningLab[slug],
       }];
     })
@@ -147,6 +153,7 @@ export const booksCatalog = Object.values(allBooksData).map((book) => {
     coverImageUrl: book.coverImageUrl ?? amazon.coverImageUrl,
     amazonImageUrl: book.amazonImageUrl ?? amazon.amazonImageUrl,
     amazonUrl: book.amazonUrl ?? amazon.amazonUrl,
+    affiliateUrl: affiliateLinksBySlug[book.slug] || undefined,
     popularityScore: book.popularityScore ?? meta?.popularityScore ?? curatedPopularityScores[book.slug] ?? fallbackPopularityScore(book, meta),
   };
 });
