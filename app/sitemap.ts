@@ -1,7 +1,7 @@
 export const dynamic = "force-static";
 
 import type { MetadataRoute } from "next";
-import articles from "../content/articles.json";
+import { getAllArticles } from "../lib/content";
 import { getAllBookSlugs } from "../lib/book-repository";
 
 const BASE_URL = "https://behavior-school.github.io";
@@ -52,7 +52,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }));
 
-  const articleEntries = articles.map((article) => ({
+  const articleEntries = getAllArticles().map((article) => ({
     url: `${BASE_URL}/blog/${article.slug}`,
     lastModified: article.revisionDate ? new Date(article.revisionDate) : now,
     changeFrequency: "monthly" as const,
