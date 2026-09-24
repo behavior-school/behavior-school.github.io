@@ -22,5 +22,5 @@ export function getAllArticles(): Article[] {
 }
 
 export function getArticleBySlug(slug: string): Article | undefined {
-  return articlesData.find((art) => art.slug === slug) as Article | undefined;
+  return getAllArticles().find((article) => article.slug === slug);
 }
