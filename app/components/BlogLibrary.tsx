@@ -59,6 +59,16 @@ export default function BlogLibrary({ articles }: { articles: Article[] }) {
   const featured = articles.slice(0, 5);
   const cards = filtered.slice(0, visible);
 
+  if (featured.length === 0) {
+    return (
+      <div className="mt-8 rounded-2xl border border-dashed border-[var(--border)] bg-[var(--card)] p-10 text-center">
+        <BookOpen className="mx-auto h-8 w-8 text-[var(--primary)]" />
+        <h2 className="mt-4 text-lg font-extrabold text-[var(--foreground)]">No field guides published yet.</h2>
+        <p className="mt-2 text-sm text-[var(--muted-foreground)]">Check back soon for the next guide.</p>
+      </div>
+    );
+  }
+
   return (
     <div className="mt-8">
       <section className="overflow-hidden rounded-[2rem] border border-[var(--border)] bg-[var(--card)] shadow-2xl">
