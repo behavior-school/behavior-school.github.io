@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "diagram_type": "lifecycle",
+  "meta": {
+    "title": "Behavior School Content Lifecycle",
+    "output": "content-lifecycle.html",
+    "animation": "trace",
+    "quality_profile": "showcase",
+    "viewBox": [1080,650],
+    "views": [
+      {"id":"content-lifecycle","label":"Content lifecycle","focus":["draft","reviewed","published","measured","revised"],"note":"Track one piece of educational content from creation through revision."},
+      {"id":"revision-endpoint","label":"Revision endpoint","focus":["published","measured","revised"],"note":"See how published content is measured and intentionally revised."}
+    ]
+  },
+  "lanes": [{"id":"main","label":"Content lifecycle"}],
+  "states": [
+    {"id":"draft","type":"start","label":"Draft","lane":"main","col":0,"step":"01","tag":"created"},
+    {"id":"reviewed","type":"decision","label":"Reviewed","lane":"main","col":1,"step":"02","tag":"quality gate"},
+    {"id":"published","type":"success","label":"Published","lane":"main","col":2,"step":"03","tag":"live"},
+    {"id":"measured","type":"active","label":"Measured","lane":"main","col":3,"step":"04","tag":"feedback"},
+    {"id":"revised","type":"success","label":"Revised","lane":"main","col":4,"step":"05","tag":"iteration"}
+  ],
+  "transitions": [
+    {"id":"draft-reviewed","from":"draft","to":"reviewed"},
+    {"id":"reviewed-published","from":"reviewed","to":"published"},
+    {"id":"published-measured","from":"published","to":"measured"},
+    {"id":"measured-revised","from":"measured","to":"revised"}
+  ],
+  "cards": [
+    {"dot":"emerald","title":"Living content","items":["Content moves through draft, review, publication, measurement, and revision.","Revision is the deliberate end state of the illustrated cycle."]}
+  ]
+}
