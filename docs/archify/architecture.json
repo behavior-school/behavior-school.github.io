@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Behavior School Learning Platform Architecture",
+    "output": "architecture.html",
+    "quality_profile": "showcase",
+    "viewBox": [1120,670],
+    "repository": {
+      "url": "https://github.com/behavior-school/behavior-school.github.io",
+      "provider": "github",
+      "link_mode": "web",
+      "revision": "80941084af21d85e0942cdf7960ba1f1c1547bbc"
+    },
+    "views": [
+      {"id":"content-to-reader","label":"Content to reader","focus":["reader","app","content","experience"],"note":"Follow an article from the Next.js app through the content layer into the reader experience."},
+      {"id":"learning-tools","label":"Learning tools","focus":["experience","diagnostic","artifact","mermaid"],"note":"Inspect the interactive extensions layered onto behavior education."}
+    ]
+  },
+  "components": [
+    {"id":"reader","type":"external","label":"Reader","sublabel":"Browser","pos":[35,300],"size":[140,64],"sources":[{"path":"app/layout.tsx","line":102,"label":"Root layout"}]},
+    {"id":"app","type":"backend","label":"Next.js App Router","sublabel":"pages + layouts","pos":[245,300],"size":[185,72],"sources":[{"path":"app/(main)/page.tsx","line":17,"label":"Main route"}]},
+    {"id":"experience","type":"frontend","label":"Learning Experience","sublabel":"articles / books / quizzes","pos":[520,300],"size":[195,72],"sources":[{"path":"app/(main)/page.tsx","line":2,"label":"Home client"}]},
+    {"id":"content","type":"backend","label":"Content Layer","sublabel":"articles.json + loaders","pos":[245,120],"size":[195,72],"sources":[{"path":"app/lib/content.ts","line":19,"label":"Article loader"},{"path":"app/lib/content.ts","line":1,"label":"JSON source imports"}]},
+    {"id":"diagnostic","type":"frontend","label":"Behavior Diagnostic","sublabel":"guided self-check","pos":[520,120],"size":[200,72],"sources":[{"path":"app/components/BehaviorDiagnostic.tsx","line":7,"label":"Diagnostic component"}]},
+    {"id":"artifact","type":"frontend","label":"Artifact Viewer","sublabel":"Excalidraw-backed","pos":[790,300],"size":[200,72],"sources":[{"path":"app/components/ArtifactViewer.tsx","line":22,"label":"Viewer component"},{"path":"app/components/ArtifactViewer.tsx","line":92,"label":"Sketch embed"}]},
+    {"id":"mermaid","type":"frontend","label":"Concept Maps","sublabel":"Mermaid renderer","pos":[650,500],"size":[195,72],"sources":[{"path":"app/components/MermaidDiagram.tsx","line":41,"label":"Diagram component"},{"path":"app/components/MermaidDiagram.tsx","line":17,"label":"Mermaid loader"}]},
+    {"id":"static","type":"cloud","label":"Static Export","sublabel":"Next output: export","pos":[245,500],"size":[185,72],"sources":[{"path":"next.config.ts","line":4,"label":"output: export"}]}
+  ],
+  "boundaries": [],
+  "connections": [
+    {"id":"reader-app","from":"reader","to":"app","label":"page request","variant":"emphasis"},
+    {"id":"app-content","from":"app","to":"content","label":"load article content","fromSide":"top","toSide":"bottom","labelDx":112},
+    {"id":"app-experience","from":"app","to":"experience","label":"render learning surface","labelDy":62},
+    {"id":"experience-diagnostic","from":"experience","to":"diagnostic","label":"run self-check","variant":"dashed","labelDy":-50},
+    {"id":"experience-artifact","from":"experience","to":"artifact","label":"open artifact","variant":"dashed","labelDy":62},
+    {"id":"experience-mermaid","from":"experience","to":"mermaid","label":"render concept map","variant":"dashed","labelDy":62}
+  ],
+  "cards": [
+    {"dot":"cyan","title":"Content engine","items":["Article data is loaded from JSON-backed content sources.","The App Router turns the content model into pages."]},
+    {"dot":"emerald","title":"Learning extensions","items":["Behavior diagnostics provide guided interaction.","Artifact and Mermaid components add visual learning surfaces."]}
+  ]
+}
