@@ -1,0 +1,44 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Behavior School Content Publishing Workflow",
+    "output": "content-workflow.html",
+    "animation": "trace",
+    "quality_profile": "showcase",
+    "views": [
+      {"id":"publish-path","label":"Primary publishing path","focus":["draft","shape","enrich","review","publish"],"note":"Follow content from a draft through structured publishing."},
+      {"id":"learning-extension","label":"Learning extension","focus":["enrich","interactive","publish"],"note":"See where interactive experiences become part of an article."}
+    ]
+  },
+  "lanes": [
+    {"id":"editorial","label":"Editorial"},
+    {"id":"structure","label":"Content structure"},
+    {"id":"learning","label":"Learning experience"},
+    {"id":"publish","label":"Publishing"}
+  ],
+  "mainPath": ["draft","shape","enrich","review","publish"],
+  "nodes": [
+    {"id":"draft","lane":"editorial","col":0,"type":"external","label":"Draft","sublabel":"research notes"},
+    {"id":"shape","lane":"structure","col":1,"type":"backend","label":"Structure","sublabel":"article model"},
+    {"id":"enrich","lane":"structure","col":2,"type":"backend","label":"Enrich","sublabel":"examples + metadata"},
+    {"id":"interactive","lane":"learning","col":3,"type":"frontend","label":"Add Learning Tool","sublabel":"diagnostic / map","width":132},
+    {"id":"review","lane":"editorial","col":4,"type":"security","label":"Review","sublabel":"quality gate"},
+    {"id":"publish","lane":"publish","col":5,"type":"cloud","label":"Publish","sublabel":"static site"},
+    {"id":"revise","lane":"editorial","col":3,"type":"external","label":"Revise","sublabel":"feedback loop"}
+  ],
+  "edges": [
+    {"id":"draft-shape","from":"draft","to":"shape","label":"content brief","role":"main"},
+    {"id":"shape-enrich","from":"shape","to":"enrich","label":"structured content","role":"main"},
+    {"id":"enrich-interactive","from":"enrich","to":"interactive","label":"learning extension","role":"main"},
+    {"id":"enrich-review","from":"enrich","to":"review","label":"ready for review","role":"main"},
+    {"id":"interactive-review","from":"interactive","to":"review","label":"reviewable page","role":"main"},
+    {"id":"review-publish","from":"review","to":"publish","label":"approved content","role":"main"},
+    {"id":"review-revise","from":"review","to":"revise","label":"changes needed","role":"branch"},
+    {"id":"revise-shape","from":"revise","to":"shape","label":"re-edit","role":"branch"}
+  ],
+  "cards": [
+    {"dot":"emerald","title":"Main path","items":["Content moves from draft to structure, enrichment, learning extension, review, and publish.","The main path is explicit so the viewer can focus it."]},
+    {"dot":"rose","title":"Revision loop","items":["Review can send content back for revision.","The loop preserves structure rather than creating a second publishing path."]}
+  ]
+}
